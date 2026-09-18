@@ -1,0 +1,10 @@
+{
+  "id": "lemma-l",
+  "status": "proved",
+  "date": "2026-07",
+  "lean": {
+    "flag": false,
+    "files": [],
+    "no_sorry_in_source": null
+  }
+}

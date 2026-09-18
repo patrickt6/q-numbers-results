@@ -1,0 +1,10 @@
+{
+  "id": "twin-primes",
+  "status": "proved",
+  "date": "2026-06-17",
+  "lean": {
+    "flag": false,
+    "files": [],
+    "no_sorry_in_source": null
+  }
+}

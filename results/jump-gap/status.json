@@ -1,0 +1,18 @@
+{
+  "id": "jump-gap",
+  "status": "scooped",
+  "date": "2026-08-05",
+  "lean": {
+    "flag": true,
+    "files": [
+      "JumpGap.lean",
+      "JumpGapDet.lean"
+    ],
+    "no_sorry_in_source": true,
+    "compiled": true,
+    "checked_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "build_command": "lake build"
+  }
+}

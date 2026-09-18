@@ -1,0 +1,12 @@
+d_X,d_q,B,unknowns,N,kernel_dim,result
+3,6,3,28,300,0,NO functional equation in box
+3,8,5,36,300,0,NO functional equation in box
+3,12,8,52,300,0,NO functional equation in box
+3,12,12,52,300,0,NO functional equation in box
+3,16,12,68,300,0,NO functional equation in box
+3,20,12,84,300,0,NO functional equation in box
+4,12,8,65,300,0,NO functional equation in box
+4,16,12,85,300,0,NO functional equation in box
+3,24,16,100,400,0,NO functional equation in box
+3,30,20,124,400,0,NO functional equation in box
+4,20,12,105,400,0,NO functional equation in box

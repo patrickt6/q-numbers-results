@@ -1,0 +1,13 @@
+  d=1500 elapsed=6.0s poly=406
+  d=2000 elapsed=15.0s poly=799
+HIT d=2399 n=49 chainC=True chainAD=True
+HIT d=2402 n=49 chainC=True chainAD=True
+HIT d=2403 n=49 chainC=True chainAD=True
+HIT d=2405 n=49 chainC=True chainAD=True
+
+gap range d=1001..3000, untested levels 49/121/81/125: poly-tested 1621, hits (top level divides): 4
+(2399, 49, True, True, 2)
+(2402, 49, True, True, 2)
+(2403, 49, True, True, 2)
+(2405, 49, True, True, 2)
+elapsed 39.5s

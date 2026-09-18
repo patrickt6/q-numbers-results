@@ -1,0 +1,67 @@
+
+======================================================================
+d=13  (r,s)=(649,180)
+  deg S = 13
+  is_cyc_squarefree_product = False
+  factor_ks (cyclotomic factors, if all cyclotomic) = None
+  noncyclotomic_factor_degrees = [4]
+  S factored: (q + 1) * (q**2 + 1) * (q**2 + q + 1) * (q**4 + q**3 - q**2 + q + 1) * (q**4 + q**3 + q**2 + q + 1)
+  Phi_5 multiplicity: 1
+  non-Phi5 cofactor (deg 9): (q + 1)*(q**2 + 1)*(q**2 + q + 1)*(q**4 + q**3 - q**2 + q + 1)
+  cofactor coeffs (ascending): [1, 3, 4, 5, 5, 5, 5, 4, 3, 1]
+  cofactor palindromic: True
+  G_of_rs Den degree = 0  -> is_finite = True
+  F(d) = q^3+q^2+2-2q^{-1}-q^{-3}-q^{-4}
+
+======================================================================
+d=41  (r,s)=(2049,320)
+  deg S = 19
+  is_cyc_squarefree_product = False
+  factor_ks (cyclotomic factors, if all cyclotomic) = None
+  noncyclotomic_factor_degrees = [12]
+  S factored: (q + 1) * (q**2 + 1) * (q**4 + q**3 + q**2 + q + 1) * (q**12 + q**11 + 2*q**10 + q**9 + q**8 + q**7 + 2*q**6 + q**5 + q**4 + q**3 + 2*q**2 + q + 1)
+  Phi_5 multiplicity: 1
+  non-Phi5 cofactor (deg 15): (q + 1)*(q**2 + 1)*(q**12 + q**11 + 2*q**10 + q**9 + q**8 + q**7 + 2*q**6 + q**5 + q**4 + q**3 + 2*q**2 + q + 1)
+  cofactor coeffs (ascending): [1, 2, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 2, 1]
+  cofactor palindromic: True
+  G_of_rs Den degree = 0  -> is_finite = True
+  F(d) = q^6+2q^4+q^2+2q-2q^{-2}-q^{-3}-2q^{-5}-q^{-7}
+
+======================================================================
+d=74  (r,s)=(3699,430)
+  deg S = 23
+  is_cyc_squarefree_product = False
+  factor_ks (cyclotomic factors, if all cyclotomic) = None
+  noncyclotomic_factor_degrees = [18]
+  S factored: (q + 1) * (q**4 + q**3 + q**2 + q + 1) * (q**18 + 2*q**17 + 2*q**16 + 3*q**15 + 2*q**14 + 3*q**13 + 2*q**12 + 3*q**11 + 2*q**10 + 3*q**9 + 2*q**8 + 3*q**7 + 2*q**6 + 3*q**5 + 2*q**4 + 3*q**3 + 2*q**2 + 2*q + 1)
+  Phi_5 multiplicity: 1
+  non-Phi5 cofactor (deg 19): (q + 1)*(q**18 + 2*q**17 + 2*q**16 + 3*q**15 + 2*q**14 + 3*q**13 + 2*q**12 + 3*q**11 + 2*q**10 + 3*q**9 + 2*q**8 + 3*q**7 + 2*q**6 + 3*q**5 + 2*q**4 + 3*q**3 + 2*q**2 + 2*q + 1)
+  cofactor coeffs (ascending): [1, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 1]
+  cofactor palindromic: True
+  G_of_rs Den degree = 0  -> is_finite = True
+  F(d) = q^8+q^7+2q^5+2q^3+q^2+2-2q^{-1}-q^{-3}-2q^{-4}-2q^{-6}-q^{-8}-q^{-9}
+
+======================================================================
+d=130  (r,s)=(6499,570)
+  deg S = 29
+  is_cyc_squarefree_product = False
+  factor_ks (cyclotomic factors, if all cyclotomic) = None
+  noncyclotomic_factor_degrees = [22]
+  S factored: (q + 1) * (q**2 + q + 1) * (q**4 + q**3 + q**2 + q + 1) * (q**22 + 2*q**20 + q**18 + q**17 + q**16 + 2*q**14 + q**12 + q**11 + q**10 + 2*q**8 + q**6 + q**5 + q**4 + 2*q**2 + 1)
+  Phi_5 multiplicity: 1
+  non-Phi5 cofactor (deg 25): (q + 1)*(q**2 + q + 1)*(q**22 + 2*q**20 + q**18 + q**17 + q**16 + 2*q**14 + q**12 + q**11 + q**10 + 2*q**8 + q**6 + q**5 + q**4 + 2*q**2 + 1)
+  cofactor coeffs (ascending): [1, 2, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 2, 1]
+  cofactor palindromic: True
+  G_of_rs Den degree = 0  -> is_finite = True
+  F(d) = q^11+2q^9+q^7+2q^6+2q^4+q^2+2q-2q^{-2}-q^{-3}-2q^{-5}-2q^{-7}-q^{-8}-2q^{-10}-q^{-12}
+
+======================================================================
+Cofactor comparison across members:
+  d=  13  deg=  9  coeffs=[1, 3, 4, 5, 5, 5, 5, 4, 3, 1]
+  d=  41  deg= 15  coeffs=[1, 2, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 2, 1]
+  d=  74  deg= 19  coeffs=[1, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 1]
+  d= 130  deg= 25  coeffs=[1, 2, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 2, 1]
+
+Ratio / pattern check (cofactor(d_{k+1}) vs cofactor(d_k), same degree growth?):
+degrees: [9, 15, 19, 25]
+degree diffs: [6, 4, 6]

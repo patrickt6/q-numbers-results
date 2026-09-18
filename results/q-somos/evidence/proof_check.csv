@@ -1,0 +1,13 @@
+key,value
+cells_checked,392
+support_failures,0
+q1_coefficient_failures,0
+a006720_failures,0
+a_range_start,-3
+a_range_end,3
+b_range_start,-3
+b_range_end,3
+n_range_start,4
+n_range_end,11
+all_pass,true
+A006720_values,"2,3,7,23,59,314,1529,8209"

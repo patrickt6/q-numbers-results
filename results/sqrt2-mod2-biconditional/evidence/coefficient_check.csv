@@ -1,0 +1,7 @@
+test,value
+n_samples,50
+recurrence_ok,1
+automaton_ok,1
+recurrence_mismatches_count,0
+automaton_mismatches_count,0
+coefficient_head_64_bits,1001001011011001000010011001001011011011010010011001001011011001

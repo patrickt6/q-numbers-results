@@ -1,0 +1,17 @@
+{
+ "tier": "d2_d1_100k",
+ "source_atlas": "<path>",
+ "rows": 668745,
+ "window_prec": 512,
+ "tail_min": 16,
+ "label_counts": {
+  "finite_observed": 2061,
+  "infinite_observed": 666382,
+  "undecided": 302
+ },
+ "decided_fraction": 0.9995484078385632,
+ "sha256": {
+  "labels.parquet": "56460414bcef8febf28c49620b75539d62aa5f70438d8f6378dadf020a9848b0"
+ },
+ "built_iso": "2026-06-11T00:05:27"
+}

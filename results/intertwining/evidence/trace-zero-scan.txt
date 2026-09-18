@@ -1,0 +1,42 @@
+==============================================================================
+PART 1: symmetric <=> N M N = M^(-1) <=> trace(x) = 0
+==============================================================================
+tested 360 quadratic irrationals (0 skipped on period budget)
+violations: 0
+
+==============================================================================
+PART 2: extended reduction (A - D)/C == G(x) on trace-zero non-pure-surds
+==============================================================================
+  sqrt(3)/2        sym=True  (A-D)/C == G(x): True  Laurent=False verdict=infinite         (59 coefficients)
+      (A - D)/C = (q - 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)/(q*(q**2 + 1)*(q**4 + 1))
+  sqrt(2)/3        sym=True  (A-D)/C == G(x): True  Laurent=False verdict=infinite         (58 coefficients)
+      (A - D)/C = (q - 1)*(q**8 + q**7 + 2*q**6 + q**5 + q**4 + q**3 + 2*q**2 + q + 1)/(q*(q**2 + q + 1)*(q**6 + q**3 + 1))
+  2*sqrt(2)/3      sym=True  (A-D)/C == G(x): True  Laurent=False verdict=infinite         (58 coefficients)
+      (A - D)/C = (q - 1)*(q**16 + q**15 + q**14 + q**13 + q**12 + q**11 + q**10 + q**9 + q**8 + q**7 + q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)/(q*(q**2 - q + 1)*(q**2 + q + 1)*(q**6 - q**3 + 1)*(q**6 + q**3 + 1))
+  3*sqrt(5)/2      sym=True  (A-D)/C == G(x): True  Laurent=False verdict=infinite         (58 coefficients)
+      (A - D)/C = (q - 1)*(q**4 + q**3 + 2*q**2 + 2*q + 1)*(q**4 + 2*q**3 + 2*q**2 + q + 1)/(q**4*(q + 1)**2)
+  sqrt(7)/2        sym=True  (A-D)/C == G(x): True  Laurent=False verdict=infinite         (58 coefficients)
+      (A - D)/C = (q - 1)*(q**12 + q**11 + q**10 + 3*q**9 + 2*q**8 + 2*q**7 + 2*q**6 + 2*q**5 + 2*q**4 + 3*q**3 + q**2 + q + 1)/(q**2*(q**10 + q**8 + q**7 + q**6 + q**4 + q**3 + q**2 + 1))
+  5*sqrt(3)/4      sym=True  (A-D)/C == G(x): True  Laurent=False verdict=infinite         (58 coefficients)
+      (A - D)/C = (q - 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)*(q**24 + q**23 + 3*q**22 + 4*q**21 + 5*q**20 + 8*q**19 + 9*q**18 + 9*q**17 + 10*q**16 + 11*q**15 + 9*q**14 + 9*q**13 + 11*q**12 + 9*q**11 + 9*q**10 + 11*q**9 + 10*q**8 + 9*q**7 + 9*q**6 + 8*q**5 + 5*q**4 + 4*q**3 + 3*q**2 + q + 1)/(q**3*(q + 1)**2*(q**2 + 1)*(q**4 + 1)*(q**2 - q + 1)*(q**16 + q**14 + q**13 + q**12 + q**11 + q**10 + q**8 + q**6 + q**5 + q**4 + q**3 + q**2 + 1))
+
+all samples reproduce the window: True
+
+==============================================================================
+PART 3: scan x = (u/v) sqrt(D), v > 1, for a Laurent (A - D)/C
+==============================================================================
+A Laurent hit at v > 1 is a counterexample to conj:quadratic-64.
+
+tested 168 trace-zero non-pure-surds (0 skipped)
+Laurent hits (counterexample candidates): 0
+
+==============================================================================
+CONCLUSIONS
+==============================================================================
+  characterization holds on 360 cases, 0 violations
+  extended reduction verified against the window on 6 trace-zero samples: True
+  counterexample candidates found: 0
+  => no counterexample to conj:quadratic-64 in the scanned trace-zero family;
+     the conjecture survives on the one class where it is now exactly decidable.
+
+record written to trace-zero-scan.json

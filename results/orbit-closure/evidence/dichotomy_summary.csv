@@ -1,0 +1,6 @@
+property,cyclic_cubics_heptagon_nonagon,s3_cubics_cbrt2_cbrt3_cbrt5_plastic_root_x3_2x_2_and_quartic_qrt2
+Galois orbit closed under finite-order PGL(2 Z),yes (order-3 Mobius; all conjugates real),no (infinite orbit; complex conjugates)
+q-trace X1+X2+X3 exists,yes (recovered),no (not all conjugates real)
+degree-3 q-polynomial equation,yes (Ovsienko-Ustinov recovered residual 0),no (negative; finite kernel empty)
+finite (bounded-bidegree) functional equation,no (B(q) is an infinite Laurent series),no
+modular pattern at N=5000 (buildout 13 scanner),no (noise_only),no (noise_only)

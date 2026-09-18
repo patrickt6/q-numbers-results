@@ -1,0 +1,381 @@
+{
+  "generated_at": "2026-09-18",
+  "note": "One row per result. Status is not editorial. A result that turned out false stays in the table with status 'disproved', because the record of what failed is the point.",
+  "legend": {
+    "proved": "Proved on paper, and in some cases machine-checked in Lean.",
+    "verified": "Established by exact computation over a stated search range. Not a proof.",
+    "disproved": "A claim that was believed, tested, and found false. Includes my own.",
+    "scooped": "Correct, but already in the literature. Found during a novelty check.",
+    "open": "Stated precisely, not settled."
+  },
+  "results": [
+    {
+      "id": "gap-a",
+      "statement": "Closed the main open step behind one direction of a 2020 result on quadratic irrationals (Example 6.4), though the governing principle behind the closing argument was already partially present in the published literature; the composite argument and its consequence for the mismatch ratio are the new part.",
+      "plain": "Closed the open half of a 2020 quadratic-irrationals theorem (Example 6.4); the closing argument and its mismatch-ratio consequence are new.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-07-24",
+      "latex": "\\begin{aligned}\n&x\\ \\text{quadratic irrational},\\ \\ t=x+x^{\\sigma}\\in\\mathbb{Z}\\ \\Longrightarrow\\ \\kappa(x)=q^{t}\\\\\n&\\kappa(x)=q^{\\mu+1}\\,\\overline{C}/C,\\qquad \\overline{C}(q)=C(q^{-1}),\\qquad \\kappa(x)=\\pm1\\iff x+x^{\\sigma}=0\\\\\n&[x]_q+[-x]_q\\in\\mathbb{Z}[q,q^{-1}]\\ \\Longrightarrow\\ x=\\pm\\sqrt{d},\\ \\ d\\ \\text{a positive nonsquare integer}\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "pell-negation",
+      "statement": "For any nonsquare d, the quantity [sqrt d]_q + [-sqrt d]_q equals (A-D)/C read off the fundamental Pell automorph, reducing an infinite question to one divisibility check.",
+      "plain": "Proved [sqrt d]_q + [-sqrt d]_q = (A-D)/C from the fundamental Pell automorph, turning an infinite search into one divisibility check.",
+      "status": "proved",
+      "lean": true,
+      "date": "2026-07",
+      "latex": "\\begin{aligned}\n&d\\ \\text{nonsquare},\\ \\ r^{2}-ds^{2}=1\\ (s\\ge1\\ \\text{minimal})\\\\\n&\\rho\\begin{pmatrix}r&ds\\\\ s&r\\end{pmatrix}=\\begin{pmatrix}A&B\\\\ C&D\\end{pmatrix}\\\\\n&[\\sqrt d\\,]_q+[-\\sqrt d\\,]_q=\\frac{A-D}{C}\\\\\n&[\\sqrt d\\,]_q+[-\\sqrt d\\,]_q\\in\\mathbb{Z}[q,q^{-1}]\\iff C\\mid A-D\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "count-law",
+      "statement": "Theorem A: the vanishing locus is the torsion of a fixed hypersurface in a torus, which turns an observed pattern into a theorem by way of Laurent's theorem (Invent. Math. 78, 1984).",
+      "plain": "Proved the vanishing locus is the torsion of a fixed hypersurface in a torus (Theorem A), via Laurent's theorem.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-08-12",
+      "latex": "\\begin{aligned}\n&U_0=0,\\ \\ U_1=1,\\ \\ U_{j+1}=t\\,(x_{j+1}-1)\\,U_j-t\\,(t-1)^{2}\\,x_j\\,U_{j-1}\\\\\n&S_i(q)=\\frac{U_i(q,q^{c_2},\\dots,q^{c_i})}{\\bigl(q(q-1)\\bigr)^{i-1}},\\qquad X_i=\\{U_i=0\\}\\subset\\mathbb{G}_m^{\\,i}\\\\\n&V_i(k)=\\{c\\in(\\mathbb{Z}/k)^{i-1}:\\ (\\omega,\\omega^{c_2},\\dots,\\omega^{c_i})\\in X_i\\},\\quad \\omega\\ \\text{a primitive }k\\text{th root of unity}\\\\\n&\\{\\text{torsion points of }X_i\\}=\\textstyle\\bigcup_{\\nu}y_\\nu H_\\nu\\ \\ (\\text{finite union of torsion cosets, independent of }k)\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "dc-theorem-a",
+      "statement": "Downward closure: for l in {2,3,4,5}, any prime p and any a >= 1, Phi_{p^a l} dividing S forces Phi_l to divide S, at every word length.",
+      "plain": "Proved downward closure: Phi_{p^a l} dividing S forces Phi_l to divide S, for l in {2,3,4,5}, at every word length.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&l\\in\\{2,3,4,5\\},\\ \\ p\\ \\text{prime},\\ \\ a\\ge1,\\ \\ k=p^{a}l\\\\\n&\\Phi_k\\mid S\\ \\Longrightarrow\\ \\Phi_l\\mid S\\\\\n&S=S_i,\\ \\ \\text{every }i\\ge1\\ \\text{and every integer word}\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "t5-scalar",
+      "statement": "The scalar congruence conjecture is settled by the exact identity q(A-D) = (q-1)(qB+C).",
+      "plain": "Settled the scalar congruence conjecture with the exact identity q(A-D) = (q-1)(qB+C).",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-07",
+      "latex": "\\begin{aligned}\n&\\Lambda_q=\\begin{pmatrix}A&B\\\\ C&D\\end{pmatrix}\\\\\n&q\\,(A-D)=(q-1)\\,(qB+C)\\\\\n&C\\mid B\\iff C\\mid A-D\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "lemma-n",
+      "statement": "Lemma N gives negation closure at all lengths, not only the lengths that were checked by hand.",
+      "plain": "Proved negation closure (Lemma N) at all lengths, not only the lengths checked by hand.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-08-12",
+      "latex": "\\begin{aligned}\n&S_j(\\omega;-c_2,\\dots,-c_j)=(-1)^{j-1}\\,\\omega^{-(j-1)}\\,S_j(\\omega^{-1};c_2,\\dots,c_j)\\\\\n&V_j(k)=-V_j(k)\\ \\ \\text{for all }j,k\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "length5",
+      "statement": "Every word in the length-5 list vanishes for all k: five parametrised shapes plus ten identically zero words.",
+      "plain": "Proved every word in the length-5 list vanishes for all k: five parametrised shapes plus ten identically zero words.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&k\\ge7:\\quad \\Phi_k\\mid S_5\\ \\Longleftarrow\\ (c_2,c_3,c_4,c_5)\\bmod k\\ \\text{lies in one of}\\\\\n&(0,t,\\varepsilon,\\varepsilon),\\ \\ (\\varepsilon,\\varepsilon,t,0),\\ \\ (t,0,\\varepsilon-t,\\varepsilon),\\ \\ (\\varepsilon,t,0,\\varepsilon-t),\\ \\ (t,\\varepsilon,\\varepsilon,\\varepsilon-t),\\ \\ \\text{or}\\ W\\\\\n&\\varepsilon=\\pm1,\\ \\ t\\in\\mathbb{Z}/k\\\\\n&W=\\pm\\{(1,2,2,1),\\,(1,3,1,2),\\,(2,1,3,1),\\,(2,2,1,3),\\,(3,1,2,2)\\}\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "length5-complete",
+      "statement": "That the length-5 list is complete, so no other word vanishes, is verified for 4 <= k <= 24 and is not proved.",
+      "plain": "Verified the length-5 list is complete (no other word vanishes) for 4 <= k <= 24; not proved for all k.",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&\\Phi_k\\mid S_5\\ \\Longrightarrow\\ (c_2,c_3,c_4,c_5)\\bmod k\\ \\text{lies in the list}\\qquad(\\text{checked for }4\\le k\\le 24)\\\\\n&|V_5(k)|=10k\\ \\ (4\\le k\\le 24,\\ k\\ne5),\\qquad |V_5(5)|=52\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "degree-equality",
+      "statement": "The degree equality clause is proved by a continuant tightness induction.",
+      "plain": "Proved the degree-equality clause by a continuant tightness induction.",
+      "status": "proved",
+      "lean": true,
+      "date": "2026-07-11",
+      "latex": "\\begin{aligned}\n&x=\\tfrac{a}{d},\\ \\ 0<a<d,\\ \\ \\gcd(a,d)=1\\\\\n&\\deg S=d-1\\iff a\\equiv\\pm1\\pmod d,\\qquad\\text{and then }S=[d]_q\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "lemma-l",
+      "statement": "Lemma L at odd prime powers follows from downward closure (DC) alone, by a pi-adic argument.",
+      "plain": "Proved Lemma L at odd prime powers from downward closure alone, by a p-adic argument.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-07",
+      "latex": "\\begin{aligned}\n&p\\ \\text{odd prime},\\ \\ a\\ge1,\\ \\ \\Lambda_q=\\begin{pmatrix}A&B\\\\ C&D\\end{pmatrix}\\\\\n&(\\mathrm{DC}):\\ \\ \\Phi_{p^{a}}\\mid C\\Rightarrow\\Phi_{p^{j}}\\mid C\\ \\ (1\\le j<a)\\\\\n&(\\mathrm{DC})\\ \\Longrightarrow\\ \\bigl(\\Phi_{p^{a}}\\mid C\\Rightarrow A\\equiv D\\pmod{\\Phi_{p^{a}}}\\bigr)\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "intertwining",
+      "statement": "The intertwining relation NMN = M^-1 holds exactly when x = b0 sqrt(D) with b0 rational, which is a strictly larger family than the pure square roots the manuscript hypothesis assumed.",
+      "plain": "Proved NMN = M^-1 holds for the strictly wider family x = b0 sqrt(D), b0 rational, not just the pure square roots the manuscript assumed.",
+      "status": "proved",
+      "lean": true,
+      "date": "2026-07",
+      "latex": "\\begin{aligned}\n&N=\\begin{pmatrix}-1&0\\\\ 0&1\\end{pmatrix},\\ \\ M\\ \\text{an automorph of the quadratic irrational }x\\\\\n&NMN=M^{-1}\\iff x+x^{\\sigma}=0\\\\\n&x+x^{\\sigma}=0\\iff x=b_0\\sqrt{D},\\ \\ b_0\\in\\mathbb{Q}\\setminus\\{0\\}\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "cubic-negation",
+      "statement": "In a tested panel of cubic irrationals (heptagon, nonagon and S_3 cubics), the negation sum and product are not finite, checked exactly to N = 320. No proof for all cubics is written.",
+      "plain": "Checked a panel of cubic irrationals: none gives a finite negation sum or product, exact to N = 320. Not proved for all cubics.",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&x\\ \\text{in the tested cubic panel (heptagon, nonagon, }S_3\\text{ cubics)}\\\\\n&[x]_q+[-x]_q\\ \\notin\\ \\mathbb{Z}[q,q^{-1}]\\\\\n&[x]_q\\,[-x]_q\\ \\notin\\ \\mathbb{Z}[q,q^{-1}]\\qquad(\\text{checked to }N=320)\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "addition-nogo",
+      "statement": "[x+y]_q is not a bihomographic function of [x]_q and [y]_q over Q(q): the 8-wide relation matrix has full rank 8, so the kernel is trivial.",
+      "plain": "Proved [x+y]_q is not bihomographic in [x]_q and [y]_q over Q(q): the 8-wide relation matrix has full rank 8.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&\\nexists\\ (a,\\dots,h)\\in\\mathbb{Q}(q)^{8}\\setminus\\{0\\}:\\\\\n&(aXY+bX+cY+d)-T\\,(eXY+fX+gY+h)=0\\ \\ \\text{for all }x,y>1\\\\\n&X=[x]_q,\\ \\ Y=[y]_q,\\ \\ T=[x+y]_q\\\\\n&\\operatorname{rank}_{\\mathbb{Q}(q)}\\bigl[\\,XY,\\ X,\\ Y,\\ 1,\\ -TXY,\\ -TX,\\ -TY,\\ -T\\,\\bigr]=8\n\\end{aligned}",
+      "data_links": [
+        "experiments/q-gosper-engine/README.md"
+      ]
+    },
+    {
+      "id": "mult-nogo",
+      "statement": "[xy]_q is likewise not bihomographic, and unlike the addition case the q-reversal is absent as the obstruction.",
+      "plain": "Proved [xy]_q is likewise not bihomographic, with the q-reversal obstruction absent this time.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&\\nexists\\ (a,\\dots,h)\\in\\mathbb{Q}(q)^{8}\\setminus\\{0\\}:\\\\\n&(aXY+bX+cY+d)-T\\,(eXY+fX+gY+h)=0\\ \\ \\text{for all }x,y>1\\\\\n&X=[x]_q,\\ \\ Y=[y]_q,\\ \\ T=[xy]_q\\\\\n&\\operatorname{rank}_{\\mathbb{Q}(q)}\\bigl[\\,XY,\\ X,\\ Y,\\ 1,\\ -TXY,\\ -TX,\\ -TY,\\ -T\\,\\bigr]=8\n\\end{aligned}",
+      "data_links": [
+        "experiments/q-mult-not-bihomographic/README.md"
+      ]
+    },
+    {
+      "id": "sqrt2-mod2",
+      "statement": "First q-real modular law proved end to end by Christol's theorem plus the Walnut automatic-theorem prover: n congruent to 1 mod 3 implies c_n is even.",
+      "plain": "Proved a q-real modular law end to end with Christol's theorem plus the Walnut automatic prover: n = 1 mod 3 implies c_n is even.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&[\\sqrt2\\,]_q=\\sum_{n\\ge0}c_n\\,q^{n}\\\\\n&n\\equiv1\\pmod 3\\ \\Longrightarrow\\ c_n\\equiv0\\pmod 2\\qquad(\\text{all }n\\ge0)\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "sqrt2-mod2-biconditional",
+      "statement": "The biconditional version of the same statement is false, with 4446 counterexamples in range.",
+      "plain": "Disproved the biconditional version of the same law: 4,446 counterexamples in range.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&\\neg\\,\\forall n\\ \\bigl(c_n\\equiv0\\ (\\mathrm{mod}\\ 2)\\iff n\\equiv1\\ (\\mathrm{mod}\\ 3)\\bigr),\\qquad c_2=0\\\\\n&\\#\\{\\,0\\le n<20000:\\ c_n\\equiv0\\ (\\mathrm{mod}\\ 2),\\ n\\not\\equiv1\\ (\\mathrm{mod}\\ 3)\\,\\}=4446\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "trace-zero",
+      "statement": "The claim that the negation sum is finite exactly for trace-zero quadratics is false. Counterexamples: sqrt(19), sqrt(43), sqrt(46), sqrt(53), all trace zero with infinite sum.",
+      "plain": "Disproved my own trace-zero finiteness criterion; counterexamples sqrt(19), sqrt(43), sqrt(46), sqrt(53).",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-06-04",
+      "latex": "\\begin{aligned}\n&d\\in\\{19,43,46,53\\}\\\\\n&\\sqrt d+(\\sqrt d)^{\\sigma}=0,\\qquad [\\sqrt d\\,]_q+[-\\sqrt d\\,]_q\\notin\\mathbb{Z}[q,q^{-1}]\n\\end{aligned}",
+      "data_links": [
+        "experiments/negation-finiteness/README.md",
+        "experiments/negation-finiteness/negation_table.csv"
+      ]
+    },
+    {
+      "id": "t1-beta",
+      "statement": "The beta tail-degree bound is false. Canonical counterexample x = -16 + (48/7) sqrt 3, confirmed by three independent attempts.",
+      "plain": "Disproved the beta tail-degree bound; counterexample x = -16 + (48/7)sqrt(3), confirmed by three independent implementations.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-07-21",
+      "latex": "\\begin{aligned}\n&G(x)=[x]_q+[-x]_q,\\qquad x=-16+\\tfrac{48}{7}\\sqrt3\\\\\n&\\beta(x)=3,\\ \\ \\beta(-x)=5,\\ \\ \\max\\bigl(\\beta(x),\\beta(-x)\\bigr)=5\\\\\n&[q^{n}]\\,G(x)=0\\ \\ (6\\le n\\le18),\\qquad [q^{19}]\\,G(x)\\neq0\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "partition-claim",
+      "statement": "The manuscript partition claim is false. Smallest counterexample d = 60, a = 11, where S = Phi2 Phi3 Phi4 Phi5 Phi6 admits no valid partition.",
+      "plain": "Disproved the manuscript's partition claim; smallest counterexample d = 60, a = 11.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-07-11",
+      "latex": "\\begin{aligned}\n&x=\\tfrac{11}{60}\\\\\n&S=\\Phi_2\\Phi_3\\Phi_4\\Phi_5\\Phi_6\\ \\Bigm|\\ [60]_q,\\qquad T=\\{2,3,4,5,6\\}\\\\\n&T\\ \\text{matches no partition of }\\{4,3,5\\}\\\\\n&\\Phi_6\\mid S\\ \\text{forces }4,3\\ \\text{into one part, whose }q\\text{-analogue }[12]_q\\ \\text{needs}\\ \\Phi_{12}\\mid S,\\ \\ \\text{but }\\Phi_{12}\\nmid S\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "roots-of-unity",
+      "statement": "The vanishing-sums-of-roots-of-unity route (Mann, Conway-Jones, Lam-Leung) does not prove the length-5 classification. The weight condition is satisfied trivially, so the argument is vacuous.",
+      "plain": "Showed the vanishing-sums-of-roots-of-unity route cannot prove the length-5 classification; the weight condition holds trivially, so the argument is vacuous.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&i=5:\\qquad 2^{\\,i-1}F_{i-1}=80\\\\\n&\\text{(the vanishing-sum weight condition holds trivially)}\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "catalan-rival",
+      "statement": "The rival count-law formula 2(4^m - 1)/3 predicts 170 at length 9. The observed value is 168, which refutes it. Leading coefficients are Catalan numbers at even lengths.",
+      "plain": "Refuted the rival count-law formula 2(4^m-1)/3: it predicts 170 at length 9, the true value is 168.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&L_i=\\text{leading coefficient of }|V_i(k)|\\ \\text{in }k\\\\\n&(L_3,\\dots,L_9)=(2,2,10,5,42,14,168),\\qquad L_{2m}=C_m\\ \\ (C_m\\ \\text{Catalan})\\\\\n&\\frac{2\\,(4^{m}-1)}{3}\\Big|_{m=4}=170\\ \\neq\\ 168=L_9\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "length5-incomplete",
+      "statement": "The nine hand-derived length-5 cases are each individually correct but the list is not complete. Missing families appear at every k >= 3.",
+      "plain": "Found the nine hand-derived length-5 cases individually correct but incomplete; missing families appear at every k >= 3.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&\\text{words in }V_5(k)\\ \\text{missing from the nine-case list},\\ \\ k=3,\\dots,9:\\\\\n&1,\\ 8,\\ 12,\\ 12,\\ 14,\\ 16,\\ 18\\\\\n&\\text{missing families:}\\ \\ \\{c_3=c_4=1,\\ c_2+c_5=1\\},\\ \\ \\{c_2=-1,\\ c_4=0,\\ c_3+c_5=-1\\},\\\\\n&(\\varepsilon,3\\varepsilon,\\varepsilon,2\\varepsilon),\\ \\ (1,2,2,1)\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "census-window",
+      "statement": "The off-axis census result of 100.0000 percent with zero exceptions was a window-floor bug, not an effect. The corrected run gives 97.36 percent with 15929 exceptions.",
+      "plain": "Traced a 100.0000 percent, zero-exception census result to a window-floor bug; corrected figure is 97.36 percent with 15,929 exceptions.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-07",
+      "latex": "\\underbrace{100.0000\\%,\\ 0\\ \\text{exceptions}}_{\\text{window-floor bug}}\\ \\longrightarrow\\ \\underbrace{97.36\\%,\\ 15929\\ \\text{exceptions}}_{\\text{corrected}}",
+      "data_links": []
+    },
+    {
+      "id": "r1-float-dedup",
+      "statement": "A pilot disagreement was misdiagnosed as a truncation artifact. The real cause was a floating-point deduplication bug that treated sqrt(6) and sqrt(2) times sqrt(3) as distinct catalog entries.",
+      "plain": "Traced a misdiagnosed pilot disagreement to a floating-point bug treating sqrt(6) and sqrt(2)*sqrt(3) as distinct catalog entries.",
+      "status": "disproved",
+      "lean": false,
+      "date": "2026-07",
+      "latex": "\\begin{aligned}\n&\\bigl|\\operatorname{fl}(\\sqrt6)-\\operatorname{fl}(\\sqrt2)\\operatorname{fl}(\\sqrt3)\\bigr|=1\\ \\text{ulp}\\\\\n&\\sqrt6=\\sqrt2\\,\\sqrt3\\ \\Longrightarrow\\ [\\sqrt6\\,]_q=[\\sqrt2\\,\\sqrt3\\,]_q\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "jump-gap",
+      "statement": "The rational jump gap has the universal closed form (1-q) q^E / (S+ S-). Derived independently, then found published: Etingof arXiv:2508.08440 Proposition 4.11 in continuant form, and Jouteur, Paris-Romaskevich and Thomas arXiv:2603.04295v2 Proposition 3.22 in this closed form.",
+      "plain": "Derived the closed form (1-q)q^E/(S+S-) for the rational jump gap independently, then found it published (Etingof arXiv:2508.08440; Jouteur, Paris-Romaskevich and Thomas arXiv:2603.04295v2).",
+      "status": "scooped",
+      "lean": true,
+      "date": "2026-08-05",
+      "latex": "\\begin{aligned}\n&\\tfrac rs=[a_0;a_1,\\dots,a_{2n-1}],\\qquad M_q=\\begin{pmatrix}R&R'\\\\ S&S'\\end{pmatrix}\\\\\n&S^{+}=S,\\qquad S^{-}=S+(1-q)S'\\\\\n&[\\tfrac rs]_q^{+}-[\\tfrac rs]_q^{-}=\\frac{(1-q)\\,q^{E}}{S^{+}(q)\\,S^{-}(q)},\\qquad E=\\Bigl(\\sum_{i}a_i\\Bigr)-1\n\\end{aligned}",
+      "data_links": [
+        "experiments/jump-gap/README.md",
+        "experiments/jump-gap/jump_gaps.csv"
+      ]
+    },
+    {
+      "id": "s-prime-formula",
+      "statement": "The S'(1) formula 2S'(1) = d deg S + a^-1 - a is already known: Lasker, arXiv:2309.10819, Lemma 6.1 and Corollary 6.2.",
+      "plain": "Derived 2S'(1) = d deg S + a^-1 - a independently; already known (Lasker, arXiv:2309.10819, Lemma 6.1 and Corollary 6.2).",
+      "status": "scooped",
+      "lean": false,
+      "date": "2026-07-11",
+      "latex": "\\begin{aligned}\n&x=\\tfrac ad,\\ \\ 0<a<d,\\ \\ \\gcd(a,d)=1\\\\\n&S\\ \\text{reduced monic denominator of }[x]_q\\\\\n&2S'(1)=d\\,\\deg S+a^{-1}-a\\qquad(a^{-1}\\in(0,d)\\ \\text{the inverse of }a\\bmod d)\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "k6-level-six",
+      "statement": "The level-six claim that Phi6 dividing S_i forces [6]_q to divide S_i is Byakuno-Ren-Yanagawa, arXiv:2603.08439, Proposition 5.3. Only the A_i profile in that write-up is new.",
+      "plain": "Proved the level-six divisibility claim independently; matches Byakuno-Ren-Yanagawa arXiv:2603.08439 Proposition 5.3, with the A_i profile as the new part.",
+      "status": "scooped",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "i\\ge1,\\ c_1,\\dots,c_i\\in\\mathbb{Z}:\\qquad \\Phi_6\\mid S_i\\ \\Longrightarrow\\ [6]_q\\mid S_i,\\quad\\text{hence }6\\mid S_i(1)",
+      "data_links": []
+    },
+    {
+      "id": "negation-census",
+      "statement": "Among all 668745 canonical quadratic irrationals in (1,2) with D <= 20000 and height <= 10, the negation sum is finite for exactly two constants: sqrt(2) and sqrt(3).",
+      "plain": "Swept 668,745 canonical quadratic irrationals; the negation sum is finite for exactly two, sqrt(2) and sqrt(3).",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-06-11",
+      "latex": "\\begin{aligned}\n&\\mathcal{Q}=\\{x\\in(1,2)\\ \\text{canonical quadratic irrational},\\ D\\le20000,\\ \\operatorname{ht}(x)\\le10\\}\\\\\n&|\\mathcal{Q}|=668745\\\\\n&\\{x\\in\\mathcal{Q}:\\ [x]_q+[-x]_q\\ \\text{observed finite}\\}=\\{\\sqrt2,\\sqrt3\\}\\qquad(304\\ \\text{undecided})\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "twin-primes",
+      "statement": "For x = m/(m^2 - 1), the reduced q-denominator collapses to exactly two cyclotomic factors precisely when m-1 and m+1 are twin primes.",
+      "plain": "Proved the reduced q-denominator of m/(m^2-1) collapses to two cyclotomic factors exactly when m-1 and m+1 are twin primes.",
+      "status": "proved",
+      "lean": false,
+      "date": "2026-06-17",
+      "latex": "\\begin{aligned}\n&x=\\frac{m}{m^{2}-1}:\\qquad [x]_q=\\frac{q^{\\,m-1}[m]_q}{[m-1]_q\\,[m+1]_q},\\qquad S=[m-1]_q\\,[m+1]_q\\\\\n&S=\\Phi_{m-1}\\,\\Phi_{m+1}\\ \\ (\\text{two cyclotomic factors})\\iff m-1\\ \\text{and}\\ m+1\\ \\text{are both prime}\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "realizability",
+      "statement": "The realizability index-set law, stated as connectivity closure minus the n with 4 | n and n not a power of 2, matches 166 of 166 census cases exactly. The proof is open.",
+      "plain": "The realizability index-set law matches 166 of 166 census cases exactly; recorded as unproved, since the proof is still open.",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-07",
+      "latex": "\\begin{aligned}\n&T(d)=\\{\\,n>1:\\ n\\mid s_d,\\ \\Phi_n\\mid S\\,\\}\\quad\\text{over the 166 proper cyclotomic collapses, }d\\le6000\\\\\n&T(d)=\\mathcal{C}(d)\\setminus\\{\\,n:\\ 4\\mid n,\\ n\\neq2^{j}\\,\\}\\qquad(\\text{matches 166 of 166})\\\\\n&\\mathcal{C}(d)=\\text{connectivity closure of }T(d)\\ \\text{on the primes dividing }s_d\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "k-uniformity",
+      "statement": "The k-independence of the vanishing-locus congruence conditions is confirmed exactly for k = 2 through 13.",
+      "plain": "Confirmed k-independence of the vanishing-locus congruence conditions for k = 2 through 13.",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-08",
+      "latex": "\\begin{aligned}\n&7\\le k\\le13:\\qquad |V_3(k)|=2,\\quad |V_4(k)|=2k+3,\\quad |V_5(k)|=10k\\\\\n&V_i(k)^{\\le3}\\ \\text{is the same set of words for all }9\\le k\\le13\\\\\n&|V_3^{\\le3}|,\\ |V_4^{\\le3}|,\\ |V_5^{\\le3}|=2,\\ 17,\\ 64\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "q-somos",
+      "statement": "All 49 integer pairs (a,b) in {-3..3}^2 for the q-twisted Somos-4 recurrence stay Laurent through x_4 to x_11, and 48 of the 49 are not trivial reparametrisations.",
+      "plain": "Checked all 49 integer pairs for the q-twisted Somos-4 recurrence stay Laurent through x_4 to x_11; 48 of 49 are non-trivial reparametrisations.",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&x_{n+4}\\,x_n=q^{a}\\,x_{n+3}\\,x_{n+1}+q^{b}\\,x_{n+2}^{2}\\\\\n&x_4,\\dots,x_{11}\\in\\mathbb{Z}[q^{\\pm1}][x_0^{\\pm1},\\dots,x_3^{\\pm1}]\\ \\ \\text{for all }(a,b)\\in\\{-3,\\dots,3\\}^{2}\\\\\n&\\{(a,b):\\ b=\\tfrac{4a}{3}\\}\\cap\\{-3,\\dots,3\\}^{2}=\\{(0,0)\\}\n\\end{aligned}",
+      "data_links": [
+        "experiments/q-somos-twist/README.md",
+        "experiments/q-somos-twist/twist_search.csv"
+      ]
+    },
+    {
+      "id": "orbit-closure",
+      "statement": "The heptagon and nonagon cyclic cubics recover the Ovsienko-Ustinov degree-3 functional equation exactly, with residual zero to q^4950. Non-cyclic S_3 cubics admit no such equation.",
+      "plain": "Recovered the Ovsienko-Ustinov degree-3 functional equation from the heptagon and nonagon cyclic cubics, residual zero to q^4950.",
+      "status": "verified",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&x\\in\\bigl\\{2\\cos\\tfrac{2\\pi}{7},\\ 2\\cos\\tfrac{2\\pi}{9}\\bigr\\}\\ \\ (x^{3}+x^{2}-2x-1=0,\\ \\ x^{3}-3x+1=0)\\\\\n&P\\bigl(q,[x]_q\\bigr)=O\\bigl(q^{4951}\\bigr),\\qquad \\deg_X P=3\\\\\n&\\text{coefficient of }X^{2}\\ \\text{in }P\\ \\text{is}\\ -\\bigl([x_1]_q+[x_2]_q+[x_3]_q\\bigr)\\\\\n&\\text{non-cyclic }S_3\\text{ cubics: no such }P\n\\end{aligned}",
+      "data_links": [
+        "experiments/cubic-modular-atlas/README.md"
+      ]
+    },
+    {
+      "id": "divisor-hypothesis",
+      "statement": "The divisor hypothesis is a theorem for n <= 6, by Kogiso-Miyamoto-Ren-Wakui-Yanagawa and Byakuno-Ren-Yanagawa. For n >= 7 it is open.",
+      "plain": "The divisor hypothesis holds for n <= 6 (Kogiso-Miyamoto-Ren-Wakui-Yanagawa; Byakuno-Ren-Yanagawa); open for n >= 7.",
+      "status": "open",
+      "lean": false,
+      "date": "2026-06-17",
+      "latex": "\\begin{aligned}\n&x=\\tfrac ad,\\ \\ [x]_q=\\tfrac{N}{S}\\ \\text{reduced}:\\qquad \\Phi_e\\mid S\\ \\Longrightarrow\\ e\\mid d\\\\\n&\\text{theorem for }2\\le e\\le6;\\ \\ \\text{open for }e\\ge7\n\\end{aligned}",
+      "data_links": []
+    },
+    {
+      "id": "negation-criterion",
+      "statement": "The true criterion for finiteness of the negation sum is a continued-fraction period condition, and it remains open. The palindrome-period argument fails at d = 19, whose period is palindromic.",
+      "plain": "The finiteness criterion for the negation sum is still open; the palindrome-period argument fails at d = 19.",
+      "status": "open",
+      "lean": false,
+      "date": "2026-06",
+      "latex": "\\begin{aligned}\n&\\{\\,d\\ \\text{nonsquare}:\\ [\\sqrt d\\,]_q+[-\\sqrt d\\,]_q\\in\\mathbb{Z}[q,q^{-1}]\\,\\}\\ \\ \\text{not characterised}\\\\\n&\\sqrt{19}=[4;\\overline{2,1,3,1,2,8}],\\ \\ \\text{palindromic core}\\\\\n&[\\sqrt{19}\\,]_q+[-\\sqrt{19}\\,]_q\\notin\\mathbb{Z}[q,q^{-1}]\n\\end{aligned}",
+      "data_links": [
+        "experiments/negation-finiteness/negation_table.csv"
+      ]
+    }
+  ],
+  "note_latex": "Field 'latex' holds bare LaTeX for KaTeX. Field 'data_links' holds repo-relative paths in a private data repository; the ledger page renders none of them."
+}

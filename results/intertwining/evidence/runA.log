@@ -1,0 +1,33 @@
+D range: 2..20, 12 squarefree values
+v in 2..30, u in 1..60 (coprime pairs only)
+
+Done. tested=770 laurent_hits=0 errors=44 timeouts=146 time=1201.1s
+
+44 errors (first 10):
+  SweepHit(D=2, u=43, v=5, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 43, 5, D=2) within 600 terms')", elapsed=0.003812074661254883)
+  SweepHit(D=2, u=29, v=7, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 29, 7, D=2) within 600 terms')", elapsed=0.0037331581115722656)
+  SweepHit(D=2, u=37, v=7, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 37, 7, D=2) within 600 terms')", elapsed=0.0037839412689208984)
+  SweepHit(D=2, u=53, v=7, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 53, 7, D=2) within 600 terms')", elapsed=0.0037708282470703125)
+  SweepHit(D=2, u=57, v=7, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 57, 7, D=2) within 600 terms')", elapsed=0.0038080215454101562)
+  SweepHit(D=2, u=59, v=7, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 59, 7, D=2) within 600 terms')", elapsed=0.003990888595581055)
+  SweepHit(D=2, u=43, v=10, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 43, 10, D=2) within 600 terms')", elapsed=0.003725767135620117)
+  SweepHit(D=2, u=57, v=10, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 57, 10, D=2) within 600 terms')", elapsed=0.0036296844482421875)
+  SweepHit(D=2, u=59, v=10, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 59, 10, D=2) within 600 terms')", elapsed=0.0035970211029052734)
+  SweepHit(D=2, u=37, v=11, laurent=False, error="ValueError('no HJ period found for QuadraticIrrational(0, 37, 11, D=2) within 600 terms')", elapsed=0.0036611557006835938)
+
+146 timeouts (candidates skipped, not evidence either way; first 15):
+  SweepHit(D=2, u=37, v=3, laurent=False, error='timeout', elapsed=5.000184059143066)
+  SweepHit(D=2, u=47, v=3, laurent=False, error='timeout', elapsed=5.004523992538452)
+  SweepHit(D=2, u=49, v=3, laurent=False, error='timeout', elapsed=5.005087852478027)
+  SweepHit(D=2, u=53, v=3, laurent=False, error='timeout', elapsed=5.001322984695435)
+  SweepHit(D=2, u=47, v=5, laurent=False, error='timeout', elapsed=5.009436130523682)
+  SweepHit(D=2, u=59, v=5, laurent=False, error='timeout', elapsed=5.00980281829834)
+  SweepHit(D=2, u=53, v=6, laurent=False, error='timeout', elapsed=5.0086610317230225)
+  SweepHit(D=2, u=43, v=7, laurent=False, error='timeout', elapsed=5.006529808044434)
+  SweepHit(D=2, u=47, v=7, laurent=False, error='timeout', elapsed=5.001104831695557)
+  SweepHit(D=2, u=13, v=9, laurent=False, error='timeout', elapsed=5.007164716720581)
+  SweepHit(D=2, u=23, v=9, laurent=False, error='timeout', elapsed=5.2369232177734375)
+  SweepHit(D=2, u=25, v=9, laurent=False, error='timeout', elapsed=5.009325742721558)
+  SweepHit(D=2, u=26, v=9, laurent=False, error='timeout', elapsed=5.002086162567139)
+  SweepHit(D=2, u=29, v=9, laurent=False, error='timeout', elapsed=5.009922981262207)
+  SweepHit(D=2, u=31, v=9, laurent=False, error='timeout', elapsed=5.0093629360198975)

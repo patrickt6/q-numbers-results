@@ -1,0 +1,5 @@
+target,d_X,d_q,N,kernel_basis,matches_MGO
+phi,2,2,200,1 - X + X q + X q^2 - X^2 q,MGO eq (14)
+sqrt2,2,3,100/300,1 + q^2 - X + X q^3 - X^2 q^2,MGO eq (17)
+sqrt3,2,3,100,1 + q + q^2 - X - X q + X q^2 + X q^3 - X^2 q^2,MGO eq (18)
+sqrt5,2,5,100,1 + q + q^2 + q^3 + q^4 - X - X q^2 + X q^3 + X q^5 - X^2 q^3,MGO eq (19)

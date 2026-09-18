@@ -1,0 +1,11 @@
+  s<=10 fractions=31 closed=31 violations=0 elapsed=0.1s
+  s<=20 fractions=127 closed=127 violations=0 elapsed=0.7s
+  s<=30 fractions=277 closed=277 violations=0 elapsed=2.0s
+  s<=40 fractions=489 closed=489 violations=0 elapsed=4.3s
+  s<=50 fractions=773 closed=773 violations=0 elapsed=7.9s
+  s<=60 fractions=1101 closed=1101 violations=0 elapsed=12.5s
+
+fractions r/s, 1 < r/s < 2, s <= 60: 1101
+divisor-closed supports: 1101; violations: 0
+n | s failures (Phi_n | S but n does not divide s): NONE (total 0)
+elapsed 12.5s

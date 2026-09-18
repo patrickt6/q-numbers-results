@@ -1,0 +1,10 @@
+name = "degreeeq"
+version = "0.1.0"
+defaultTargets = ["degreeeq"]
+
+[[lean_lib]]
+name = "Degreeeq"
+
+[[lean_exe]]
+name = "degreeeq"
+root = "Main"

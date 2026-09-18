@@ -1,0 +1,7 @@
+constant,p,d,residue_classes_with_full_divisibility,absorbing_residue_classes,chi_squared,chi_squared_first_half,chi_squared_second_half,chi_squared_p_first_half,chi_squared_p_second_half,n_tested_total,n_tested_first_half,n_tested_second_half,both_halves_agree,verdict
+cbrt2,,,,,,,,,,,,,,noise_only
+cbrt3,,,,,,,,,,,,,,noise_only
+cbrt5,,,,,,,,,,,,,,noise_only
+plastic,,,,,,,,,,,,,,noise_only
+qrt2,,,,,,,,,,,,,,noise_only
+root_x3_2x_2,,,,,,,,,,,,,,noise_only

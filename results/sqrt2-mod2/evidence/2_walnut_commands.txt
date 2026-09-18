@@ -1,0 +1,4 @@
+eval sqrt2_mod7_smoke "?lsd_7 S7[2]=@0":
+eval sqrt2_mod7_fwd "?lsd_7 An (((Ek n=7*k+2) | (Ek n=7*k+4)) => S7[n]=@0)":
+eval sqrt2_mod7_conv "?lsd_7 An ((S7[n]=@0) => ((Ek n=7*k+2) | (Ek n=7*k+4)))":
+eval sqrt2_mod7_iff "?lsd_7 An (((Ek n=7*k+2) | (Ek n=7*k+4)) <=> S7[n]=@0)":

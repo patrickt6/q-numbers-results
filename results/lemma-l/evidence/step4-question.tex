@@ -1,0 +1,156 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{question}{Question}
+\theoremstyle{definition}
+\newtheorem{fact}{Fact}
+
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Phin}[1]{\Phi_{#1}}
+
+\title{A rigidity step in the cyclotomic argument for $q$-deformed Pell automorphs}
+\date{21 July 2026}
+
+\begin{document}
+\maketitle
+
+\noindent
+This note isolates one step of a proposed argument. Everything else in the
+argument is either classical or already proved in the current draft. The
+question at the end is the only thing being asked.
+
+\section*{Setting}
+
+For a nonsquare $d$ with fundamental Pell solution $(r,s)$, let
+$\Lambda_q=\begin{psmallmatrix}A&B\\C&D\end{psmallmatrix}$ be the $q$-deformed
+automorph, entries in $\Z[q,q^{-1}]$, specialising to
+$\begin{psmallmatrix}r&ds\\s&r\end{psmallmatrix}$ at $q=1$. The statement of
+interest, called Lemma~L in the draft, is
+\[
+  \Phin{n}\mid C \quad\Longrightarrow\quad A\equiv D \pmod{\Phin{n}} .
+\]
+It is proved for $n\in\{2,3,4,5\}$ and for $n$ an odd prime. The open range is
+everything else, and the prime powers $p^{a}$ with $a\ge 2$ are the case the
+draft needs.
+
+\begin{fact}[from the draft]
+The assignment $R\mapsto R_q=\begin{psmallmatrix}q&1\\0&1\end{psmallmatrix}$,
+$S\mapsto S_q=\begin{psmallmatrix}0&-1/q\\1&0\end{psmallmatrix}$ is
+projectively multiplicative on $\PSL(2,\Z)$. At $q=\zeta$ a primitive $n$th
+root of unity, $R_\zeta^{\,n}=I$ and the image of $R$ has projective order
+exactly $n$.
+\end{fact}
+
+\begin{fact}[Coxeter and Moser]
+With $a:=S$ and $b:=(SR)^{-1}$ one has $\PSL(2,\Z)=\Z/2*\Z/3$, and imposing
+$R^{n}=1$ gives the von Dyck group
+$D(2,3,n)=\langle a,b \mid a^{2}=b^{3}=(ab)^{n}=1\rangle$.
+\end{fact}
+
+So the specialised projective representation
+$\bar\rho:\PSL(2,\Z)\to\PGL(2,\C)$ factors through $D(2,3,n)$.
+
+\section*{Why the existing proof stops}
+
+For $n\le 5$ the image is finite and the argument runs through $\PSL(2,\Z/n)$,
+using the identification of the normal closure $\langle\langle R^{n}\rangle\rangle$
+with $\pm\Gamma(n)$. For $n\ge 6$ that identification is false: the normal
+closure is a noncongruence subgroup of infinite index. The proposed repair is
+that the finite quotient was never the load-bearing object, and that what is
+actually needed is the injectivity of the induced map
+$\pi: D(2,3,n)\to\PGL(2,\C)$.
+
+\section*{The step in question}
+
+Fix $n\ge 7$ and $\zeta=e^{2\pi i/n}$. Take the $\SL(2,\C)$ lifts
+\[
+  \widetilde S=\zeta^{1/2}S_\zeta,\qquad
+  \widetilde R=\zeta^{-1/2}R_\zeta,\qquad
+  \widetilde B=(\widetilde S\widetilde R)^{-1},
+\]
+all of determinant $1$. On the generating pair $(a,b)$ the trace triple is
+\[
+  \bigl(\operatorname{tr}\widetilde S,\ \operatorname{tr}\widetilde B,\
+   \operatorname{tr}\widetilde S\widetilde B\bigr)
+  =\bigl(0,\ 1,\ 2\cos(\pi/n)\bigr),
+\]
+since $\widetilde S\widetilde R=\begin{psmallmatrix}0&-1/\zeta\\ \zeta&1\end{psmallmatrix}$
+has trace $1$, and $\widetilde S\widetilde B$ is conjugate to $\widetilde R^{-1}$.
+The reducibility invariant is
+\[
+  x^{2}+y^{2}+z^{2}-xyz-4 \;=\; 4\cos^{2}(\pi/n)-3 ,
+\]
+which vanishes only at $n=6$. So for $n\ne 6$ the representation is irreducible.
+
+\begin{fact}[Poincar\'e]
+For $n\ge 7$ the hyperbolic $(\pi/2,\pi/3,\pi/n)$ triangle generates a
+cocompact Fuchsian group whose orientation-preserving subgroup is isomorphic to
+$D(2,3,n)$ via the presentation map, so this projective representation is
+faithful. Its $\SL(2,\R)$ lifts have traces $0$, $\pm 1$, $\pm 2\cos(\pi/n)$.
+\end{fact}
+
+\begin{fact}[Fricke]
+Two irreducible $\SL(2,\C)$ representations of a free group of rank two with
+equal trace triples are conjugate in $\GL(2,\C)$, and the lift sign changes
+realise $(x,y,z)\mapsto(-x,y,-z)$ and $(x,-y,-z)$.
+\end{fact}
+
+The proposed conclusion is that the two representations, having the same trace
+triple and both being irreducible, are conjugate; that conjugacy descends
+projectively; and that faithfulness of the Fuchsian one therefore forces $\pi$
+to be injective, giving
+$\ker\bar\rho=\langle\langle R^{n}\rangle\rangle$. From there the rest of the
+argument is arithmetic and is not in doubt.
+
+\begin{question}
+Is that inference valid as stated, and in particular:
+\begin{enumerate}
+\item Fricke rigidity is a statement about representations of a free group of
+rank two, whereas both representations here are representations of
+$\Z/2 * \Z/3$ pulled back along the natural surjection. Does conjugacy of the
+pullbacks give conjugacy of the representations of $D(2,3,n)$ that is needed
+for the kernel comparison?
+\item The order-$n$ elliptic generator of a Fuchsian $(2,3,n)$ group has trace
+$\pm 2\cos(\pi k/n)$ for some $k$ coprime to $n$, and only $k=1$ corresponds to
+the discrete faithful realisation. The specialisation at $\zeta=e^{2\pi i/n}$
+produces $k=1$, but at $\zeta^{k}$ it produces the triple
+$(0,1,2\cos(\pi k/n))$, which should correspond to a representation that is
+neither discrete nor faithful. Is it legitimate to prove faithfulness at the
+distinguished root only, and does anything need saying about the other
+conjugates?
+\item A related step identifies the upper-triangular elements of the image with
+the stabiliser of a point, concluding it is cyclic of order exactly $n$ because
+finite subgroups of a cocompact triangle group are conjugate into vertex
+stabilisers. Is that appeal standard enough to cite, or does it need an
+argument?
+\end{enumerate}
+\end{question}
+
+\section*{What is at stake}
+
+If the step holds, Lemma~L becomes unconditional at every $n\ge 7$ with
+$n\ne 6$, prime powers and composites alike, and the downward-closure
+hypothesis currently assumed in the draft is not needed for it at all. Two
+further consequences follow: $\Phin{n}\mid B$ whenever $\Phin{n}\mid C$, which
+extends the proved fragment of the scalar-congruence conjecture from
+$\{2,3,4,5\}$ to all indices except $6$; and the conditional reduction at odd
+prime powers inverts, so that the boundary congruence
+$p\mid\gamma_{p^{a-1}}$ becomes a corollary rather than an open input.
+
+The index $n=6$ is not reachable by this argument, the trace triple falling
+exactly on the reducible locus, and it is also the one index where the
+alternative $\pi$-adic route degenerates, since $\Phin{6}(1)=1$.
+
+Numerically the three conclusions have been checked with exact arithmetic on
+$213$ instances, and on a further $116$ instances at $n=8,16,32$ by an
+independent implementation, with no violations. That is consistent with the
+argument but does not test the step above.
+
+\end{document}

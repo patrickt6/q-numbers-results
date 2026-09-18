@@ -1,0 +1,86 @@
+{
+  "numeration": "msd_2",
+  "alphabet": [
+    0,
+    1
+  ],
+  "output_alphabet": [
+    0,
+    1
+  ],
+  "semantics": "output at state reached after reading base-2 digits of n (MSD first) equals c_n([sqrt2]_q) mod 2",
+  "source_equation": "q^2 y^2 + (1+q^3) y + (1+q^2) = 0 over F_2(q)  (MGO Prop 4.5 mod 2)",
+  "recurrence": "c_k = [k=0]+[k=2]+c_{k-3}(k>=3)+c_{(k-2)/2}(k even>=2)  in F_2",
+  "n_states": 11,
+  "start": 0,
+  "states": [
+    {
+      "id": 0,
+      "output": 1,
+      "delta0": 0,
+      "delta1": 1
+    },
+    {
+      "id": 1,
+      "output": 0,
+      "delta0": 2,
+      "delta1": 0
+    },
+    {
+      "id": 2,
+      "output": 0,
+      "delta0": 3,
+      "delta1": 4
+    },
+    {
+      "id": 3,
+      "output": 0,
+      "delta0": 5,
+      "delta1": 6
+    },
+    {
+      "id": 4,
+      "output": 0,
+      "delta0": 7,
+      "delta1": 8
+    },
+    {
+      "id": 5,
+      "output": 1,
+      "delta0": 3,
+      "delta1": 4
+    },
+    {
+      "id": 6,
+      "output": 1,
+      "delta0": 9,
+      "delta1": 3
+    },
+    {
+      "id": 7,
+      "output": 0,
+      "delta0": 8,
+      "delta1": 10
+    },
+    {
+      "id": 8,
+      "output": 1,
+      "delta0": 7,
+      "delta1": 8
+    },
+    {
+      "id": 9,
+      "output": 0,
+      "delta0": 0,
+      "delta1": 1
+    },
+    {
+      "id": 10,
+      "output": 0,
+      "delta0": 9,
+      "delta1": 3
+    }
+  ],
+  "verified_indices": 1000000,
+  "lsd_twin_states": 9
+}

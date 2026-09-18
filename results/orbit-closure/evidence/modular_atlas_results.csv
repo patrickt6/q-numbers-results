@@ -1,0 +1,9 @@
+constant,galois_group,sharp,sharp_absorbing,structured,verdict
+heptagon,C_3,0,0,0,noise_only
+nonagon,C_3,0,0,0,noise_only
+cbrt2,S_3,0,0,0,noise_only
+cbrt3,S_3,0,0,0,noise_only
+cbrt5,S_3,0,0,0,noise_only
+qrt2,degree 4,0,0,0,noise_only
+plastic,S_3,0,0,0,noise_only
+root_x3_2x_2,S_3,0,0,0,noise_only

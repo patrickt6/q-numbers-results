@@ -1,0 +1,5 @@
+eval sqrt2_rec_odd "?msd_2 (C2[1]=@0) & (Aj (C2[2*j+3]=@1 <=> C2[2*j]=@1))":
+eval sqrt2_rec_even "?msd_2 (C2[0]=@1) & (C2[2]=@0) & (Ai (C2[2*i+4]=@1 <=> (C2[2*i+1]=@1 ^ C2[i+1]=@1)))":
+eval sqrt2_fwd_mod2 "?msd_2 An ((Ek n=3*k+1) => C2[n]=@0)":
+eval sqrt2_conv_mod2 "?msd_2 An ((C2[n]=@0) => (Ek n=3*k+1))":
+eval sqrt2_bicond_mod2 "?msd_2 An ((Ek n=3*k+1) <=> C2[n]=@0)":

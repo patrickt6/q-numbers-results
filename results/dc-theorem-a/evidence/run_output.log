@@ -1,0 +1,17 @@
+S_{3/8} = q**4 + 2*q**3 + 2*q**2 + 2*q + 1
+Phi_8 | S_{3/8}: False
+Phi_4 | S_{3/8}: True
+
+Starting exhaustive scan s = 2..400 ...
+Exhaustive scan done in 143.6s. Pairs so far: 48677, Phi_8 hits so far: 554
+
+Starting sampled tail scan s in 401..1200 step 3 ...
+
+Total elapsed: 893.0s
+Total (r,s) pairs tested: 194961
+Total Phi_8 | S hits: 1652
+Counterexamples (Phi_8|S, 8 not| s): 0
+Converse failures (8|s, Phi_8 not| S): 14512
+Phi_4|S given Phi_8|S, agreement count: 1652 / 1652
+
+Wrote raw result JSON to <path>

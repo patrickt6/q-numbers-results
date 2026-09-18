@@ -1,0 +1,40 @@
+
+=== y=13 (y^2=169) ===  12 members with d<=6000
+  n=   70  d=    29  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=   99  d=    58  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  239  d=   338  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  268  d=   425  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  408  d=   985  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  437  d=  1130  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  577  d=  1970  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  606  d=  2173  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  746  d=  3293  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  775  d=  3554  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  915  d=  4954  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  944  d=  5273  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+
+=== y=17 (y^2=289) ===  9 members with d<=6000
+  n=   38  d=     5  is_finite=True  S_is_cyc_sqfree=True  cf_period_len=1 parity=odd
+  n=  251  d=   218  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  327  d=   370  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=3 parity=odd
+  n=  540  d=  1009  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  616  d=  1313  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=3 parity=odd
+  n=  829  d=  2378  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  905  d=  2834  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=3 parity=odd
+  n= 1118  d=  4325  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n= 1194  d=  4933  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=3 parity=odd
+
+=== y=25 (y^2=625) ===  6 members with d<=6000
+  n=  182  d=    53  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n=  443  d=   314  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  807  d=  1042  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n= 1068  d=  1825  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n= 1432  d=  3281  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n= 1693  d=  4586  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+
+=== y=29 (y^2=841) ===  5 members with d<=6000
+  n=   41  d=     2  is_finite=True  S_is_cyc_sqfree=True  cf_period_len=1 parity=odd
+  n=  800  d=   761  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n=  882  d=   925  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd
+  n= 1641  d=  3202  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=7 parity=odd
+  n= 1723  d=  3530  is_finite=False  S_is_cyc_sqfree=False  cf_period_len=5 parity=odd

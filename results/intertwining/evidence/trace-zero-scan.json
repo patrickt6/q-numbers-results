@@ -1,0 +1,132 @@
+{
+  "characterization_tested": 360,
+  "characterization_violations": [],
+  "extended_reduction_samples": [
+    {
+      "x": "sqrt(3)/2",
+      "automorph": [
+        [
+          7,
+          6
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "symmetric": true,
+      "intertwines": true,
+      "candidate": "(q - 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)/(q*(q**2 + 1)*(q**4 + 1))",
+      "candidate_is_laurent": false,
+      "matches_window": true,
+      "window_verdict": "infinite",
+      "window_coefficients": 59
+    },
+    {
+      "x": "sqrt(2)/3",
+      "automorph": [
+        [
+          17,
+          8
+        ],
+        [
+          36,
+          17
+        ]
+      ],
+      "symmetric": true,
+      "intertwines": true,
+      "candidate": "(q - 1)*(q**8 + q**7 + 2*q**6 + q**5 + q**4 + q**3 + 2*q**2 + q + 1)/(q*(q**2 + q + 1)*(q**6 + q**3 + 1))",
+      "candidate_is_laurent": false,
+      "matches_window": true,
+      "window_verdict": "infinite",
+      "window_coefficients": 58
+    },
+    {
+      "x": "2*sqrt(2)/3",
+      "automorph": [
+        [
+          17,
+          16
+        ],
+        [
+          18,
+          17
+        ]
+      ],
+      "symmetric": true,
+      "intertwines": true,
+      "candidate": "(q - 1)*(q**16 + q**15 + q**14 + q**13 + q**12 + q**11 + q**10 + q**9 + q**8 + q**7 + q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)/(q*(q**2 - q + 1)*(q**2 + q + 1)*(q**6 - q**3 + 1)*(q**6 + q**3 + 1))",
+      "candidate_is_laurent": false,
+      "matches_window": true,
+      "window_verdict": "infinite",
+      "window_coefficients": 58
+    },
+    {
+      "x": "3*sqrt(5)/2",
+      "automorph": [
+        [
+          161,
+          540
+        ],
+        [
+          48,
+          161
+        ]
+      ],
+      "symmetric": true,
+      "intertwines": true,
+      "candidate": "(q - 1)*(q**4 + q**3 + 2*q**2 + 2*q + 1)*(q**4 + 2*q**3 + 2*q**2 + q + 1)/(q**4*(q + 1)**2)",
+      "candidate_is_laurent": false,
+      "matches_window": true,
+      "window_verdict": "infinite",
+      "window_coefficients": 58
+    },
+    {
+      "x": "sqrt(7)/2",
+      "automorph": [
+        [
+          127,
+          168
+        ],
+        [
+          96,
+          127
+        ]
+      ],
+      "symmetric": true,
+      "intertwines": true,
+      "candidate": "(q - 1)*(q**12 + q**11 + q**10 + 3*q**9 + 2*q**8 + 2*q**7 + 2*q**6 + 2*q**5 + 2*q**4 + 3*q**3 + q**2 + q + 1)/(q**2*(q**10 + q**8 + q**7 + q**6 + q**4 + q**3 + q**2 + 1))",
+      "candidate_is_laurent": false,
+      "matches_window": true,
+      "window_verdict": "infinite",
+      "window_coefficients": 58
+    },
+    {
+      "x": "5*sqrt(3)/4",
+      "automorph": [
+        [
+          1351,
+          2925
+        ],
+        [
+          624,
+          1351
+        ]
+      ],
+      "symmetric": true,
+      "intertwines": true,
+      "candidate": "(q - 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)*(q**24 + q**23 + 3*q**22 + 4*q**21 + 5*q**20 + 8*q**19 + 9*q**18 + 9*q**17 + 10*q**16 + 11*q**15 + 9*q**14 + 9*q**13 + 11*q**12 + 9*q**11 + 9*q**10 + 11*q**9 + 10*q**8 + 9*q**7 + 9*q**6 + 8*q**5 + 5*q**4 + 4*q**3 + 3*q**2 + q + 1)/(q**3*(q + 1)**2*(q**2 + 1)*(q**4 + 1)*(q**2 - q + 1)*(q**16 + q**14 + q**13 + q**12 + q**11 + q**10 + q**8 + q**6 + q**5 + q**4 + q**3 + q**2 + 1))",
+      "candidate_is_laurent": false,
+      "matches_window": true,
+      "window_verdict": "infinite",
+      "window_coefficients": 58
+    }
+  ],
+  "counterexample_candidates": [],
+  "scan_bounds": {
+    "umax": 5,
+    "vmax": 5,
+    "dmax": 20
+  }
+}

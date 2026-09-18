@@ -1,0 +1,10 @@
+{
+  "id": "length5-incomplete",
+  "status": "disproved",
+  "date": "2026-08",
+  "lean": {
+    "flag": false,
+    "files": [],
+    "no_sorry_in_source": null
+  }
+}

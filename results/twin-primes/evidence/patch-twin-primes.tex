@@ -1,0 +1,113 @@
+\begin{proposition}[difference-of-squares denominator]\label{prop:diffsquares}
+For every integer $m\ge2$, with $x=m/(m^{2}-1)$,
+\[
+  \Bigl[\frac{m}{m^{2}-1}\Bigr]_q
+  \;=\;
+  \frac{q^{\,m-1}\,\qn{m}}{\qn{m-1}\,\qn{m+1}},
+\]
+in lowest terms; in particular $S(q)=\qn{m-1}\qn{m+1}$.
+\end{proposition}
+
+\begin{proof}
+The regular continued fraction is $m/(m^{2}-1)=[0;\,m-1,\,1,\,m-1]$, since
+$(m^{2}-1)/m=(m-1)+\tfrac{m-1}{m}$ and $m/(m-1)=1+\tfrac1{m-1}$. Multiplying
+the four q-deformed blocks of this even-length word and writing
+$u=\qn{m-1}_{1/q}=q^{-(m-2)}\qn{m-1}$, the first column of the product is
+\[
+  \bigl(u+q,\;\;u\,(u+q^{-(m-1)}+q)\bigr),
+\]
+and the two entries collapse by the telescoping identities
+$q\,\qn{m-1}+1=\qn{m}$ and $\qn{m}+q^{m}=\qn{m+1}$:
+\[
+  u+q=q^{-(m-2)}\qn{m},
+  \qquad
+  u+q^{-(m-1)}+q=q^{-(m-1)}\qn{m+1}.
+\]
+Hence the value equals $q^{\,m-1}\qn{m}/\bigl(\qn{m-1}\qn{m+1}\bigr)$. The
+fraction is reduced: a common irreducible factor would be some $\Phin{e}$,
+$e\ge2$, with $e\mid m$ and $e\mid m^{2}-1$, impossible as
+$\gcd(m,m^{2}-1)=1$.
+\end{proof}
+
+\begin{theorem}[twin primes are exactly the two-cyclotomic tails]\label{thm:twin}
+Let $d=p\,p'$ with $p<p'$ distinct odd primes. There is a numerator $a$,
+$\gcd(a,d)=1$, whose reduced q-denominator equals $\Phin{p}\Phin{p'}$ if and
+only if $p'=p+2$; the witnesses are then exactly $a=p+1$ and $a=d-(p+1)$.
+\end{theorem}
+
+\begin{proof}
+Throughout, $x=a/d\in(0,1)$ with HJ expansion $\cf{1,c_2,\dots,c_k}$; write
+$w=(c_2,\dots,c_k)$ for the tail, $K$ for the classical continuant of the
+recursion $K_j=c_jK_{j-1}-K_{j-2}$, so $S=K_q(w)$ and $d=K(w)$. Two exact
+facts from the degree-bound section's convergent matrices are used: the
+determinant identity gives
+\[
+  K(w\text{ minus last})=d-a^{-1},
+  \qquad
+  K(w\text{ minus first})=d-a,
+\]
+with $a^{-1}$ the inverse of $a$ modulo $d$ taken in $(0,d)$, and the
+first-derivative formula of Lasker \cite[Lem.~6.1, Cor.~6.2]{Lasker} (there via
+the Stern--Brocot depth, which equals $\deg S$; an independent
+continued-fraction derivation is in the project notes)
+\begin{equation}\tag{D}\label{eq:sprime}
+  2S'(1)=d\,\deg S+a^{-1}-a .
+\end{equation}
+
+\pfpart{Reversal law.} The fraction in $(0,1)$ whose tail is the reversal
+$\overline{w}$ has denominator $K(\overline w)=K(w)=d$ and numerator
+$d-K(\overline w\text{ minus first})=d-K(w\text{ minus last})=a^{-1}$. By
+uniqueness of HJ expansions, the tail of $a/d$ is a palindrome if and only if
+$a^{2}\equiv1\pmod d$.
+
+\pfpart{Cyclotomic denominators sit at square roots of $1$.} If $S$ is a
+product of cyclotomic polynomials then $S$ is palindromic, so
+$S'(1)/S(1)=\deg S/2$, and \eqref{eq:sprime} forces $a^{-1}=a$, i.e.
+$a^{2}\equiv1\pmod d$. Modulo $d=pp'$ the square roots of $1$ are $\pm1$ and
+the two mixed roots $\pm a_0$ ($a_0\equiv1\bmod p$, $a_0\equiv-1\bmod p'$).
+At $a\equiv\pm1$ the denominator is $\qn{d}$, of degree $pp'-1\ne p+p'-2$. So
+$S=\Phin{p}\Phin{p'}$, of degree $p+p'-2$, can occur only at $a=\pm a_0$,
+whose tails are palindromes.
+
+\pfpart{Palindrome splitting.} For the matrices
+$M(v)=\prod_i\begin{psmallmatrix}c_i&-1\\1&0\end{psmallmatrix}$ one has
+$M(\overline v)=DM(v)^{T}D$ with $D=\mathrm{diag}(1,-1)$ (check on one letter,
+extend multiplicatively). Writing $P=K(u)$ and $Q'=K(u\text{ minus last})$, a
+direct $2\times2$ computation gives, for nonempty $u$,
+\[
+  K(u,c,\overline u)=P\,(cP-2Q'),
+  \qquad
+  K(u,\overline u)=P^{2}-Q'^{2};
+\]
+the length-one palindrome $w=(c)$ (empty $u$) is the case $P=1$ below.
+
+\pfpart{Factor matching and the degree bound.} For a standalone word $u$ the
+continuant bound $K(u)\ge1+\sigma_u$, $\sigma_u:=\sum_u(c_i-1)$, holds with
+equality if and only if $u$ is a single digit or all twos (the telescoping
+argument of the degree-bound section). Let the palindromic tail of $a_0/d$
+have degree $\deg S=p+p'-2$; the two parities are treated in turn.
+\emph{Odd length} $(u,c,\overline u)$: the factors $P$ and $cP-2Q'$ are
+coprime ($\gcd$ divides $2$ and $d$ is odd), $P=1$ is the tail $(d)$ of
+$a\equiv-1$, $P=pp'$ is impossible, and $P=p'$ fails on parity: it forces
+$c<2+p/p'<3$, so $c=2$ and $2Q'=2p'-p$, which is odd. Hence $P=p$ and
+$c=(p'+2Q')/p$ with $0<Q'<p$, so
+\[
+  p+p'-2=\deg S=2\sigma_u+c-1\le2(p-1)+\frac{p'+2(p-1)}{p}-1,
+\]
+which rearranges to $p'(p-1)\le(p+2)(p-1)$, i.e. $p'\le p+2$.
+\emph{Even length} $(u,\overline u)$: $P-Q'=1$ is the all-twos tail of
+$a\equiv1$; otherwise $P=(p+p')/2$, $Q'=(p'-p)/2$, and
+$\deg S=2\sigma_u\le2(P-1)=p+p'-2$ with equality only in the two equality
+shapes: all twos gives $Q'=P-1$, i.e. $p=1$, absurd; a single digit $c'$ gives
+$Q'=1$, i.e. $p'=p+2$. In both parities, $\deg S=p+p'-2$ forces $p'=p+2$.
+
+\pfpart{Conversely.} For $p'=p+2$, Proposition~\ref{prop:diffsquares} at
+$m=p+1$ gives $S=\qn{p}\qn{p+2}=\Phin{p}\Phin{p'}$ at $a_0=p+1$, and the
+reversal law transports it to $d-a_0$. Uniqueness of the witnesses is the
+square-root analysis above.
+\end{proof}
+
+\noindent The theorem is confirmed computationally for every product of two
+distinct odd primes $d\le3000$, both mixed roots: no non-twin pair admits a
+cyclotomic denominator at all, and every twin pair yields exactly
+$\Phin{p}\Phin{p'}$.

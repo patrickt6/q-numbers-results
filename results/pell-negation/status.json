@@ -1,0 +1,19 @@
+{
+  "id": "pell-negation",
+  "status": "proved",
+  "date": "2026-07",
+  "lean": {
+    "flag": true,
+    "files": [
+      "Intertwine.lean",
+      "Negation.lean",
+      "Pell.lean"
+    ],
+    "no_sorry_in_source": true,
+    "compiled": true,
+    "checked_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "build_command": "lake build && lake build GosperCF.Pell GosperCF.Intertwine"
+  }
+}

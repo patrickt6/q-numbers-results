@@ -1,0 +1,10 @@
+{
+  "id": "negation-criterion",
+  "status": "open",
+  "date": "2026-06",
+  "lean": {
+    "flag": false,
+    "files": [],
+    "no_sorry_in_source": null
+  }
+}

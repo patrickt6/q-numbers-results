@@ -1,0 +1,90 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.7in,landscape]{geometry}
+\usepackage{booktabs,longtable,amsmath,array}
+\setlength{\tabcolsep}{4pt}
+\begin{document}
+\begin{center}\Large\textbf{cubic-modular-atlas} \\ \normalsize dataset tables\end{center}
+\vspace{1em}
+\section*{\texttt{cubic\_modular\_atlas.csv}}
+{\footnotesize
+\begin{longtable}{@{}llllllllllllllll@{}}
+\toprule
+\midrule\endhead
+cbrt2 &  &  &  &  &  &  &  &  &  &  &  &  &  & noise\_only & 7907f2dbbbeb40c6a9781df510fc9263 \\
+cbrt3 &  &  &  &  &  &  &  &  &  &  &  &  &  & noise\_only & f5bb92c9321563123ca23f64cc9a7950 \\
+cbrt5 &  &  &  &  &  &  &  &  &  &  &  &  &  & noise\_only & 3e42805ae252ad92d5874b401ea16745 \\
+plastic &  &  &  &  &  &  &  &  &  &  &  &  &  & noise\_only & 38350d13ed1f2449cdd7c880d687a9c6 \\
+qrt2 &  &  &  &  &  &  &  &  &  &  &  &  &  & noise\_only & dc54c782122b2ff34bd4631a9114ee92 \\
+root\_x3\_2x\_2 &  &  &  &  &  &  &  &  &  &  &  &  &  & noise\_only & c30d2c7dcb87b95a3ab8f881b1d8d3ce \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{cyclic\_cubics.csv}}
+{\footnotesize
+\begin{longtable}{@{}llllll@{}}
+\toprule
+\midrule\endhead
+heptagon & x\textasciicircum{}3 + x\textasciicircum{}2 - 2x - 1 & 2 cos(2*pi/7) & 1.24697960371746706105000976801 & C\_3 (cyclic &  totally real) \\
+nonagon & x\textasciicircum{}3 - 3x + 1 & 2 cos(2*pi/9) & 1.53208888623795779043548611653 & C\_3 (cyclic &  totally real) \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{dichotomy\_summary.csv}}
+{\footnotesize
+\begin{longtable}{@{}lll@{}}
+\toprule
+\textbf{property} & \textbf{cyclic\_cubics\_heptagon\_nonagon} & \textbf{s3\_cubics\_cbrt2\_cbrt3\_cbrt5\_plastic\_root\_x3\_2x\_2\_and\_quartic\_qrt2} \\
+\midrule\endhead
+Galois orbit closed under finite-order PGL(2 Z) & yes (order-3 Mobius; all conjugates real) & no (infinite orbit; complex conjugates) \\
+$q-trace X1+X2+X3 exists$ & yes (recovered) & no (not all conjugates real) \\
+degree-3 q-polynomial equation & yes (Ovsienko-Ustinov recovered residual 0) & no (negative; finite kernel empty) \\
+finite (bounded-bidegree) functional equation & no (B(q) is an infinite Laurent series) & no \\
+modular pattern at N=5000 (buildout 13 scanner) & no (noise\_only) & no (noise\_only) \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{finite\_kernel\_search.csv}}
+{\footnotesize
+\begin{longtable}{@{}lll@{}}
+\toprule
+\textbf{constant} & \textbf{finite\_kernel\_boxes\_searched} & \textbf{result} \\
+\midrule\endhead
+heptagon & poly (3,12),(3,30),(4,20); Laurent (3,12,12),(3,15,15) & kernel dimension 0 in every box \\
+nonagon & poly (3,12),(3,30),(4,20); Laurent (3,12,12),(3,15,15) & kernel dimension 0 in every box \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{galois\_conjugate\_verification.csv}}
+{\footnotesize
+\begin{longtable}{@{}llll@{}}
+\toprule
+\textbf{constant} & \textbf{real\_roots} & \textbf{recovered\_B\_q\_equals\_X1\_X2\_X3} & \textbf{OU\_residual} \\
+\midrule\endhead
+heptagon & 3 (all real) & $confirmed over q^[-5 160)$ & $0 over q^[-5 4950)$ \\
+nonagon & 3 (all real) & $confirmed over q^[-5 160)$ & $0 over q^[-5 4950)$ \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{modular\_atlas\_results.csv}}
+{\footnotesize
+\begin{longtable}{@{}lllllll@{}}
+\toprule
+\midrule\endhead
+heptagon & C\_3 & 0 & 0 & 0 & noise\_only & 81d5c043353abecb0649b059d2a4fb3f \\
+nonagon & C\_3 & 0 & 0 & 0 & noise\_only & b119dfb61d613de0f5596494471086b4 \\
+cbrt2 & S\_3 & 0 & 0 & 0 & noise\_only & 7907f2dbbbeb40c6a9781df510fc9263 \\
+cbrt3 & S\_3 & 0 & 0 & 0 & noise\_only & f5bb92c9321563123ca23f64cc9a7950 \\
+cbrt5 & S\_3 & 0 & 0 & 0 & noise\_only & 3e42805ae252ad92d5874b401ea16745 \\
+qrt2 & degree 4 & 0 & 0 & 0 & noise\_only & dc54c782122b2ff34bd4631a9114ee92 \\
+plastic & S\_3 & 0 & 0 & 0 & noise\_only & 38350d13ed1f2449cdd7c880d687a9c6 \\
+root\_x3\_2x\_2 & S\_3 & 0 & 0 & 0 & noise\_only & c30d2c7dcb87b95a3ab8f881b1d8d3ce \\
+\bottomrule
+\end{longtable}}
+
+
+\end{document}

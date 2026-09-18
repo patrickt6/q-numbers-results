@@ -1,0 +1,9 @@
+  d=50 elapsed=0.1s closed=43 open=0
+  d=150 elapsed=0.4s closed=138 open=0
+  d=200 elapsed=0.7s closed=186 open=0
+  d=250 elapsed=0.9s closed=235 open=0
+  d=300 elapsed=1.3s closed=283 open=0
+
+d = 2..300: divisor-closed supports: 283, violations: 0
+strong-form failures (Phi_n | C but n does not divide s): NONE
+elapsed 1.3s

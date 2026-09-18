@@ -1,0 +1,48 @@
+nonzero-trace window extension, 12 points, rational-fit degree <= 18
+(window evidence only; see module docstring for what this does and does not prove)
+
+x=(1+sqrt(7))/5      automorph=[[2789,918],[3825,1259]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [1.2s]
+
+x=(2+sqrt(11))/7     automorph=[[16,3],[21,4]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [0.1s]
+
+x=(3+sqrt(17))/8     automorph=[[57,8],[64,9]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [0.1s]
+
+x=(1+sqrt(23))/9     automorph=[[7371189071,3108865760],[11446278480,4827571631]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [12.0s]
+
+x=(4+sqrt(29))/11    automorph=[[334821761,42162120],[392432040,49416641]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [5.8s]
+
+x=(5+sqrt(31))/13    automorph=[[2885,126],[3549,155]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=59
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [0.6s]
+
+x=(2+sqrt(41))/13    SKIPPED: exceeded 45s per-candidate budget (automorph likely too large for this pass; abstention, not evidence either way)
+  [45.0s]
+
+x=(7+sqrt(53))/17    SKIPPED: exceeded 45s per-candidate budget (automorph likely too large for this pass; abstention, not evidence either way)
+  [45.0s]
+
+x=(3+sqrt(61))/14    SKIPPED: exceeded 45s per-candidate budget (automorph likely too large for this pass; abstention, not evidence either way)
+  [45.0s]
+
+x=(1+sqrt(43))/19    SKIPPED: exceeded 45s per-candidate budget (automorph likely too large for this pass; abstention, not evidence either way)
+  [45.0s]
+
+x=(5+sqrt(37))/16    automorph=[[133,9],[192,13]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [0.2s]
+
+x=(2+sqrt(83))/15    automorph=[[2689336,1274823],[3630825,1721116]]  sym(a=d)=False  Laurent(A-D)/C=False  window_verdict=infinite  window_coeffs=58
+  no rational function of degree <= 18 fits the window (consistent with the conjecture; not a proof of infinitude)
+  [4.4s]
+
+4 candidates skipped on time budget: ['(2+sqrt(41))/13', '(7+sqrt(53))/17', '(3+sqrt(61))/14', '(1+sqrt(43))/19']

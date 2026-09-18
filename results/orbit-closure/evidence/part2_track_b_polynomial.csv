@@ -1,0 +1,6 @@
+target,d_X,d_q,B,unknowns,N,ring,kernel_dim,result
+cbrt2,5,30,12,186,2000,QQ,0,kernel empty
+cbrt2,5,40,16,246,2000,QQ,0,kernel empty
+cbrt2,5,50,16,306,2000,QQ,0,kernel empty
+cbrt2,6,40,16,287,2000,QQ,0,kernel empty
+cbrt2,6,50,20,357,2000,QQ,0,kernel empty

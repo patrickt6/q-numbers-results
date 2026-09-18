@@ -1,0 +1,16 @@
+l=6 p=2 (k=12): locus tuples used=1000, lifts tested=150408, counterexamples=0
+l=6 p=3 (k=18): locus tuples used=1000, lifts tested=306990, counterexamples=0
+l=6 p=5 (k=30): locus tuples used=707, lifts tested=310000, counterexamples=0
+l=7 p=2 (k=14): locus tuples used=771, lifts tested=224576, counterexamples=0
+l=7 p=3 (k=21): locus tuples used=24, lifts tested=252234, counterexamples=0
+l=8 p=2 (k=16): locus tuples used=1000, lifts tested=149736, counterexamples=0
+l=8 p=3 (k=24): locus tuples used=1000, lifts tested=302940, counterexamples=0
+l=9 p=2 (k=18): locus tuples used=1000, lifts tested=214816, counterexamples=0
+l=9 p=3 (k=27): locus tuples used=319, lifts tested=308610, counterexamples=0
+l=10 p=2 (k=20): locus tuples used=1000, lifts tested=50536, counterexamples=0
+l=10 p=3 (k=30): locus tuples used=1000, lifts tested=302724, counterexamples=0
+l=12 p=2 (k=24): locus tuples used=1000, lifts tested=15192, counterexamples=0
+l=12 p=3 (k=36): locus tuples used=1000, lifts tested=313389, counterexamples=0
+l=14 p=2 (k=28): locus tuples used=1000, lifts tested=15160, counterexamples=0
+l=15 p=2 (k=30): locus tuples used=967, lifts tested=173344, counterexamples=0
+GRAND TOTAL counterexamples: 0

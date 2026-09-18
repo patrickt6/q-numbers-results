@@ -1,0 +1,398 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.7in,landscape]{geometry}
+\usepackage{booktabs,longtable,amsmath,array}
+\setlength{\tabcolsep}{4pt}
+\begin{document}
+\begin{center}\Large\textbf{hankel-sqrt2-mod2} \\ \normalsize dataset tables\end{center}
+\vspace{1em}
+\section*{\texttt{coefficient\_check.csv}}
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{test} & \textbf{value} \\
+\midrule\endhead
+n\_samples & 50 \\
+recurrence\_ok & 1 \\
+automaton\_ok & 1 \\
+recurrence\_mismatches\_count & 0 \\
+automaton\_mismatches\_count & 0 \\
+coefficient\_head\_64\_bits & 1001001011011001000010011001001011011011010010011001001011011001 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{hankel\_summary.csv}}
+{\footnotesize
+\begin{longtable}{@{}lllllllllllllll@{}}
+\toprule
+\textbf{lambda} & \textbf{period} & \textbf{transient} & \textbf{ones} & \textbf{zeros} & \textbf{head\_32\_bits} & \textbf{tail\_32\_bits} & \textbf{period\_found} & \textbf{three\_term\_k} & \textbf{three\_term\_a} & \textbf{three\_term\_b} & \textbf{three\_term\_alpha} & \textbf{three\_term\_beta} & \textbf{fit\_violations} & \textbf{held\_out\_violations} \\
+\midrule\endhead
+0 & 12 & 0 & 266 & 135 & 10100101111110100101111110100101 & 11110100101111110100101111110100 & 1 & 6 & 1 & 3 & 1 & 1 & 0 & 0 \\
+1 & 12 & 0 & 266 & 135 & 00101111110100101111110100101111 & 10100101111110100101111110100101 & 1 & 6 & 1 & 3 & 1 & 1 & 0 & 0 \\
+2 & 12 & 0 & 268 & 133 & 01111110100101111110100101111110 & 00101111110100101111110100101111 & 1 & 6 & 1 & 3 & 1 & 1 & 0 & 0 \\
+3 & 12 & 0 & 201 & 200 & 10101011000110101011000110101011 & 00110101011000110101011000110101 & 1 & 9 & 1 & 4 & 0 & 1 & 0 & 0 \\
+4 & 12 & 0 & 134 & 267 & 00110010000100110010000100110010 & 00100110010000100110010000100110 & 1 & 6 & 1 & 2 & 0 & 1 & 0 & 0 \\
+5 & 24 & 0 & 134 & 267 & 01100010001000110100000101100010 & 01000110100000101100010001000110 & 1 & 10 & 1 & 2 & 0 & 1 & 0 & 0 \\
+6 & 24 & 0 & 135 & 266 & 11000010010000111000000111000010 & 10000111000000111000010010000111 & 1 & 4 & 1 & 3 & 1 & 1 & 0 & 0 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_0.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 1 \\
+1 & 0 \\
+2 & 1 \\
+3 & 0 \\
+4 & 0 \\
+5 & 1 \\
+6 & 0 \\
+7 & 1 \\
+8 & 1 \\
+9 & 1 \\
+10 & 1 \\
+11 & 1 \\
+12 & 1 \\
+13 & 0 \\
+14 & 1 \\
+15 & 0 \\
+16 & 0 \\
+17 & 1 \\
+18 & 0 \\
+19 & 1 \\
+20 & 1 \\
+21 & 1 \\
+22 & 1 \\
+23 & 1 \\
+24 & 1 \\
+25 & 0 \\
+26 & 1 \\
+27 & 0 \\
+28 & 0 \\
+29 & 1 \\
+30 & 0 \\
+31 & 1 \\
+32 & 1 \\
+33 & 1 \\
+34 & 1 \\
+35 & 1 \\
+36 & 1 \\
+37 & 0 \\
+38 & 1 \\
+39 & 0 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_1.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 0 \\
+1 & 0 \\
+2 & 1 \\
+3 & 0 \\
+4 & 1 \\
+5 & 1 \\
+6 & 1 \\
+7 & 1 \\
+8 & 1 \\
+9 & 1 \\
+10 & 0 \\
+11 & 1 \\
+12 & 0 \\
+13 & 0 \\
+14 & 1 \\
+15 & 0 \\
+16 & 1 \\
+17 & 1 \\
+18 & 1 \\
+19 & 1 \\
+20 & 1 \\
+21 & 1 \\
+22 & 0 \\
+23 & 1 \\
+24 & 0 \\
+25 & 0 \\
+26 & 1 \\
+27 & 0 \\
+28 & 1 \\
+29 & 1 \\
+30 & 1 \\
+31 & 1 \\
+32 & 1 \\
+33 & 1 \\
+34 & 0 \\
+35 & 1 \\
+36 & 0 \\
+37 & 0 \\
+38 & 1 \\
+39 & 0 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_2.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 0 \\
+1 & 1 \\
+2 & 1 \\
+3 & 1 \\
+4 & 1 \\
+5 & 1 \\
+6 & 1 \\
+7 & 0 \\
+8 & 1 \\
+9 & 0 \\
+10 & 0 \\
+11 & 1 \\
+12 & 0 \\
+13 & 1 \\
+14 & 1 \\
+15 & 1 \\
+16 & 1 \\
+17 & 1 \\
+18 & 1 \\
+19 & 0 \\
+20 & 1 \\
+21 & 0 \\
+22 & 0 \\
+23 & 1 \\
+24 & 0 \\
+25 & 1 \\
+26 & 1 \\
+27 & 1 \\
+28 & 1 \\
+29 & 1 \\
+30 & 1 \\
+31 & 0 \\
+32 & 1 \\
+33 & 0 \\
+34 & 0 \\
+35 & 1 \\
+36 & 0 \\
+37 & 1 \\
+38 & 1 \\
+39 & 1 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_3.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 1 \\
+1 & 0 \\
+2 & 1 \\
+3 & 0 \\
+4 & 1 \\
+5 & 0 \\
+6 & 1 \\
+7 & 1 \\
+8 & 0 \\
+9 & 0 \\
+10 & 0 \\
+11 & 1 \\
+12 & 1 \\
+13 & 0 \\
+14 & 1 \\
+15 & 0 \\
+16 & 1 \\
+17 & 0 \\
+18 & 1 \\
+19 & 1 \\
+20 & 0 \\
+21 & 0 \\
+22 & 0 \\
+23 & 1 \\
+24 & 1 \\
+25 & 0 \\
+26 & 1 \\
+27 & 0 \\
+28 & 1 \\
+29 & 0 \\
+30 & 1 \\
+31 & 1 \\
+32 & 0 \\
+33 & 0 \\
+34 & 0 \\
+35 & 1 \\
+36 & 1 \\
+37 & 0 \\
+38 & 1 \\
+39 & 0 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_4.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 0 \\
+1 & 0 \\
+2 & 1 \\
+3 & 1 \\
+4 & 0 \\
+5 & 0 \\
+6 & 1 \\
+7 & 0 \\
+8 & 0 \\
+9 & 0 \\
+10 & 0 \\
+11 & 1 \\
+12 & 0 \\
+13 & 0 \\
+14 & 1 \\
+15 & 1 \\
+16 & 0 \\
+17 & 0 \\
+18 & 1 \\
+19 & 0 \\
+20 & 0 \\
+21 & 0 \\
+22 & 0 \\
+23 & 1 \\
+24 & 0 \\
+25 & 0 \\
+26 & 1 \\
+27 & 1 \\
+28 & 0 \\
+29 & 0 \\
+30 & 1 \\
+31 & 0 \\
+32 & 0 \\
+33 & 0 \\
+34 & 0 \\
+35 & 1 \\
+36 & 0 \\
+37 & 0 \\
+38 & 1 \\
+39 & 1 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_5.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 0 \\
+1 & 1 \\
+2 & 1 \\
+3 & 0 \\
+4 & 0 \\
+5 & 0 \\
+6 & 1 \\
+7 & 0 \\
+8 & 0 \\
+9 & 0 \\
+10 & 1 \\
+11 & 0 \\
+12 & 0 \\
+13 & 0 \\
+14 & 1 \\
+15 & 1 \\
+16 & 0 \\
+17 & 1 \\
+18 & 0 \\
+19 & 0 \\
+20 & 0 \\
+21 & 0 \\
+22 & 0 \\
+23 & 1 \\
+24 & 0 \\
+25 & 1 \\
+26 & 1 \\
+27 & 0 \\
+28 & 0 \\
+29 & 0 \\
+30 & 1 \\
+31 & 0 \\
+32 & 0 \\
+33 & 0 \\
+34 & 1 \\
+35 & 0 \\
+36 & 0 \\
+37 & 0 \\
+38 & 1 \\
+39 & 1 \\
+\bottomrule
+\end{longtable}}
+
+
+\section*{\texttt{sqrt2\_mod2\_lambda\_6.csv}}
+\noindent\textit{Showing first 40 of 401 rows.}\par\medskip
+{\footnotesize
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{j} & \textbf{Delta\_mod2} \\
+\midrule\endhead
+0 & 1 \\
+1 & 1 \\
+2 & 0 \\
+3 & 0 \\
+4 & 0 \\
+5 & 0 \\
+6 & 1 \\
+7 & 0 \\
+8 & 0 \\
+9 & 1 \\
+10 & 0 \\
+11 & 0 \\
+12 & 0 \\
+13 & 0 \\
+14 & 1 \\
+15 & 1 \\
+16 & 1 \\
+17 & 0 \\
+18 & 0 \\
+19 & 0 \\
+20 & 0 \\
+21 & 0 \\
+22 & 0 \\
+23 & 1 \\
+24 & 1 \\
+25 & 1 \\
+26 & 0 \\
+27 & 0 \\
+28 & 0 \\
+29 & 0 \\
+30 & 1 \\
+31 & 0 \\
+32 & 0 \\
+33 & 1 \\
+34 & 0 \\
+35 & 0 \\
+36 & 0 \\
+37 & 0 \\
+38 & 1 \\
+39 & 1 \\
+\bottomrule
+\end{longtable}}
+
+
+\end{document}

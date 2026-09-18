@@ -1,0 +1,4 @@
+D=2: rows |x|<=12 with a tail index 222552; d > B: 67722 (30.4%); d > max(B,6): 10709 (4.8%); d == B: 29892; worst gap (10, (2, Fraction(-9, 1), Fraction(43, 5), 4, 14))
+D=3: rows |x|<=12 with a tail index 203486; d > B: 59073 (29.0%); d > max(B,6): 9051 (4.4%); d == B: 26826; worst gap (14, (3, Fraction(-16, 1), Fraction(48, 7), 5, 19))
+D=5: rows |x|<=12 with a tail index 176523; d > B: 48843 (27.7%); d > max(B,6): 7714 (4.4%); d == B: 22331; worst gap (14, (5, Fraction(-17, 1), Fraction(19, 2), 5, 19))
+D=5: rows |x|<=12 with a tail index 176523; d > B: 48843 (27.7%); d > max(B,6): 7714 (4.4%); d == B: 22331; worst gap (14, (5, Fraction(-17, 1), Fraction(19, 2), 5, 19))

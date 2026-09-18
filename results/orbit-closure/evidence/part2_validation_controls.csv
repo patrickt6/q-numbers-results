@@ -1,0 +1,5 @@
+target,d_X,d_q_minus,d_q_plus,kernel_basis,matches_Part1
+phi,2,0,2,1 - X + X q + X q^2 - X^2 q,yes
+sqrt2,2,0,3,1 + q^2 - X + X q^3 - X^2 q^2,yes
+sqrt3,2,0,3,1 + q + q^2 - X - X q + X q^2 + X q^3 - X^2 q^2,yes
+sqrt5,2,0,5,1 + q + q^2 + q^3 + q^4 - X - X q^2 + X q^3 + X q^5 - X^2 q^3,yes

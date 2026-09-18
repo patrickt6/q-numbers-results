@@ -1,0 +1,17 @@
+{
+  "id": "degree-equality",
+  "status": "proved",
+  "date": "2026-07-11",
+  "lean": {
+    "flag": true,
+    "files": [
+      "Degreeeq.lean"
+    ],
+    "no_sorry_in_source": true,
+    "compiled": true,
+    "checked_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.31.0",
+    "mathlib_rev": null,
+    "build_command": "lake build"
+  }
+}

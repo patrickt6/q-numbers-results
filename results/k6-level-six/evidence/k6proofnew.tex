@@ -1,0 +1,339 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\qint}[1]{[#1]_q}
+
+\title{Cyclotomic Divisibility of $q$-Rational Denominators\\ at Level Six}
+\author{}
+\date{August 17, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the Morier-Genoud--Ovsienko $q$-deformation of a negative continued fraction, let $S_i(q)$
+denote the $i$-th denominator polynomial, defined by the exact recursion of \cite{MO20}. We
+prove that if the sixth cyclotomic polynomial $\Phi_6(q)$ divides $S_i(q)$, then the full
+$q$-integer $[6]_q=\Phi_2(q)\Phi_3(q)\Phi_6(q)$ divides $S_i(q)$ --- for every length $i$ and
+every integer digit sequence. This version works directly with the recursion as written in
+\cite{MO20}, in which the quantum-integer coefficient at each step uses the \emph{upcoming}
+digit while the $q$-power correction uses the \emph{previous} one; a short reversal lemma
+(Lemma~\ref{lem:reversal}) reduces this two-digit-per-step recursion to the simpler
+single-digit recursion in which the telescoping argument is most transparent, at the cost of
+reading the partial sums from the end of the digit sequence rather than the start. With that
+translation made precise, the proof is exactly as short as before: an elementary telescoping
+identity reduces $\Phi_6$-divisibility to the vanishing of a single Eisenstein integer $A_i$
+built from suffix partial sums of the digits, and two congruences (at the inert prime $2$ and
+the ramified prime above $3$ in $\Z[\zeta_6]$) show that this same integer controls
+$\Phi_2$- and $\Phi_3$-divisibility.
+\end{abstract}
+
+\section{Setup}
+
+For a negative (Hirzebruch--Jung) continued fraction $y=[[c_1,\dots,c_i]]$, Morier-Genoud and
+Ovsienko \cite{MO20} define the $q$-deformation via two polynomial sequences $\mathcal
+R_j,\mathcal S_j$ satisfying, for $j\ge1$,
+\begin{equation}\label{eq:mgo}
+\mathcal R_{j+1}=\qint{c_{j+1}}\,\mathcal R_j-q^{\,c_j-1}\mathcal R_{j-1},\qquad
+\mathcal S_{j+1}=\qint{c_{j+1}}\,\mathcal S_j-q^{\,c_j-1}\mathcal S_{j-1},
+\end{equation}
+with initial conditions $(\mathcal R_0,\mathcal R_1)=(1,\qint{c_1})$ and $(\mathcal S_0,\mathcal
+S_1)=(0,1)$, where $\qint{n}=1+q+\cdots+q^{n-1}=\frac{1-q^n}{1-q}$ (extended to all integers
+$n$ by this rational expression); then $[[c_1,\dots,c_i]]_q=\mathcal R_i(q)/\mathcal S_i(q)$.
+Only the denominator sequence $S_i:=\mathcal S_i$ concerns us here. Write $\Phi_k(q)$ for the
+$k$-th cyclotomic polynomial and $[k]_q=\prod_{d\mid k,\,d>1}\Phi_d(q)$.
+
+\begin{remark}\label{rem:c1}
+Since $\mathcal S_0=0$, the recursion \eqref{eq:mgo} shows that $c_1$ never affects $\mathcal
+S_j$ for any $j$: $S_2=\qint{c_2}$, independent of $c_1$. Thus ``the denominator built from a
+length-$i$ digit sequence $c_1,\dots,c_i$'' genuinely depends only on $c_2,\dots,c_i$, i.e.\ on
+$i-1$ real digits. This is the exact analogue of the classical fact that the denominator
+convergent of a continued fraction is a continuant of the \emph{tail} of the digit sequence.
+\end{remark}
+
+\begin{theorem}\label{thm:main}
+For every $i\ge1$ and every sequence of integers $c_1,\dots,c_i$,
+\[
+\Phi_6(q)\mid S_i(q) \;\Longrightarrow\; [6]_q\mid S_i(q), \qquad\text{hence}\qquad 6\mid S_i(1).
+\]
+\end{theorem}
+
+Throughout, fix a primitive sixth root of unity $\omega\in\Z[\omega]=\Z[\zeta_6]$, so
+$\omega^2-\omega+1=0$, and write $\zeta_3=\omega^2$ and $-1=\omega^3$. Since $S_i$ has integer
+coefficients, $\Phi_k(q)\mid S_i(q)$ (for $\Q$-irreducible $\Phi_k$) is equivalent to
+$S_i(\zeta)=0$ for one, equivalently every, primitive $k$-th root of unity $\zeta$.
+
+\section{A reversal lemma}
+
+The recursion \eqref{eq:mgo} uses \emph{two} consecutive digits at each step ($c_{j+1}$ in the
+coefficient, $c_j$ in the exponent), so it is naturally recorded by the matrix
+\[
+N(a;b)=\begin{pmatrix}\qint a & -q^{\,b-1}\\ 1 & 0\end{pmatrix},\qquad
+\binom{S_i}{S_{i-1}} = N(c_i;c_{i-1})\,N(c_{i-1};c_{i-2})\cdots N(c_2;c_1)\binom{1}{0}.
+\]
+It will be convenient to compare $S_i$ with the polynomial $\hat S_i$ built from the same $i-1$
+real digits, but read in reverse and combined by the simpler \emph{single}-digit recursion
+\begin{equation}\label{eq:hat}
+\hat S_0=0,\quad \hat S_1=1,\quad \hat S_{j+1}=\qint{\hat c_j}\,\hat S_j-q^{\,\hat c_j-1}\hat
+S_{j-1}\quad(1\le j\le i-1),
+\end{equation}
+with matrix $M(c)=N(c;c)=\left(\begin{smallmatrix}\qint c&-q^{c-1}\\1&0\end{smallmatrix}\right)$,
+so $\binom{\hat S_i}{\hat S_{i-1}}=M(\hat c_{i-1})\cdots M(\hat c_1)\binom10$.
+
+\begin{lemma}[Two-sided recursion]\label{lem:twosided}
+For every $i\ge3$ and every integer sequence $c_1,\dots,c_i$,
+\[
+S_i(q;c_1,\dots,c_i) \;=\; \qint{c_2}\,S_{i-1}(q;-,c_3,\dots,c_i) \;-\; q^{\,c_2-1}\,S_{i-2}(q;-,c_4,\dots,c_i),
+\]
+where the dash marks an immaterial leading entry (Remark~\ref{rem:c1}). That is, $S_i$ can be
+computed either by peeling off the \emph{last} digit $c_i$ (its defining recursion) or the
+\emph{first real} digit $c_2$ (this lemma), with no other change to the formula.
+\end{lemma}
+
+\begin{proof}
+Group the matrix product defining $\binom{S_i}{S_{i-1}}$ at the right-hand end instead of the
+left: using associativity,
+\[
+\binom{S_i}{S_{i-1}} = \Big[N(c_i;c_{i-1})\cdots N(c_3;c_2)\Big]\cdot N(c_2;c_1)\binom10
+= \Pi\cdot\binom{\qint{c_2}}{1},
+\]
+where $\Pi:=N(c_i;c_{i-1})\cdots N(c_3;c_2)$ and we used $N(c_2;c_1)\binom10=\binom{\qint{c_2}}1$
+(the entry $c_1$ multiplies the zero in $\binom10$, so it drops out). Writing
+$\binom{\qint{c_2}}1=\qint{c_2}\binom10-\binom{-1}0$, we get
+\[
+\Pi\binom{\qint{c_2}}{1} = \qint{c_2}\,\Big(\Pi\binom{1}{0}\Big) \;-\; q^{c_2-1}\Big(\Pi'\binom10\Big),
+\]
+where the first bracket is, by definition, $\binom{S_{i-1}(-,c_3,\dots,c_i)}{S_{i-2}(-,c_3,\dots,c_{i-1})}$
+(the same construction one digit shorter, starting the product at $N(c_3;c_2)$), and for the
+second bracket we peel one more factor from $\Pi$, $\Pi=\Pi'\cdot N(c_3;c_2)$ with
+$\Pi'=N(c_i;c_{i-1})\cdots N(c_4;c_3)$, and use $N(c_3;c_2)\binom10=\binom{\qint{c_3}}1$, so that
+$\Pi\binom10=\Pi'\binom{\qint{c_3}}1$, whose top entry is $S_{i-2}(-,c_4,\dots,c_i)$ by the same
+definition applied to the sequence starting at $c_4$. Comparing top entries on both sides gives
+exactly the claimed identity. (The case $i=3,4$ is the same computation with an empty or
+single-factor $\Pi$, and $i\le2$ is vacuous or immediate from $S_1=1,S_2=[c_2]_q$.)
+\end{proof}
+
+\begin{lemma}[Reversal]\label{lem:reversal}
+For every $i\ge1$ and every integer sequence $c_1,\dots,c_i$,
+\[
+S_i(q;c_1,\dots,c_i) \;=\; \hat S_i(q;c_i,c_{i-1},\dots,c_2),
+\]
+where $\hat S$ is defined by the single-digit recursion \eqref{eq:hat} applied to the digits
+$c_2,\dots,c_i$ listed in reverse order.
+\end{lemma}
+
+\begin{proof}
+Induction on $i$. For $i=1$ both sides are $1$ (no real digits). For $i=2$: $S_2=\qint{c_2}$ and
+$\hat S_2(c_2)=\qint{c_2}\hat S_1-q^{c_2-1}\hat S_0=\qint{c_2}$. For the inductive step
+($i\ge3$), assume the claim at lengths $i-1$ and $i-2$. By Lemma~\ref{lem:twosided},
+\[
+S_i(c_1,\dots,c_i) = \qint{c_2}\,S_{i-1}(-,c_3,\dots,c_i) - q^{c_2-1}S_{i-2}(-,c_4,\dots,c_i)
+\overset{\text{IH}}{=} \qint{c_2}\,\hat S_{i-1}(c_i,\dots,c_3) - q^{c_2-1}\hat
+S_{i-2}(c_i,\dots,c_4).
+\]
+On the other hand, by the defining recursion \eqref{eq:hat} of $\hat S$ applied to the digit
+list $(\hat c_1,\dots,\hat c_{i-1})=(c_i,c_{i-1},\dots,c_2)$ (so that $\hat c_{i-1}=c_2$),
+\[
+\hat S_i(c_i,\dots,c_2) = \qint{\hat c_{i-1}}\hat S_{i-1}(c_i,\dots,c_3) - q^{\hat c_{i-1}-1}\hat
+S_{i-2}(c_i,\dots,c_4) = \qint{c_2}\hat S_{i-1}(c_i,\dots,c_3)-q^{c_2-1}\hat S_{i-2}(c_i,\dots,c_4).
+\]
+The two right-hand sides agree, proving $S_i(c_1,\dots,c_i)=\hat S_i(c_i,\dots,c_2)$.
+\end{proof}
+
+\begin{remark}
+Both $S$ and $\hat S$ are literal Morier-Genoud--Ovsienko denominator data; the lemma says only
+that reading a digit sequence backwards and using the simpler single-digit recursion computes
+the same polynomial. Every statement below that quantifies over ``every integer sequence'' is
+therefore unaffected by which of the two we work with; we use $\hat S$ for the telescoping
+argument, and translate back to $S$ (equivalently, to suffix sums of the original digits) for
+the final statements.
+\end{remark}
+
+\section{An elementary telescoping identity}
+
+For $0\le m\le i-1$ write $Q_m=c_i+c_{i-1}+\cdots+c_{i-m+1}$ for the sum of the last $m$ of the
+digits $c_2,\dots,c_i$ (so $Q_0=0$), and set
+\[
+A_i \;=\; \sum_{m=0}^{i-1}(-1)^m\,\omega^{Q_m} \;\in\; \Z[\omega].
+\]
+
+\begin{lemma}\label{lem:telescope}
+$(1-\omega)^{i-1}\,S_i(\omega) = A_i$ for every $i\ge1$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:reversal}, $S_i(\omega;c_1,\dots,c_i)=\hat S_i(\omega;c_i,\dots,c_2)$, so it
+suffices to prove $(1-\omega)^{i-1}\hat S_i(\omega;\hat c_1,\dots,\hat c_{i-1})=\sum_{m=0}^{i-1}
+(-1)^m\omega^{P_m}$ for the prefix sums $P_m=\hat c_1+\cdots+\hat c_m$ of the digit list $\hat
+c_1,\dots,\hat c_{i-1}=c_i,\dots,c_2$ --- since then $P_m=c_i+\cdots+c_{i-m+1}=Q_m$ exactly, and
+the two statements coincide.
+
+Set $B_j=(1-\omega)^{j-1}\hat S_j(\omega)$ for $j\ge1$ (so $B_1=1$). Since
+$(1-\omega)\qint{c}=1-\omega^c$ for every integer $c$, multiplying \eqref{eq:hat} by
+$(1-\omega)^{j-1}$ gives, for $1\le j\le i-1$,
+\[
+B_{j+1} = (1-\omega^{\hat c_j})\,B_j \;-\; (1-\omega)^2\,\omega^{\hat c_j-1}\,B_{j-1}.
+\]
+From $\omega^2=\omega-1$ we get $(1-\omega)^2=1-2\omega+\omega^2=1-2\omega+(\omega-1)=-\omega$,
+so $(1-\omega)^2\omega^{-1}=-1$ and the recursion simplifies to
+\[
+B_{j+1} = (1-\omega^{\hat c_j})B_j+\omega^{\hat c_j}B_{j-1}
+    = B_j - \omega^{\hat c_j}\big(B_j-B_{j-1}\big).
+\]
+Hence, with $D_j:=B_j-B_{j-1}$ (so $D_1=B_1-B_0=1$), we obtain $D_{j+1}=-\omega^{\hat c_j}D_j$
+for $1\le j\le i-1$, giving by induction $D_{j+1}=(-1)^{j}\omega^{\hat c_1+\cdots+\hat
+c_j}=(-1)^j\omega^{P_j}$. Telescoping,
+\[
+B_i = B_1+\sum_{m=1}^{i-1}D_{m+1} = 1+\sum_{m=1}^{i-1}(-1)^m\omega^{P_m} =
+\sum_{m=0}^{i-1}(-1)^m\omega^{P_m}. \qedhere
+\]
+\end{proof}
+
+\begin{lemma}[Unit lemma]\label{lem:unit}
+$1-\omega$ is a unit of $\Z[\omega]$; explicitly $(1-\omega)(1-\omega^{-1})=1$.
+\end{lemma}
+
+\begin{proof}
+$\omega+\omega^{-1}=\omega+\omega^5=2\cos(\pi/3)=1$, so
+$(1-\omega)(1-\omega^{-1})=1-(\omega+\omega^{-1})+\omega\omega^{-1}=1-1+1=1$.
+\end{proof}
+
+\begin{corollary}[Level-six criterion]\label{cor:level6}
+$\Phi_6(q)\mid S_i(q) \iff A_i=0$.
+\end{corollary}
+
+\begin{proof}
+Immediate from Lemmas~\ref{lem:telescope} and \ref{lem:unit}: $S_i(\omega)$ and $A_i$ differ by
+the unit $(1-\omega)^{-(i-1)}$, so one vanishes iff the other does.
+\end{proof}
+
+\section{Two congruence lemmas}
+
+The ring $\Z[\omega]$ has $2$ inert (as $2\equiv2\pmod3$) with $\Z[\omega]/2\cong\F_4$, and $3$
+ramified via the prime $\lambda:=1+\omega$, of norm
+$N(\lambda)=(1+\omega)(1+\omega^{-1})=1+(\omega+\omega^{-1})+1=3$, with residue field
+$\Z[\omega]/\lambda\cong\F_3$.
+
+\begin{lemma}[Orbit lemma]\label{lem:orbit}
+For every $j\ge1$ and every integer sequence, $S_j(\zeta_3)\in\{0\}\cup\mu_6$ and
+$S_j(-1)\in\{0,\pm1\}$, where $\mu_6=\{\pm1,\pm\omega,\pm\omega^2\}$ is the group of sixth
+roots of unity. More precisely, the pair $(S_j(\zeta_3),S_{j-1}(\zeta_3))$ ranges exactly over
+$\big((\{0\}\cup\mu_6)\times(\{0\}\cup\mu_6)\big)\setminus\{(0,0)\}$ (all $48$ pairs with not
+both entries zero), and $(S_j(-1),S_{j-1}(-1))$ ranges exactly over
+$\big(\{0,\pm1\}\times\{0,\pm1\}\big)\setminus\{(0,0)\}$ (all $8$ such pairs), as $j$ and the
+digit sequence vary.
+\end{lemma}
+
+\begin{proof}
+Since $\qint{c}$ depends only on $c\bmod\operatorname{ord}(\zeta)$ (write $c=mk+r$: $\qint c=
+\qint r+q^r\qint k[m]_{q^k}$ and $\qint k$ vanishes at a $k$-th root of unity), so does
+$N(a;b)$; hence, at $\zeta_3$, the pair $v_j=(S_j,S_{j-1})$ evolves under one of the $9$
+matrices $N(a;b)$, $a,b\in\{0,1,2\}\bmod3$, and at $-1$ under one of the $4$ matrices $N(a;b)$,
+$a,b\in\{0,1\}\bmod2$ --- in both cases the transition applied at a given step also depends on
+which residue was used to reach the current pair, since it is needed for the next step's
+exponent, so the state actually being propagated is the pair $v_j$ together with the residue of
+$c_j$. Starting from $v_1=(1,0)$ (with an immaterial placeholder for the residue ``used'' to
+reach it, since it multiplies $S_0=0$), an explicit finite enumeration of the reachable states
+terminates (the state space is finite) with exactly the $48$, respectively $8$, values of $v$
+listed above appearing, and no others. In particular the first coordinate --- $S_j(\zeta_3)$,
+respectively $S_j(-1)$ --- always lies in $\{0\}\cup\mu_6$, respectively $\{0,\pm1\}$.
+\end{proof}
+
+\begin{remark}
+Lemma~\ref{lem:orbit} is the level-$3$ and level-$2$ instance of the finite-matrix-orbit
+phenomenon underlying the results of Kogiso--Miyamoto--Ren--Wakui--Yanagawa \cite{KMRWY} on
+$q$-rationals at small cyclotomic levels; it is the two-digit-per-step analogue of the
+single-digit orbit computation used for the recursion \eqref{eq:hat}.
+\end{remark}
+
+\begin{lemma}[Congruence at the inert prime]\label{lem:mod2}
+$S_i(\zeta_3)\equiv\bar\omega^{\,2(i-1)}A_i^{\,2}\pmod{2}$.
+\end{lemma}
+
+\begin{proof}
+In $\F_4=\Z[\omega]/2$, reduction gives $\bar\omega^2-\bar\omega+1=0$, i.e.\
+$\bar\omega^2=\bar\omega+1$ (as $-1=1$ in characteristic $2$); since $\bar\omega\neq0,1$ this
+makes $\bar\omega$ a generator of $\F_4^\times$, of order $3$. As $S_i\in\Z[q]$, its reduction
+$\bar S_i\in\F_2[q]$ satisfies the Frobenius identity $\bar S_i(x^2)=\bar S_i(x)^2$ for
+$x\in\F_4$; applying this at $x=\bar\omega$ and using $\bar\omega^2=\overline{\zeta_3}$ gives
+$S_i(\zeta_3)\equiv\bar S_i(\bar\omega)^2\pmod2$. By Lemma~\ref{lem:telescope},
+$\bar S_i(\bar\omega)=\overline{(1-\omega)}^{-(i-1)}\bar A_i$; since
+$\overline{1-\omega}=1+\bar\omega=\bar\omega^2$ (using $-1=1$, then $\bar\omega^2=\bar\omega+1$)
+and $\bar\omega^3=1$, this is $\bar\omega^{-2(i-1)}\bar A_i=\bar\omega^{\,i-1}\bar A_i$. Squaring
+gives the claim.
+\end{proof}
+
+\begin{lemma}[Congruence at the ramified prime]\label{lem:mod3}
+$S_i(-1)\equiv(-1)^{i-1}A_i\pmod{\lambda}$.
+\end{lemma}
+
+\begin{proof}
+Reduction $\Z[\omega]\to\Z[\omega]/\lambda\cong\F_3$ sends $\omega\mapsto-1$ (as
+$\lambda=1+\omega$). Since $S_i\in\Z[q]$, evaluation commutes with this reduction:
+$S_i(\omega)\bmod\lambda=S_i(-1)\bmod\lambda$. By Lemma~\ref{lem:telescope} the left side is
+$(1-\omega)^{-(i-1)}A_i\equiv2^{-(i-1)}A_i\equiv(-1)^{i-1}A_i\pmod\lambda$ (using $2\equiv-1
+\pmod3$, hence mod $\lambda$).
+\end{proof}
+
+\section{Proof of the main theorem}
+
+\begin{theorem}[Shadow criteria]\label{thm:shadow}
+For every $i\ge1$ and every integer sequence,
+\[
+\Phi_3(q)\mid S_i(q) \iff A_i\equiv0\pmod2, \qquad
+\Phi_2(q)\mid S_i(q) \iff A_i\equiv0\pmod\lambda.
+\]
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:orbit}, $S_i(\zeta_3)$ is either $0$ or a unit of $\Z[\omega]$ (every nonzero
+sixth root of unity is a unit); a unit never lies in the proper ideal $(2)$, so
+$S_i(\zeta_3)=0\iff S_i(\zeta_3)\equiv0\pmod2$. By Lemma~\ref{lem:mod2} the right side holds iff
+$\bar A_i^{\,2}=0$ in the field $\F_4$, i.e.\ iff $A_i\equiv0\pmod2$. This proves the first
+equivalence. Likewise $S_i(-1)\in\{0,\pm1\}$ by Lemma~\ref{lem:orbit}, and $\pm1\not\equiv0
+\pmod\lambda$ (as $\Z[\omega]/\lambda\cong\F_3$ and $\pm1\neq0$ there), so $S_i(-1)=0\iff
+S_i(-1)\equiv0\pmod\lambda$, which by Lemma~\ref{lem:mod3} holds iff $A_i\equiv0\pmod\lambda$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose $\Phi_6(q)\mid S_i(q)$. By Corollary~\ref{cor:level6}, $A_i=0$. Then trivially
+$A_i\equiv0\pmod2$ and $A_i\equiv0\pmod\lambda$, so $\Phi_3(q)\mid S_i(q)$ and $\Phi_2(q)\mid
+S_i(q)$ by Theorem~\ref{thm:shadow}. As $\Phi_2,\Phi_3,\Phi_6$ are pairwise coprime in $\Q[q]$,
+their product $[6]_q$ divides $S_i(q)$. Evaluating at $q=1$ gives
+$6=\Phi_2(1)\Phi_3(1)\Phi_6(1)\mid S_i(1)$.
+\end{proof}
+
+\begin{remark}
+The three criteria together say more than Theorem~\ref{thm:main}: the entire divisibility
+profile of $S_i$ at the divisors of $6$ is read off from the single Eisenstein integer $A_i$,
+\[
+\Phi_6\mid S_i\iff A_i=0,\qquad \Phi_3\mid S_i\iff2\mid A_i,\qquad \Phi_2\mid S_i\iff\lambda\mid A_i,
+\]
+so that, e.g., $\Phi_2\Phi_3\mid S_i$ without $\Phi_6\mid S_i$ exactly when $2\lambda\mid A_i$
+but $A_i\neq0$. Note that $A_i$ is now built from \emph{suffix} partial sums of the digit
+sequence $c_1,\dots,c_i$ (equivalently, prefix sums read from the last digit backward) rather
+than prefix sums --- the direction forced on us by the fact that Morier-Genoud--Ovsienko's own
+recursion \eqref{eq:mgo} looks one digit ahead for its quantum-integer coefficient. This is the
+only respect in which the correct recursion changes the shape of the argument; the telescoping
+mechanism itself, and both congruence lemmas, are otherwise identical to the single-digit case.
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{MO20} S.~Morier-Genoud, V.~Ovsienko, \emph{$q$-deformed rationals and
+$q$-continued fractions}, Forum Math.\ Sigma \textbf{8} (2020), e13.
+\bibitem{KMRWY} T.~Kogiso, K.~Miyamoto, X.~Ren, M.~Wakui, K.~Yanagawa, \emph{Arithmetic on
+$q$-deformed rational numbers}, Arnold Math.\ J.\ \textbf{11} (2025), no.~3.
+\end{thebibliography}
+
+\end{document}

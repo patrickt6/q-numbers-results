@@ -1,0 +1,168 @@
+HIT d=3021 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=4
+HIT d=3038 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=3053 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=9
+HIT d=3133 n=9 chainC=True chainAD=True v_p(s)=6 s_digits=37
+HIT d=3237 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=8
+HIT d=3324 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=6
+HIT d=3410 n=9 chainC=True chainAD=True v_p(s)=4 s_digits=4
+HIT d=3419 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=3496 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+  d=3500 elapsed=18.5s poly_tested=406 skipped_big=0 hits=9
+HIT d=3905 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=3941 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=7
+HIT d=3955 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=3962 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=3967 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=3970 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=3971 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=3973 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=9
+HIT d=3976 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=3983 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=3997 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=7
+  d=4000 elapsed=38.6s poly_tested=835 skipped_big=0 hits=20
+HIT d=4036 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=4
+HIT d=4472 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+  d=4500 elapsed=60.9s poly_tested=1235 skipped_big=0 hits=22
+HIT d=4504 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=4532 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=4555 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=3
+HIT d=4557 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=4560 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=4884 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=4892 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+  d=5000 elapsed=89.6s poly_tested=1658 skipped_big=0 hits=29
+HIT d=5005 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=9
+HIT d=5037 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=5056 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=5120 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=8
+HIT d=5152 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=5168 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=5176 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5180 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5182 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5185 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=5186 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5188 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5192 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5200 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=5216 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=5248 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=8
+HIT d=5325 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=5365 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=20
+HIT d=5403 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=5460 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=5468 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+  d=5500 elapsed=115.6s poly_tested=2067 skipped_big=0 hits=50
+HIT d=5613 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=8
+HIT d=5619 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5622 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5623 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5626 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=5627 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5628 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5629 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=10
+HIT d=5631 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5637 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=8
+HIT d=5642 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=5848 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=5876 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=5912 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+  d=6000 elapsed=148.9s poly_tested=2483 skipped_big=0 hits=64
+HIT d=6001 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=13
+HIT d=6066 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+HIT d=6210 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=9
+HIT d=6496 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=6
+HIT d=6525 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=7
+HIT d=6543 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=6549 n=27 chainC=True chainAD=True v_p(s)=4 s_digits=8
+HIT d=6552 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=6555 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=2
+HIT d=6558 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=2
+HIT d=6559 n=81 chainC=True chainAD=True v_p(s)=4 s_digits=2
+HIT d=6562 n=81 chainC=True chainAD=True v_p(s)=4 s_digits=3
+HIT d=6563 n=81 chainC=True chainAD=True v_p(s)=4 s_digits=2
+HIT d=6564 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=2
+HIT d=6565 n=81 chainC=True chainAD=True v_p(s)=5 s_digits=10
+HIT d=6567 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=2
+HIT d=6570 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=6573 n=27 chainC=True chainAD=True v_p(s)=4 s_digits=8
+HIT d=6579 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=6597 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=7
+HIT d=6908 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+  d=7000 elapsed=229.7s poly_tested=3308 skipped_big=0 hits=85
+HIT d=7038 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+HIT d=7315 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=7320 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=7415 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+  d=7500 elapsed=274.0s poly_tested=3725 skipped_big=0 hits=89
+HIT d=7588 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=7658 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=7900 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=7917 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=7957 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=10
+  d=8000 elapsed=317.2s poly_tested=4131 skipped_big=0 hits=94
+HIT d=8015 n=9 chainC=True chainAD=True v_p(s)=5 s_digits=4
+HIT d=8060 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=8080 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=8090 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8092 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+HIT d=8095 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8096 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8098 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8101 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=8102 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8104 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8105 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8108 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+HIT d=8110 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8120 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=8140 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=8245 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=22
+HIT d=8277 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+  d=8500 elapsed=369.5s poly_tested=4554 skipped_big=0 hits=112
+HIT d=8815 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=8855 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8920 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=8925 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=8931 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=8932 n=27 chainC=True chainAD=True v_p(s)=3 s_digits=3
+  pell_plus1 cap hit at d=8941, skipped
+HIT d=9405 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=9430 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=9596 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=6
+HIT d=9596 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=6
+HIT d=9600 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9602 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9605 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=9606 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9608 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9612 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=6
+HIT d=9669 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=6
+HIT d=9752 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=5
+HIT d=9757 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=7
+HIT d=9779 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=9790 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9797 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=9797 n=49 chainC=True chainAD=True v_p(s)=2 s_digits=4
+HIT d=9799 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9802 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=3
+HIT d=9803 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9805 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=10
+HIT d=9812 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9823 n=9 chainC=True chainAD=True v_p(s)=2 s_digits=1
+HIT d=9845 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=7
+HIT d=9895 n=9 chainC=True chainAD=True v_p(s)=3 s_digits=5
+HIT d=9933 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=6
+  pell_plus1 cap hit at d=9949, skipped
+HIT d=9984 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=5
+HIT d=9992 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9996 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=2
+HIT d=9998 n=25 chainC=True chainAD=True v_p(s)=2 s_digits=3
+
+range d=3001..10000: tested=6954, poly-tested=5817, skipped (s > 200 digits) = 2
+odd prime-power hits (a>=2): 148
+by n: {9: 105, 25: 19, 27: 9, 49: 11, 81: 4}
+chainC ok: 148/148
+chainAD ok: 148/148
+v_p(s) >= a: 148/148
+elapsed 533.6s

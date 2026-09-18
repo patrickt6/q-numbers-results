@@ -1,0 +1,2 @@
+eval phi_mod5_fwd "?lsd_5 An (((Ek n=5*k+2)|(Ek n=5*k+3)|(Ek n=5*k+4)) => ~(P5[n]=@0))":
+eval phi_mod5_iff "?lsd_5 An (((Ek n=5*k+2)|(Ek n=5*k+3)|(Ek n=5*k+4)) <=> ~(P5[n]=@0))":

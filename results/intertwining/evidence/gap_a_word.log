@@ -1,0 +1,22 @@
+WORD SCAN: {R,L}^n for n = 2..26, both letters present
+  word length 2 done, cumulative tested 2, elapsed 0.0s, violations 0
+  word length 3 done, cumulative tested 8, elapsed 0.0s, violations 0
+  word length 4 done, cumulative tested 22, elapsed 0.0s, violations 0
+  word length 5 done, cumulative tested 52, elapsed 0.0s, violations 0
+  word length 6 done, cumulative tested 114, elapsed 0.0s, violations 0
+  word length 7 done, cumulative tested 240, elapsed 0.0s, violations 0
+  word length 8 done, cumulative tested 494, elapsed 0.0s, violations 0
+  word length 9 done, cumulative tested 1004, elapsed 0.1s, violations 0
+  word length 10 done, cumulative tested 2026, elapsed 0.1s, violations 0
+  word length 11 done, cumulative tested 4072, elapsed 0.4s, violations 0
+  word length 12 done, cumulative tested 8166, elapsed 0.8s, violations 0
+  word length 13 done, cumulative tested 16356, elapsed 2.0s, violations 0
+  word length 14 done, cumulative tested 32738, elapsed 4.5s, violations 0
+  word length 15 done, cumulative tested 65504, elapsed 10.5s, violations 0
+  word length 16 done, cumulative tested 131038, elapsed 24.0s, violations 0
+  word length 17 done, cumulative tested 262108, elapsed 54.3s, violations 0
+  word length 18 done, cumulative tested 524250, elapsed 121.8s, violations 0
+  word length 19 done, cumulative tested 1048536, elapsed 271.4s, violations 0
+  [word_scan time budget reached at length 20, stopping]
+word scan done: tested=1763674 violations=0
+

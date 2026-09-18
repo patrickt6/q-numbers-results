@@ -1,0 +1,15 @@
+--- the nine on-axis finite values ---
+  x=1sqrt(2):  h = q - 1/q**2   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=2sqrt(2):  h = q**2 + q + 1 - 1/q - 1/q**2 - 1/q**3   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=3sqrt(2):  h = q**4 + q**2 + q + 2 - 2/q - 1/q**2 - 1/q**3 - 1/q**5   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=4sqrt(2):  h = q**5 + q**4 + 2*q**2 + q - 1/q**2 - 2/q**3 - 1/q**5 - 1/q**6   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=1sqrt(3):  h = q + 1 - 1/q - 1/q**2   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=2sqrt(3):  h = q**3 + 2*q - 2/q**2 - 1/q**4   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=3sqrt(3):  h = q**5 + q**3 + q**2 + q + 2 - 2/q - 1/q**2 - 1/q**3 - 1/q**4 - 1/q**6   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=1sqrt(5):  h = q**2 + 1 - 1/q - 1/q**3   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+  x=2sqrt(5):  h = q**4 + 2*q**2 + 2 - 2/q - 2/q**3 - 1/q**5   tail_in_window=None  CERTIFIED=True  (gcd degree 2, Q_plus irreducible=True)
+--- controls: perturbed h must be rejected ---
+  h+(q**7): (False, 'gcd is constant: G is not equal to h')
+  h+(q**3): (False, 'gcd is constant: G is not equal to h')
+  h+(-q): (False, 'gcd is constant: G is not equal to h')
+--- impostors: points the sweep flagged finite_looking, escalation killed ---

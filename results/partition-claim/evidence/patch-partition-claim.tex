@@ -1,0 +1,47 @@
+\paragraph{Status: the claim is false as stated.}
+A census of all coprime numerators for every $d\le240$ and thirty highly
+composite $d\le1260$ produces $22$ counterexamples. The smallest is $d=60$,
+$a=11$ (equivalently $a=19,41,49$), where the reduced denominator is
+\[
+  S(q)=\Phi_2\Phi_3\Phi_4\Phi_5\Phi_6,
+\]
+a squarefree product of cyclotomic polynomials dividing $\qn{60}$ (so the
+hypothesis of the claim is satisfied, with $n=60$), whose index set
+$T=\{2,3,4,5,6\}$ matches no partition of the prime powers $\{4,3,5\}$: the
+factor $\Phi_6$ forces $4$ and $3$ into a common part, whose q-analogue
+$\qn{12}$ would contribute the absent factor $\Phi_{12}$. All $22$
+counterexamples have the same shape, a partition-form divisor set with its top
+layer removed (here $(\mathrm{div}(12)\setminus\{12\})\cup\{5\}$); further
+examples occur at $d=84,180,220,420,504,924,990$.
+
+\paragraph{What survives.} Write $S=\prod_{m\in T}\Phi_m$ (the hypothesis
+$S\mid\qn{n}$ makes $S$ a squarefree product of cyclotomics) and assume
+$T\subseteq\{m: m\mid d,\ m\ge2\}$ (the corollary of 1.5.2). Then:
+\begin{enumerate}
+  \item \emph{Prime-power completeness (case 2, now rigorous).} Since
+  $\Phi_m(1)=p$ for $m=p^j$ a prime power and $\Phi_m(1)=1$ otherwise,
+  $d=S(1)=\prod_p p^{\,n_p}$ with $n_p=\#\{j\ge1: p^j\in T\}$. Unique
+  factorization forces $n_p=e_p$ for every $p\mid d$, and a subset of
+  $\{1,\dots,e_p\}$ of size $e_p$ is the whole set; hence \emph{every} prime
+  power dividing $d$ lies in $T$. (Downward closure is not needed here.)
+  \item \emph{A necessity law at odd primes.} For $p$ an odd prime,
+  $\Phi_p\mid S$ implies $a\equiv\pm1\pmod p$; the same computation at
+  $\Phi_{p^j}$ again gives $a\equiv\pm1\pmod p$. This follows from the exact
+  first-derivative formula
+  \[
+    2S'(1)=d\deg S+\bigl(a^{-1}\bmod d\bigr)-a,
+  \]
+  ($a^{-1}$ taken in $(0,d)$; this is Lasker \cite[Lem.~6.1,
+  Cor.~6.2]{Lasker}, re-derived by induction on the negative continued
+  fraction in the project notes), since $\Phi_{p^j}'(1)\equiv0\pmod p$ gives $p\mid S'(1)$ while
+  $p\mid d$, so $a^2\equiv1\pmod p$.
+  \item \emph{The corrected inventory of open statements.} The helping claim of
+  1.5.1 (downward closure of $T$) and the corollary of 1.5.2 ($S\mid\qn{d}$)
+  hold with zero exceptions in the census but remain unproved: the proof of
+  1.5.1 transfers a relation, not the vanishing of a matrix entry, between two
+  different specializations $q=\omega$ and $q=\omega'$. The census also shows
+  the divisibility $\Phi_m\mid S$ is not determined by $a\bmod m$ alone
+  ($\Phi_{12}\mid S$ at $(a,d)=(11,12)$ but not at $(11,60)$), so the correct
+  characterization of the realized sets $T$ must involve $d$ globally; it is
+  open.
+\end{enumerate}
