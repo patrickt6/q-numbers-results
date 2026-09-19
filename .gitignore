@@ -1,0 +1,7 @@
+# Lake build output and downloaded packages
+.lake/
+lean/.lake/
+results/**/.lake/
+# audit scratch files
+tools/__pycache__/
+*.pyc
