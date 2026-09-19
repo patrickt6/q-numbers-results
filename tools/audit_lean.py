@@ -32,6 +32,11 @@ What it does, per results/<id>/:
                      build failed, or a duplicate copy differs)
      none            no Lean sources
 
+lean/audit-config.json gives an expected_state per result (default proved). The exit
+code is 1 when a built result is observed in a state other than the expected one,
+so a result that is meant to be statement_only does not fail the audit, and a
+result that regresses does.
+
 This script never edits the per-result status.json files. It does not judge whether
 a theorem statement is faithful to the paper.
 """
@@ -432,6 +437,7 @@ def main():
                 if unresolved:
                     entry["reasons"].append("note: %d theorem names not resolved by #print axioms" % len(set(unresolved)))
         entry["status"] = status
+        entry["expected_state"] = rc.get("expected_state", "proved")
         entry["toolchain"] = tool_versions.get(proj)
         report[rid] = entry
 
@@ -462,8 +468,11 @@ def main():
     for rid, e in report.items():
         if e["status"] != "none":
             print("  %-16s %s" % (rid, e["status"]))
-            if e["status"] != "proved" and lake is not None and e.get("files"):
-                bad_exit = True
+            if lake is not None and e.get("files"):
+                expected = cfg["results"].get(rid, {}).get("expected_state", "proved")
+                if e["status"] != expected:
+                    print("    MISMATCH: expected %s (lean/audit-config.json)" % expected)
+                    bad_exit = True
     return 1 if bad_exit else 0
 
 
