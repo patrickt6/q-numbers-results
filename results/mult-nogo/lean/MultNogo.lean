@@ -49,10 +49,12 @@
       at 4/15, 7/2 and 35/12, and the control target T = X Y gives rank 7 at q = 2 on
       the same samples (a genuine bihomographic law exists), so the test detects a
       real relation.  These checks are not part of the Lean proof.
-    * `nogo_ratfunc` quantifies over lists, not over real numbers: [x]_q is defined
-      for rational x through the even-length regular continued fraction, which is unique
-      for each rational > 1.  Real (irrational) x, y are not covered by the Lean
-      statement; the source statement's scripts also test rational pairs only.
+    * Domain.  The relation is ASSUMED only at rational x, y > 1 (given as continued
+      fraction lists), whereas the source statement assumes it for all real x, y > 1.
+      The source hypothesis implies this one, so the Lean theorem is at least as strong
+      as the source statement on this axis.  Lists are the right domain because [x]_q
+      for irrational x is a power series, not an element of Q(q).  The no-nonzero-vector
+      conclusion is the same.
 -/
 import Mathlib.Tactic
 import Mathlib.Algebra.Polynomial.Laurent

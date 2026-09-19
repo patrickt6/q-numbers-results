@@ -19,6 +19,11 @@
   Non-vacuity: `toy_laws` shows the laws are satisfiable (a toy real-valued
   model, not the q-deformed ratio), so the reduction is not about an empty class.
 
+  DEPENDENCY.  This file imports `GosperCF.Intertwine` (module `Intertwine` of the
+  GosperCF library, stored under results/intertwining/lean/GosperCF/), for the trace
+  identity `trace_identity` and the inverse formula `inv_of_det_one`.  It is not
+  self-contained: compile it with that library on the path.
+
   The four laws are the ones the source write-up proves for the q-deformed
   mismatch ratio r(M) = q^(mu+1) conj(C)/C.  Here they are hypotheses of the
   structure `MismatchLaws`; nothing is postulated globally.  The sign step r(M) = +q^m (excluding
