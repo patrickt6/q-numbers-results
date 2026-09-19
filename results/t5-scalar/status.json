@@ -3,8 +3,20 @@
   "status": "proved",
   "date": "2026-07",
   "lean": {
-    "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "flag": true,
+    "files": [
+      "T5Scalar.lean"
+    ],
+    "no_sorry_in_source": true,
+    "state": "proved",
+    "key_theorem": "T5Scalar.t5_scalar",
+    "faithfulness_note": "Lambda_q is the product of R_q and L_q over the unique R,L word of Lambda (Lemma 4(i) proved in Lean: existence and uniqueness). rho on L is fixed by the proved identity S_q R_q^-1 S_q^-1 = L_q. Generalisation: any positive Pell solution r^2-d s^2=1 (r,s,d>=1), not only the fundamental one. Only nonnegative Lambda is covered, so the write-up's Lemma 2 (symmetries) and Theorem 6 (general t) are not formalised and not needed. Divisibility is in Z[q,q^-1] (unit invariant, so 'up to monomials'). rho(Lambda) is defined up to a unit in the write-up; the statement is homogeneous so the representative is irrelevant.",
+    "compiled_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound",
+    "build_command": "cd lean && lake build T5Scalar",
+    "coverage": "full",
+    "covers": "For every positive Pell automorph, the R,L-word q-deformation Λ_q satisfies q(A-D)=(q-1)(qB+C) and C|B iff C|A-D in ℤ[q,q⁻¹]."
   }
 }

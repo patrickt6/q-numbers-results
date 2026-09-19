@@ -1,0 +1,73 @@
+# Build every Lean result and audit it.
+#
+# Two Lake projects are involved because they need different Lean versions:
+#   lean/                                       Lean 4.29.1 + Mathlib v4.29.1
+#                                               (every result except degree-equality)
+#   results/degree-equality/lean/degreeeq       Lean 4.31.0, no dependencies
+# Each project has its own lean-toolchain file; elan reads it and installs the
+# matching Lean version on first use.
+name: lean
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      # Get the repository. No submodules are used.
+      - name: Check out
+        uses: actions/checkout@v4
+
+      # Install elan, the Lean toolchain manager, without choosing a default
+      # toolchain. Each project below selects its own version from lean-toolchain.
+      - name: Install elan
+        run: |
+          curl -sSfL https://elan.lean-lang.org/elan-init.sh -o elan-init.sh
+          sh elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      # Fetch the pinned dependencies (lean/lake-manifest.json) and download the
+      # prebuilt Mathlib .olean files from the Mathlib cache. Without this step the
+      # next step would compile Mathlib from source, which takes hours.
+      - name: Fetch Mathlib cache
+        working-directory: lean
+        run: lake exe cache get
+
+      # Build the combined project. The top module QNumbersResults imports every
+      # module, so a bare `lake build` is enough. The single-file DCTheoremA needs
+      # about 8 GB of memory on its own.
+      - name: Build Lean 4.29.1 + Mathlib project
+        working-directory: lean
+        run: lake build
+
+      # Build the second project. It has no dependencies, so nothing is fetched.
+      - name: Build degree-equality project
+        working-directory: results/degree-equality/lean/degreeeq
+        run: lake build
+
+      # Run the audit. It re-runs both builds (up to date, so fast), scans the
+      # sources for sorry and axiom declarations, runs `#print axioms` on every
+      # public theorem, and rewrites lean-status.json. --require-lake makes the
+      # step fail instead of skipping if Lake is missing.
+      - name: Audit
+        run: python3 tools/audit_lean.py --require-lake
+
+      # The committed lean-status.json must equal the freshly computed one.
+      - name: Check lean-status.json is current
+        run: git diff --exit-code -- lean-status.json
+
+      # Keep the computed report with the run.
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-status
+          path: lean-status.json

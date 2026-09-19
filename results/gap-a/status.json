@@ -3,8 +3,25 @@
   "status": "proved",
   "date": "2026-07-24",
   "lean": {
-    "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "flag": true,
+    "files": [
+      "lean/GapA.lean"
+    ],
+    "no_sorry_in_source": true,
+    "state": "proved",
+    "scope": "conditional_reduction",
+    "compiled": true,
+    "key_theorem": "GapA.example64_step_iff",
+    "faithfulness_note": "Proved in full: the integer-matrix identity R^m N M N R^-m = M^-1 for automorphs of integer trace m (dihedral_loop, loop_of_trace) and the arithmetic equivalence c | a-d <-> c | a^2-1. The q-deformed mismatch ratio itself is NOT constructed: its four transformation laws (automorph invariance, negation, translation, and the k=0 case of the monomial dichotomy) are hypotheses of the structure MismatchLaws. Under them the file proves r(M)^2=q^(2m) and r(M)=+-1 iff x+x^sigma=0. The sign step r=+q^m (excluding -q^m) is not formalised. state is proved in the audit sense (compiles, no sorry, no new axiom); coverage is conditional because the paper's q-side laws are hypotheses of MismatchLaws, not proved in Lean.",
+    "compiled_on": "2026-09-18",
+    "checked_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "depends_on": [
+      "intertwining/lean/GosperCF/GosperCF/Intertwine.lean"
+    ],
+    "build_command": "cd lean && lake build GapA",
+    "coverage": "conditional",
+    "covers": "Lean 4 checks the integer-matrix identity R^m N M N R^-m = M^-1 and, taking four published transformation laws of the mismatch ratio as hypotheses, derives r(M)^2 = q^{2m} and r(M) = +-1 iff x + x^sigma = 0. The q-deformation and the four laws themselves are not formalised."
   }
 }

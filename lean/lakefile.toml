@@ -1,0 +1,151 @@
+# One Lake project for the Lean results that need Mathlib (all but degree-equality).
+# The sources are NOT copied here: each library below reads the module files
+# in place from the per-result folders under results/.
+# One result (degree-equality) needs no Mathlib and a different Lean
+# version, so it stays a separate Lake project; see the README.
+name = "QNumbersResults"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["QNumbersResults", "Intertwining", "PellNegation", "JumpGap",
+  "T5Scalar",
+  "LemmaN",
+  "DCTheoremA",
+  "GapA",
+  "TwinPrimes",
+  "AdditionNogo",
+  "MultNogo",
+  "Length5",
+  "Length5Complete",
+  "CountLaw",
+  "LemmaL",
+  "Sqrt2Mod2",
+  "KSix",
+  "SPrimeFormula"]
+
+# Same options as the per-result packages.
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.29.1"
+
+# Top module (lean/QNumbersResults.lean): imports every module below, so that a
+# bare `lake build` compiles all of them, including Pell and Intertwine.
+# Every library below reads its files in place from results/<id>/lean/.
+[[lean_lib]]
+name = "QNumbersResults"
+
+# results/intertwining: GosperCF.Intertwine
+[[lean_lib]]
+name = "Intertwining"
+srcDir = "../results/intertwining/lean/GosperCF"
+roots = ["GosperCF.Intertwine"]
+
+# results/pell-negation: GosperCF.Negation, GosperCF.Pell.
+# GosperCF.Pell imports GosperCF.Intertwine, which is built by the library above.
+# The folder also holds a copy of Intertwine.lean; tools/audit_lean.py checks that
+# it is byte-identical to the one that is built.
+[[lean_lib]]
+name = "PellNegation"
+srcDir = "../results/pell-negation/lean/GosperCF"
+roots = ["GosperCF.Negation", "GosperCF.Pell"]
+
+# results/jump-gap: GosperCF.JumpGap, GosperCF.JumpGapDet
+[[lean_lib]]
+name = "JumpGap"
+srcDir = "../results/jump-gap/lean/GosperCF"
+roots = ["GosperCF.JumpGap", "GosperCF.JumpGapDet"]
+
+# The remaining results are single files under results/<id>/lean/. Each file is
+# its own library and its own namespace (for example LemmaN and DCTheoremA both
+# define S, in different namespaces), so no declaration names clash.
+# GapA imports GosperCF.Intertwine, which the Intertwining library above builds.
+
+# results/t5-scalar: T5Scalar
+[[lean_lib]]
+name = "T5Scalar"
+srcDir = "../results/t5-scalar/lean"
+roots = ["T5Scalar"]
+
+# results/lemma-n: LemmaN
+[[lean_lib]]
+name = "LemmaN"
+srcDir = "../results/lemma-n/lean"
+roots = ["LemmaN"]
+
+# results/dc-theorem-a: DCTheoremA
+[[lean_lib]]
+name = "DCTheoremA"
+srcDir = "../results/dc-theorem-a/lean"
+roots = ["DCTheoremA"]
+
+# results/gap-a: GapA
+[[lean_lib]]
+name = "GapA"
+srcDir = "../results/gap-a/lean"
+roots = ["GapA"]
+
+# results/twin-primes: TwinPrimes
+[[lean_lib]]
+name = "TwinPrimes"
+srcDir = "../results/twin-primes/lean"
+roots = ["TwinPrimes"]
+
+# results/addition-nogo: AdditionNogo
+[[lean_lib]]
+name = "AdditionNogo"
+srcDir = "../results/addition-nogo/lean"
+roots = ["AdditionNogo"]
+
+# results/mult-nogo: MultNogo
+[[lean_lib]]
+name = "MultNogo"
+srcDir = "../results/mult-nogo/lean"
+roots = ["MultNogo"]
+
+# results/length5: Length5
+[[lean_lib]]
+name = "Length5"
+srcDir = "../results/length5/lean"
+roots = ["Length5"]
+
+# results/length5-complete: Length5Complete
+[[lean_lib]]
+name = "Length5Complete"
+srcDir = "../results/length5-complete/lean"
+roots = ["Length5Complete"]
+
+# results/count-law: CountLaw
+[[lean_lib]]
+name = "CountLaw"
+srcDir = "../results/count-law/lean"
+roots = ["CountLaw"]
+
+# results/lemma-l: LemmaL
+[[lean_lib]]
+name = "LemmaL"
+srcDir = "../results/lemma-l/lean"
+roots = ["LemmaL"]
+
+# results/sqrt2-mod2: Sqrt2Mod2
+[[lean_lib]]
+name = "Sqrt2Mod2"
+srcDir = "../results/sqrt2-mod2/lean"
+roots = ["Sqrt2Mod2"]
+
+# results/k6-level-six: KSix
+[[lean_lib]]
+name = "KSix"
+srcDir = "../results/k6-level-six/lean"
+roots = ["KSix"]
+
+# results/s-prime-formula: SPrimeFormula
+[[lean_lib]]
+name = "SPrimeFormula"
+srcDir = "../results/s-prime-formula/lean"
+roots = ["SPrimeFormula"]

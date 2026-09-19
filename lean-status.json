@@ -1,0 +1,745 @@
+{
+  "schema": 1,
+  "generated_by": "tools/audit_lean.py",
+  "meaning": {
+    "proved": "compiled with lake build, no sorry, no axiom declaration, every checked theorem depends on standard axioms only",
+    "statement_only": "compiled, but the source has sorry or an axiom declaration, or a theorem depends on a non-standard axiom",
+    "source_only": "Lean sources exist but were not built or checked",
+    "none": "no Lean sources"
+  },
+  "standard_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lake_available": true,
+  "pinned": {
+    "mathlib_project_toolchain": "leanprover/lean4:v4.29.1",
+    "degreeeq_toolchain": "leanprover/lean4:v4.31.0",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "mathlib_tag": "v4.29.1"
+  },
+  "note": "This script does not judge statement faithfulness; see lean.coverage in each results/<id>/status.json.",
+  "results": {
+    "addition-nogo": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/addition-nogo/lean/AdditionNogo.lean",
+          "module": "AdditionNogo",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 26,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "unbuilt_files": [
+        {
+          "path": "results/addition-nogo/evidence/Multiplication.lean",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 11
+        }
+      ],
+      "key_theorem": {
+        "name": "AdditionNogo.nogo_ratfunc",
+        "file": "results/addition-nogo/lean/AdditionNogo.lean",
+        "line": 406,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 26,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "catalan-rival": {
+      "status": "none"
+    },
+    "census-window": {
+      "status": "none"
+    },
+    "count-law": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/count-law/lean/CountLaw.lean",
+          "module": "CountLaw",
+          "sorry_count": 1,
+          "axiom_decl_count": 0,
+          "theorem_count": 29,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [
+        "source contains sorry",
+        "non-standard axioms (or sorryAx) in: CountLaw.count_law_torsion, CountLaw.laurent_torsion"
+      ],
+      "key_theorem": {
+        "name": "CountLaw.count_law_torsion",
+        "file": "results/count-law/lean/CountLaw.lean",
+        "line": 336,
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 29,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [
+        "CountLaw.count_law_torsion",
+        "CountLaw.laurent_torsion"
+      ],
+      "compiled": true,
+      "status": "statement_only",
+      "expected_state": "statement_only",
+      "toolchain": "Lean 4.29.1"
+    },
+    "cubic-negation": {
+      "status": "none"
+    },
+    "dc-theorem-a": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/dc-theorem-a/lean/DCTheoremA.lean",
+          "module": "DCTheoremA",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 64,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "DCTheoremA.dc_theorem_a_all",
+        "file": "results/dc-theorem-a/lean/DCTheoremA.lean",
+        "line": 962,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 64,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "degree-equality": {
+      "project": "degreeeq",
+      "files": [
+        {
+          "path": "results/degree-equality/lean/degreeeq/Degreeeq.lean",
+          "module": "Degreeeq",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 15,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/degree-equality/lean/degreeeq/Main.lean",
+          "module": "Main",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 0,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "DegreeEq.tight_iff_all_two",
+        "file": "results/degree-equality/lean/degreeeq/Degreeeq.lean",
+        "line": 337,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 15,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.31.0"
+    },
+    "divisor-hypothesis": {
+      "status": "none"
+    },
+    "gap-a": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/gap-a/lean/GapA.lean",
+          "module": "GapA",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 16,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "GapA.example64_step_iff",
+        "file": "results/gap-a/lean/GapA.lean",
+        "line": 226,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 16,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "intertwining": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/intertwining/lean/GosperCF/GosperCF/Intertwine.lean",
+          "module": "GosperCF.Intertwine",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 9,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "GosperCF.Intertwine.intertwine_iff_trace_zero",
+        "file": "results/intertwining/lean/GosperCF/GosperCF/Intertwine.lean",
+        "line": 196,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 9,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "jump-gap": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/jump-gap/lean/GosperCF/GosperCF/JumpGap.lean",
+          "module": "GosperCF.JumpGap",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 5,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/jump-gap/lean/GosperCF/GosperCF/JumpGapDet.lean",
+          "module": "GosperCF.JumpGapDet",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 8,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "unbuilt_files": [
+        {
+          "path": "results/jump-gap/evidence/JumpGap.lean",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 8
+        }
+      ],
+      "key_theorem": {
+        "name": "GosperCF.gap_closed_form",
+        "file": "results/jump-gap/lean/GosperCF/GosperCF/JumpGap.lean",
+        "line": 129,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 13,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "k-uniformity": {
+      "status": "none"
+    },
+    "k6-level-six": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/k6-level-six/lean/KSix.lean",
+          "module": "KSix",
+          "sorry_count": 1,
+          "axiom_decl_count": 0,
+          "theorem_count": 8,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [
+        "source contains sorry",
+        "non-standard axioms (or sorryAx) in: K6LevelSix.level_six"
+      ],
+      "key_theorem": {
+        "name": "K6LevelSix.level_six",
+        "file": "results/k6-level-six/lean/KSix.lean",
+        "line": 128,
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 8,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [
+        "K6LevelSix.level_six"
+      ],
+      "compiled": true,
+      "status": "statement_only",
+      "expected_state": "statement_only",
+      "toolchain": "Lean 4.29.1"
+    },
+    "lemma-l": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/lemma-l/lean/LemmaL.lean",
+          "module": "LemmaL",
+          "sorry_count": 1,
+          "axiom_decl_count": 0,
+          "theorem_count": 1,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [
+        "source contains sorry",
+        "non-standard axioms (or sorryAx) in: LemmaL.lemma_L_prime_power"
+      ],
+      "key_theorem": {
+        "name": "LemmaL.lemma_L_prime_power",
+        "file": "results/lemma-l/lean/LemmaL.lean",
+        "line": 82,
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 1,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [
+        "LemmaL.lemma_L_prime_power"
+      ],
+      "compiled": true,
+      "status": "statement_only",
+      "expected_state": "statement_only",
+      "toolchain": "Lean 4.29.1"
+    },
+    "lemma-n": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/lemma-n/lean/LemmaN.lean",
+          "module": "LemmaN",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 26,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "LemmaN.S_neg",
+        "file": "results/lemma-n/lean/LemmaN.lean",
+        "line": 181,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 26,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "length5": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/length5/lean/Length5.lean",
+          "module": "Length5",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 50,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "Length5.length5_vanishing",
+        "file": "results/length5/lean/Length5.lean",
+        "line": 419,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 50,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "length5-complete": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/length5-complete/lean/Length5Complete.lean",
+          "module": "Length5Complete",
+          "sorry_count": 4,
+          "axiom_decl_count": 0,
+          "theorem_count": 21,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [
+        "source contains sorry",
+        "non-standard axioms (or sorryAx) in: Length5Complete.count_five, Length5Complete.count_ne_five, Length5Complete.length5_complete, Length5Complete.length5_complete_five"
+      ],
+      "key_theorem": {
+        "name": "Length5Complete.length5_complete",
+        "file": "results/length5-complete/lean/Length5Complete.lean",
+        "line": 270,
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 21,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [
+        "Length5Complete.count_five",
+        "Length5Complete.count_ne_five",
+        "Length5Complete.length5_complete",
+        "Length5Complete.length5_complete_five"
+      ],
+      "compiled": true,
+      "status": "statement_only",
+      "expected_state": "statement_only",
+      "toolchain": "Lean 4.29.1"
+    },
+    "length5-incomplete": {
+      "status": "none"
+    },
+    "mult-nogo": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/mult-nogo/lean/MultNogo.lean",
+          "module": "MultNogo",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 26,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "MultNogo.nogo_ratfunc",
+        "file": "results/mult-nogo/lean/MultNogo.lean",
+        "line": 406,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 26,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "negation-census": {
+      "status": "none"
+    },
+    "negation-criterion": {
+      "status": "none"
+    },
+    "orbit-closure": {
+      "status": "none"
+    },
+    "partition-claim": {
+      "status": "none"
+    },
+    "pell-negation": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/pell-negation/lean/GosperCF/GosperCF/Intertwine.lean",
+          "module": "GosperCF.Intertwine",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 9,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/pell-negation/lean/GosperCF/GosperCF/Negation.lean",
+          "module": "GosperCF.Negation",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 4,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/pell-negation/lean/GosperCF/GosperCF/Pell.lean",
+          "module": "GosperCF.Pell",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 13,
+          "private_theorems_skipped": 1,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "GosperCF.Pell.N_conj_Lambda",
+        "file": "results/pell-negation/lean/GosperCF/GosperCF/Pell.lean",
+        "line": 126,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 26,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "q-somos": {
+      "status": "none"
+    },
+    "r1-float-dedup": {
+      "status": "none"
+    },
+    "realizability": {
+      "status": "none"
+    },
+    "roots-of-unity": {
+      "status": "none"
+    },
+    "s-prime-formula": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/s-prime-formula/lean/SPrimeFormula.lean",
+          "module": "SPrimeFormula",
+          "sorry_count": 1,
+          "axiom_decl_count": 0,
+          "theorem_count": 1,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [
+        "source contains sorry",
+        "non-standard axioms (or sorryAx) in: SPrimeFormula.s_prime_formula"
+      ],
+      "key_theorem": {
+        "name": "SPrimeFormula.s_prime_formula",
+        "file": "results/s-prime-formula/lean/SPrimeFormula.lean",
+        "line": 70,
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 1,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [
+        "SPrimeFormula.s_prime_formula"
+      ],
+      "compiled": true,
+      "status": "statement_only",
+      "expected_state": "statement_only",
+      "toolchain": "Lean 4.29.1"
+    },
+    "sqrt2-mod2": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/sqrt2-mod2/lean/Sqrt2Mod2.lean",
+          "module": "Sqrt2Mod2",
+          "sorry_count": 1,
+          "axiom_decl_count": 0,
+          "theorem_count": 8,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [
+        "source contains sorry",
+        "non-standard axioms (or sorryAx) in: Sqrt2Mod2.mgo_qsqrt2, Sqrt2Mod2.sqrt2_mod2"
+      ],
+      "key_theorem": {
+        "name": "Sqrt2Mod2.sqrt2_mod2",
+        "file": "results/sqrt2-mod2/lean/Sqrt2Mod2.lean",
+        "line": 199,
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 8,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [
+        "Sqrt2Mod2.mgo_qsqrt2",
+        "Sqrt2Mod2.sqrt2_mod2"
+      ],
+      "compiled": true,
+      "status": "statement_only",
+      "expected_state": "statement_only",
+      "toolchain": "Lean 4.29.1"
+    },
+    "sqrt2-mod2-biconditional": {
+      "status": "none"
+    },
+    "t1-beta": {
+      "status": "none"
+    },
+    "t5-scalar": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/t5-scalar/lean/T5Scalar.lean",
+          "module": "T5Scalar",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 42,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "T5Scalar.t5_scalar",
+        "file": "results/t5-scalar/lean/T5Scalar.lean",
+        "line": 533,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 42,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "trace-zero": {
+      "status": "none"
+    },
+    "twin-primes": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/twin-primes/lean/TwinPrimes.lean",
+          "module": "TwinPrimes",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 20,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "TwinPrimes.family_twin",
+        "file": "results/twin-primes/lean/TwinPrimes.lean",
+        "line": 263,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 20,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "expected_state": "proved",
+      "toolchain": "Lean 4.29.1"
+    }
+  }
+}

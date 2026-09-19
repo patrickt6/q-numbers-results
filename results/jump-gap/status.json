@@ -13,6 +13,8 @@
     "checked_on": "2026-09-18",
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
-    "build_command": "lake build"
+    "build_command": "lake build",
+    "coverage": "partial",
+    "covers": "Over any field, if RS'-R'S=q^E then M·(1,0)-M·(1,1-q)=(1-q)q^E/(S(S+(1-q)S')); separately, an even-length continuant block product has determinant q^(alternating digit sum). The link to the rational jump gap and to E=Σa_i-1 is not formalised."
   }
 }

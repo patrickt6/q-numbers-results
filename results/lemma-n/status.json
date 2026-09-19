@@ -3,8 +3,20 @@
   "status": "proved",
   "date": "2026-08-12",
   "lean": {
-    "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "flag": true,
+    "files": [
+      "LemmaN.lean"
+    ],
+    "no_sorry_in_source": true,
+    "state": "proved",
+    "key_theorem": "LemmaN.S_neg (line 1, identity in Z[q,q^-1]) and LemmaN.V_neg / LemmaN.V_neg_set (line 2)",
+    "faithfulness_note": "S_j is the recurrence S_{i+1}=[c_{i+1}]S_i-q^(c_i-1)S_{i-1}, (S_0,S_1)=(0,1), exponent on the previous quotient, [c]_q=(1-q^c)/(1-q) for all integers c, in Z[q,q^-1]; smoke-tested in Lean on the word (2,2,2) giving [4]_q. Line 1 is proved as a Laurent-polynomial identity S(-w)=(-q^-1)^(j-1)*S(w)(q->q^-1) and also in evaluated form at every unit of C (S_neg_ev). Line 2 V_j(k)=-V_j(k) is proved for residue words with Phi_k dividing S in Z[q,q^-1], for k>1 as in the write-up (statement.tex says all k; the integer-word form S_neg_dvd_iff holds for every k>=1). Lift independence of V (the write-up's residue-only lemma) is also proved (S_dvd_residue). Complex primitive roots appear only inside proofs (Phi_k divides f iff f(w)=0, via the minimal polynomial over Z).",
+    "compiled_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound",
+    "build_command": "cd lean && lake build LemmaN",
+    "coverage": "full",
+    "covers": "Negation symmetry of the cyclotomic vanishing locus V_j(k), every length, every k>1."
   }
 }

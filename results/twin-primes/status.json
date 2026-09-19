@@ -3,8 +3,21 @@
   "status": "proved",
   "date": "2026-06-17",
   "lean": {
-    "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "flag": true,
+    "files": [
+      "lean/TwinPrimes.lean"
+    ],
+    "no_sorry_in_source": true,
+    "state": "proved",
+    "compiled": true,
+    "key_theorem": "TwinPrimes.family_twin",
+    "faithfulness_note": "Proved for every integer m >= 2: (a) the Morier-Genoud--Ovsienko q-continued fraction of [0; m-1, 1, m-1] equals q^(m-1)[m]_q / ([m-1]_q [m+1]_q) (family_value), in lowest terms with monic denominator (coprime_family, reduced_denominator_unique); (b) [m-1]_q [m+1]_q = Phi_(m-1) Phi_(m+1) iff m-1 and m+1 are both prime (twin_iff), both directions, by a degree comparison. This settles the source conflict (an earlier draft says verified for 2 <= m <= 30 only, a later patch says proved for all m) in favour of all m for the family statement. Reading choices: 'two cyclotomic factors' is formalised as the equation S = Phi_(m-1) Phi_(m+1); the q-continued fraction is the nested MGO formula (checked outside Lean at m = 4 and m = 2..7). Not formalised: the patch's all-numerators theorem for d = p p'.",
+    "compiled_on": "2026-09-18",
+    "checked_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "build_command": "cd lean && lake build TwinPrimes",
+    "coverage": "narrower",
+    "covers": "For every m >= 2, the q-rational of m/(m^2-1) is q^(m-1)[m]_q/([m-1]_q[m+1]_q) in lowest terms, and its reduced denominator equals Phi_{m-1} Phi_{m+1} exactly when m-1 and m+1 are both prime (Lean 4). The wider claim over all numerators of d = p p' is not formalised."
   }
 }

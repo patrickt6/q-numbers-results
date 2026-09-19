@@ -12,6 +12,8 @@
     "checked_on": "2026-09-18",
     "lean_version": "leanprover/lean4:v4.31.0",
     "mathlib_rev": null,
-    "build_command": "lake build"
+    "build_command": "lake build",
+    "coverage": "partial",
+    "covers": "For digits ≥2, Σ_{j=2}^k(c_j-1)=s_k-1 iff c_2=...=c_k=2 (k≥3). The bridge to deg S=d-1 and a≡±1 (mod d) is not formalised."
   }
 }

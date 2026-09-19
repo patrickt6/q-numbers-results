@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "standard_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "projects": {
+    "mathlib": {
+      "dir": "lean",
+      "description": "Lean 4.29.1 with Mathlib v4.29.1: every result with Lean sources except degree-equality"
+    },
+    "degreeeq": {
+      "dir": "results/degree-equality/lean/degreeeq",
+      "description": "Lean 4.31.0, no dependencies: degree-equality"
+    }
+  },
+  "results": {
+    "pell-negation": {
+      "project": "mathlib",
+      "key_theorem": "GosperCF.Pell.N_conj_Lambda",
+      "expected_state": "proved"
+    },
+    "intertwining": {
+      "project": "mathlib",
+      "key_theorem": "GosperCF.Intertwine.intertwine_iff_trace_zero",
+      "expected_state": "proved"
+    },
+    "jump-gap": {
+      "project": "mathlib",
+      "key_theorem": "GosperCF.gap_closed_form",
+      "expected_state": "proved"
+    },
+    "degree-equality": {
+      "project": "degreeeq",
+      "key_theorem": "DegreeEq.tight_iff_all_two",
+      "expected_state": "proved"
+    },
+    "t5-scalar": {
+      "project": "mathlib",
+      "key_theorem": "T5Scalar.t5_scalar",
+      "expected_state": "proved"
+    },
+    "lemma-n": {
+      "project": "mathlib",
+      "key_theorem": "LemmaN.S_neg",
+      "expected_state": "proved"
+    },
+    "dc-theorem-a": {
+      "project": "mathlib",
+      "key_theorem": "DCTheoremA.dc_theorem_a_all",
+      "expected_state": "proved"
+    },
+    "gap-a": {
+      "project": "mathlib",
+      "key_theorem": "GapA.example64_step_iff",
+      "expected_state": "proved"
+    },
+    "twin-primes": {
+      "project": "mathlib",
+      "key_theorem": "TwinPrimes.family_twin",
+      "expected_state": "proved"
+    },
+    "addition-nogo": {
+      "project": "mathlib",
+      "key_theorem": "AdditionNogo.nogo_ratfunc",
+      "expected_state": "proved"
+    },
+    "mult-nogo": {
+      "project": "mathlib",
+      "key_theorem": "MultNogo.nogo_ratfunc",
+      "expected_state": "proved"
+    },
+    "length5": {
+      "project": "mathlib",
+      "key_theorem": "Length5.length5_vanishing",
+      "expected_state": "proved"
+    },
+    "length5-complete": {
+      "project": "mathlib",
+      "key_theorem": "Length5Complete.length5_complete",
+      "expected_state": "statement_only"
+    },
+    "count-law": {
+      "project": "mathlib",
+      "key_theorem": "CountLaw.count_law_torsion",
+      "expected_state": "statement_only"
+    },
+    "lemma-l": {
+      "project": "mathlib",
+      "key_theorem": "LemmaL.lemma_L_prime_power",
+      "expected_state": "statement_only"
+    },
+    "sqrt2-mod2": {
+      "project": "mathlib",
+      "key_theorem": "Sqrt2Mod2.sqrt2_mod2",
+      "expected_state": "statement_only"
+    },
+    "k6-level-six": {
+      "project": "mathlib",
+      "key_theorem": "K6LevelSix.level_six",
+      "expected_state": "statement_only"
+    },
+    "s-prime-formula": {
+      "project": "mathlib",
+      "key_theorem": "SPrimeFormula.s_prime_formula",
+      "expected_state": "statement_only"
+    }
+  },
+  "expected_state_note": "expected_state is the state the audit must observe. The audit exits 1 when a result is observed in any other state, so a proof that gains a sorry, or a statement that gets proved, is reported until this file and the README are updated."
+}

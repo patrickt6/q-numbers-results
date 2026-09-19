@@ -3,8 +3,20 @@
   "status": "scooped",
   "date": "2026-07-11",
   "lean": {
-    "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "flag": true,
+    "files": [
+      "SPrimeFormula.lean"
+    ],
+    "no_sorry_in_source": false,
+    "state": "statement_only",
+    "key_theorem": "SPrimeFormula.s_prime_formula",
+    "faithfulness_note": "STATEMENT ONLY (sorry); result is published: Lasker, arXiv:2309.10819, Lemma 6.1 and Corollary 6.2. [a/d]_q = A/C from the first column of the q-deformed R,L product for any word with classical first column (a,d); S is any monic reduced denominator (R,S coprime over Q[q], A*S = C*R). Existence of a monic reduced denominator is not asserted separately. a^-1 is an integer b in (0,d) with a b = 1 mod d. Numerical check outside Lean: formula holds for all coprime 0<a<d<=25 with these conventions.",
+    "compiled_on": "2026-09-18",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound, sorryAx (statement only)",
+    "build_command": "cd lean && lake build SPrimeFormula",
+    "coverage": "statement_only",
+    "covers": "Statement only: the Lean file states, without proof, the formula 2S'(1) = d deg S + a^-1 - a; it is a known result of Lasker, arXiv:2309.10819, Lemma 6.1 and Corollary 6.2."
   }
 }
