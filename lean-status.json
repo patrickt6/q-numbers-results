@@ -1,0 +1,297 @@
+{
+  "schema": 1,
+  "generated_by": "tools/audit_lean.py",
+  "meaning": {
+    "proved": "compiled with lake build, no sorry, no axiom declaration, every checked theorem depends on standard axioms only",
+    "statement_only": "compiled, but the source has sorry or an axiom declaration, or a theorem depends on a non-standard axiom",
+    "source_only": "Lean sources exist but were not built or checked",
+    "none": "no Lean sources"
+  },
+  "standard_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lake_available": true,
+  "pinned": {
+    "mathlib_project_toolchain": "leanprover/lean4:v4.29.1",
+    "degreeeq_toolchain": "leanprover/lean4:v4.31.0",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "mathlib_tag": "v4.29.1"
+  },
+  "note": "Statement faithfulness to the paper is not audited.",
+  "results": {
+    "addition-nogo": {
+      "status": "source_only",
+      "reasons": [
+        "Lean file only outside results/<id>/lean/; not part of a Lake project, not built"
+      ],
+      "unbuilt_files": [
+        {
+          "path": "results/addition-nogo/evidence/Multiplication.lean",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 11
+        }
+      ]
+    },
+    "catalan-rival": {
+      "status": "none"
+    },
+    "census-window": {
+      "status": "none"
+    },
+    "count-law": {
+      "status": "none"
+    },
+    "cubic-negation": {
+      "status": "none"
+    },
+    "dc-theorem-a": {
+      "status": "none"
+    },
+    "degree-equality": {
+      "project": "degreeeq",
+      "files": [
+        {
+          "path": "results/degree-equality/lean/degreeeq/Degreeeq.lean",
+          "module": "Degreeeq",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 15,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/degree-equality/lean/degreeeq/Main.lean",
+          "module": "Main",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 0,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "DegreeEq.tight_iff_all_two",
+        "file": "results/degree-equality/lean/degreeeq/Degreeeq.lean",
+        "line": 337,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 15,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "toolchain": "Lean 4.31.0"
+    },
+    "divisor-hypothesis": {
+      "status": "none"
+    },
+    "gap-a": {
+      "status": "none"
+    },
+    "intertwining": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/intertwining/lean/GosperCF/GosperCF/Intertwine.lean",
+          "module": "GosperCF.Intertwine",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 9,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "GosperCF.Intertwine.intertwine_iff_trace_zero",
+        "file": "results/intertwining/lean/GosperCF/GosperCF/Intertwine.lean",
+        "line": 196,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 9,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "jump-gap": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/jump-gap/lean/GosperCF/GosperCF/JumpGap.lean",
+          "module": "GosperCF.JumpGap",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 5,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/jump-gap/lean/GosperCF/GosperCF/JumpGapDet.lean",
+          "module": "GosperCF.JumpGapDet",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 8,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "unbuilt_files": [
+        {
+          "path": "results/jump-gap/evidence/JumpGap.lean",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 8
+        }
+      ],
+      "key_theorem": {
+        "name": "GosperCF.gap_closed_form",
+        "file": "results/jump-gap/lean/GosperCF/GosperCF/JumpGap.lean",
+        "line": 129,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 13,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "k-uniformity": {
+      "status": "none"
+    },
+    "k6-level-six": {
+      "status": "none"
+    },
+    "lemma-l": {
+      "status": "none"
+    },
+    "lemma-n": {
+      "status": "none"
+    },
+    "length5": {
+      "status": "none"
+    },
+    "length5-complete": {
+      "status": "none"
+    },
+    "length5-incomplete": {
+      "status": "none"
+    },
+    "mult-nogo": {
+      "status": "none"
+    },
+    "negation-census": {
+      "status": "none"
+    },
+    "negation-criterion": {
+      "status": "none"
+    },
+    "orbit-closure": {
+      "status": "none"
+    },
+    "partition-claim": {
+      "status": "none"
+    },
+    "pell-negation": {
+      "project": "mathlib",
+      "files": [
+        {
+          "path": "results/pell-negation/lean/GosperCF/GosperCF/Intertwine.lean",
+          "module": "GosperCF.Intertwine",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 9,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/pell-negation/lean/GosperCF/GosperCF/Negation.lean",
+          "module": "GosperCF.Negation",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 4,
+          "private_theorems_skipped": 0,
+          "trust_flags": {}
+        },
+        {
+          "path": "results/pell-negation/lean/GosperCF/GosperCF/Pell.lean",
+          "module": "GosperCF.Pell",
+          "sorry_count": 0,
+          "axiom_decl_count": 0,
+          "theorem_count": 13,
+          "private_theorems_skipped": 1,
+          "trust_flags": {}
+        }
+      ],
+      "reasons": [],
+      "key_theorem": {
+        "name": "GosperCF.Pell.N_conj_Lambda",
+        "file": "results/pell-negation/lean/GosperCF/GosperCF/Pell.lean",
+        "line": 126,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "theorems_checked": 26,
+      "theorems_unresolved": [],
+      "theorems_nonstandard_axioms": [],
+      "compiled": true,
+      "status": "proved",
+      "toolchain": "Lean 4.29.1"
+    },
+    "q-somos": {
+      "status": "none"
+    },
+    "r1-float-dedup": {
+      "status": "none"
+    },
+    "realizability": {
+      "status": "none"
+    },
+    "roots-of-unity": {
+      "status": "none"
+    },
+    "s-prime-formula": {
+      "status": "none"
+    },
+    "sqrt2-mod2": {
+      "status": "none"
+    },
+    "sqrt2-mod2-biconditional": {
+      "status": "none"
+    },
+    "t1-beta": {
+      "status": "none"
+    },
+    "t5-scalar": {
+      "status": "none"
+    },
+    "trace-zero": {
+      "status": "none"
+    },
+    "twin-primes": {
+      "status": "none"
+    }
+  }
+}

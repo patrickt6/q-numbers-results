@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "standard_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "projects": {
+    "mathlib": {
+      "dir": "lean",
+      "description": "Lean 4.29.1 with Mathlib v4.29.1: pell-negation, intertwining, jump-gap"
+    },
+    "degreeeq": {
+      "dir": "results/degree-equality/lean/degreeeq",
+      "description": "Lean 4.31.0, no dependencies: degree-equality"
+    }
+  },
+  "results": {
+    "pell-negation": {
+      "project": "mathlib",
+      "key_theorem": "GosperCF.Pell.N_conj_Lambda"
+    },
+    "intertwining": {
+      "project": "mathlib",
+      "key_theorem": "GosperCF.Intertwine.intertwine_iff_trace_zero"
+    },
+    "jump-gap": {
+      "project": "mathlib",
+      "key_theorem": "GosperCF.gap_closed_form"
+    },
+    "degree-equality": {
+      "project": "degreeeq",
+      "key_theorem": "DegreeEq.tight_iff_all_two"
+    }
+  }
+}
