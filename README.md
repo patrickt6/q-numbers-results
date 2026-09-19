@@ -9,11 +9,15 @@ data file that lists every result (generated_at 2026-09-18, 35 results).
 ```
 results.json                  copy of the site results file
 LICENSE                       MIT
+lean/                         combined Lake project (Lean 4.29.1 + Mathlib): lakefile, manifest, top module, audit config
+lean-status.json              output of tools/audit_lean.py, one Lean status per result
+tools/audit_lean.py           Lean audit script (standard library only)
+.github/workflows/lean.yml    CI: build and audit
 results/<id>/
   statement.tex               the LaTeX statement as a minimal snippet, first line names the id and status
   status.json                 id, status, date, lean.flag, lean.files, lean.no_sorry_in_source
   evidence/                   scripts, output files and short reports that back the result
-  lean/                       only for results with a Lean file: the exact modules plus lake files
+  lean/                       only for results with a Lean file: the exact modules plus lake files (the GosperCF folders are built by the root lean/ project, degreeeq builds on its own)
 ```
 
 An `evidence/` folder that holds only `.gitkeep` means no shippable artifact was found for that
@@ -38,34 +42,97 @@ One row per result. Status is not editorial. A result that turned out false stay
 
 ## Lean
 
-Results with `lean.flag` true carry Lean 4 sources under `results/<id>/lean/`. Each folder is a
-Lake package that holds the modules for that result, a `lakefile.toml`, a `lean-toolchain` and a
-`lake-manifest.json`. The modules are copies of the source files; only comments were edited
-(redactions), and the code text is identical. The `lakefile.toml` of the GosperCF package
-carries an added `roots` line so that only the copied modules are listed as library roots.
+Results with `lean.flag` true carry Lean 4 sources under `results/<id>/lean/`. The modules are
+copies of the source files; only comments were edited (redactions), and the code text is
+identical. Each folder also keeps the small Lake package it came from (`lakefile.toml`,
+`lean-toolchain`, `lake-manifest.json`); the GosperCF `lakefile.toml` files carry an added `roots`
+line so that only the copied modules are listed as library roots.
 
-Compile check, run on 2026-09-18 in a scratch copy of the full source packages (not in these
-folders):
+### Build
 
-| package | Lean | Mathlib | commands | result |
+Two Lake projects are needed, because the four results do not share one Lean version.
+
+| project | directory | Lean | Mathlib | results |
 |---|---|---|---|---|
-| GosperCF | leanprover/lean4:v4.29.1 | v4.29.1, rev 5e932f97dd25535344f80f9dd8da3aab83df0fe6 | `lake build` (8262 jobs); `lake build GosperCF.Pell GosperCF.Intertwine` | both exit 0 |
-| degreeeq | leanprover/lean4:v4.31.0 | none | `lake build` | exit 0 |
+| combined | `lean/` | leanprover/lean4:v4.29.1 | v4.29.1, rev 5e932f97dd25535344f80f9dd8da3aab83df0fe6 (pinned in `lean/lake-manifest.json`) | pell-negation, intertwining, jump-gap |
+| degreeeq | `results/degree-equality/lean/degreeeq` | leanprover/lean4:v4.31.0 | none | degree-equality |
 
-`GosperCF.lean` does not import `Pell` or `Intertwine`, so those two modules need the second
-command. `#print axioms` on the key theorems reports only `propext`, `Classical.choice` and
-`Quot.sound` (`sufficiency` in degreeeq reports `propext` and `Quot.sound`). No `sorryAx` and no
-custom axiom appear. Key theorems: `Pell.N_conj_Lambda` (pell-negation, `GosperCF/Pell.lean:126`),
-`DegreeEq.tight_iff_all_two` (degree-equality, `Degreeeq.lean:337`),
-`Intertwine.intertwine_iff_trace_zero` (intertwining, `GosperCF/Intertwine.lean:196`),
-`GosperCF.gap_closed_form` (jump-gap, `GosperCF/JumpGap.lean:129`).
+```
+cd lean
+lake exe cache get      # optional but recommended: downloads prebuilt Mathlib files
+lake build              # builds every module, including GosperCF.Pell and GosperCF.Intertwine
 
-The `status.json` fields `lean.compiled`, `lean.checked_on`, `lean.lean_version`,
-`lean.mathlib_rev` and `lean.build_command` record this check and appear only for the four
-results with Lean sources. The subset packages in this repository, with the added `roots` line,
-were not rebuilt in that check. Theorem statements have not been audited for faithfulness to the
-paper. `lean.no_sorry_in_source` is a text search for `sorry` outside comments in the copied
-modules and says nothing about statement fidelity or about modules that were not copied.
+cd ../results/degree-equality/lean/degreeeq
+lake build
+```
+
+`elan` selects the Lean version from each `lean-toolchain` file. The combined project reads the
+module files in place from the per-result folders (`srcDir` in `lean/lakefile.toml`), so no file
+is copied. Its top module `lean/QNumbersResults.lean` imports every module, so a bare `lake build`
+is enough. `results/intertwining` and `results/pell-negation` each hold a copy of
+`GosperCF/Intertwine.lean`; the two copies are byte-identical, only the `intertwining` copy is
+built, and the audit fails if they ever differ.
+
+degreeeq is not merged into the combined project because it was checked only under Lean 4.31.0
+without Mathlib. Moving it to 4.29.1 would need a new check of that file, which is a different
+check from the one on record.
+
+### Audit
+
+```
+python3 tools/audit_lean.py
+```
+
+The script uses the Python standard library only. For every `results/<id>/` it does the following.
+
+1. Scans each Lean file with comments (nested block comments included) and string and character
+   literals removed, and counts `sorry` and `axiom` declarations. A `sorry` inside a comment does
+   not count. It also lists uses of `native_decide`, `implemented_by`, `extern` and `unsafe`.
+2. Checks that duplicate copies of one module are byte-identical.
+3. Runs `lake build` in the owning project.
+4. Generates a Lean file with `#print axioms` for every public top-level theorem and lemma, runs it
+   with `lake env lean`, and accepts only `propext`, `Classical.choice` and `Quot.sound`.
+5. Writes `lean-status.json` at the repository root. Each id gets one status:
+   `proved` (built, no `sorry`, no `axiom` declaration, standard axioms only, key theorem
+   checked), `statement_only` (built, but `sorry`, an axiom declaration or a non-standard axiom is
+   present), `source_only` (Lean source exists but was not built, for example when Lake is not
+   installed; the script then says so and skips the build and the axiom check) or `none`.
+   Lean files outside `results/<id>/lean/` (for example under `evidence/`) are scanned and listed
+   as `unbuilt_files`, and never count as built.
+
+The audit never edits the `status.json` files. GitHub Actions (`.github/workflows/lean.yml`) runs
+the builds and the audit and checks that the committed `lean-status.json` is current.
+
+### Key theorems
+
+`lean-status.json` records, for each proved result, the key theorem, its location, and the axioms
+it depends on. All four depend on `propext`, `Classical.choice` and `Quot.sound` only.
+
+| result | key theorem | location |
+|---|---|---|
+| pell-negation | `GosperCF.Pell.N_conj_Lambda` | `results/pell-negation/lean/GosperCF/GosperCF/Pell.lean:126` |
+| degree-equality | `DegreeEq.tight_iff_all_two` | `results/degree-equality/lean/degreeeq/Degreeeq.lean:337` |
+| intertwining | `GosperCF.Intertwine.intertwine_iff_trace_zero` | `results/intertwining/lean/GosperCF/GosperCF/Intertwine.lean:196` |
+| jump-gap | `GosperCF.gap_closed_form` | `results/jump-gap/lean/GosperCF/GosperCF/JumpGap.lean:129` |
+
+### Check record
+
+Run on 2026-09-18 with the audit above, on a copy of these files, not on the earlier scratch packages:
+`lake build` in `lean/` finished with exit 0 (8257 jobs, Lean 4.29.1, Mathlib v4.29.1) and built
+`GosperCF.Intertwine`, `GosperCF.Negation`, `GosperCF.Pell`, `GosperCF.JumpGap` and
+`GosperCF.JumpGapDet`. `lake build` in the degreeeq project finished with exit 0 (Lean 4.31.0).
+The generated `#print axioms` check resolved every public theorem and lemma (39 names in the
+combined project, 15 in degreeeq) and reported no axiom outside the three standard ones.
+The earlier check of 2026-09-18 on the full source packages is described by the `status.json`
+fields `lean.compiled`, `lean.checked_on`, `lean.lean_version`, `lean.mathlib_rev` and
+`lean.build_command`, which appear only for the four results with Lean sources.
+
+Not verified: a build from an empty machine including the cache download was not run for this
+layout, and the GitHub Actions workflow has not been run.
+
+Theorem statements have not been audited for faithfulness to the paper. `lean.no_sorry_in_source`
+and the `sorry` counts in `lean-status.json` are text searches and say nothing about statement
+fidelity or about modules that are not in this repository.
 
 ## Results
 
