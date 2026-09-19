@@ -30,7 +30,7 @@ from fractions import Fraction
 sys.path.insert(
     0,
     "<path>"
-    "2026-07-21-next-steps/problems/T3-quadratic-conjecture/attempts/opus",
+    "2026-07-21-next-steps/problems/T3-quadratic-conjecture/attempts/attempt-1",
 )
 from qperiod import period_data, rho_q, _parse_quadratic_or_rational  # noqa: E402
 

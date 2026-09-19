@@ -1,4 +1,4 @@
-"""Exact verification of every step in the agentA proof of Gap A for positive
+"""Exact verification of every step in the route-A proof of Gap A for positive
 words (reformulation G1), plus the purely-periodic corollary machinery.
 
 All polynomial arithmetic is integer Laurent-dict arithmetic written from

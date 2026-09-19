@@ -2,7 +2,7 @@ import sys, math
 sys.path.insert(0,"<path>")
 from downward_closure import phi_divides
 import fastlam
-# Agent B Theorem: n>=7, n!=6, Phi_n | C  =>  (1) Phi_n|(A-D)  (2) Phi_n|B  (3) n|s
+# Route B theorem: n>=7, n!=6, Phi_n | C  =>  (1) Phi_n|(A-D)  (2) Phi_n|B  (3) n|s
 # B never tested n=8,16,32.  These are >=7 and !=6, so fully in scope.
 def sub(P,Q):
     ks=set(P)|set(Q); return {k:P.get(k,0)-Q.get(k,0) for k in ks if P.get(k,0)-Q.get(k,0)!=0}

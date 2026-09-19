@@ -1,5 +1,5 @@
 """
-Agent A, T2. Witnesses that the converse of the valuation corollary fails:
+T2 (route A). Witnesses that the converse of the valuation corollary fails:
 v_p(s) >= a does NOT imply Phi_{p^a} | C. Scans d <= 400 for
 (p, a) in {(2,3), (3,2), (5,2)} looking for d with v_p(s) >= a and
 Phi_{p^a} not dividing C, and prints the first few witnesses of each.

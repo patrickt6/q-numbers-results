@@ -1,5 +1,5 @@
 """
-Agent B, T2. Out-of-population test: hunt for Phi_49 | C (p = 7, a = 2),
+T2 (route B). Out-of-population test: hunt for Phi_49 | C (p = 7, a = 2),
 a stratum with ZERO instances in the 608-hit population (which contains
 odd-p data only for p in {3, 5}).
 

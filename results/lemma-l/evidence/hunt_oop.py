@@ -1,5 +1,5 @@
 """
-Agent A, T2. Out-of-population hunt for odd prime-power hits, d > 3000.
+T2 (route A). Out-of-population hunt for odd prime-power hits, d > 3000.
 
 Targets every odd prime power the existing 608-hit population never reached
 or barely reached: n in {9, 27, 81} (p=3), {25, 125} (p=5), {49} (p=7),

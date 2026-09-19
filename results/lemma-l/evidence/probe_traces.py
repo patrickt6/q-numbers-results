@@ -1,5 +1,5 @@
 """
-Agent B, T2. Floating-point sanity probe (NOT part of the proof; the proof
+T2 (route B). Floating-point sanity probe (NOT part of the proof; the proof
 uses only exact classical facts) of the trace bookkeeping in PROOF.md:
 
   - SL2 lifts of the specialized generators at q = zeta_n have the trace
