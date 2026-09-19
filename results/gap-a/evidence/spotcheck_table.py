@@ -5,7 +5,7 @@
    monomial rows satisfy r = q^((a-d')/c), i.e. the exponent is the trace
    of the fixed quadratic irrational; non-monomial rows have a^2 != 1 mod c.
 2. Confirm the two non-monomial automorphs are positive words in R, L
-   (so the agentB corollary applies to them and their non-monomial ratio is
+   (so the route-B corollary applies to them and their non-monomial ratio is
    a theorem, not an observation).
 """
 from __future__ import annotations

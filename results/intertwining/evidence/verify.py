@@ -389,7 +389,7 @@ print()
 print("=" * 72)
 print("SECTION 2b: full falsification list, criterion only")
 print("=" * 72)
-# Automorphs for the last five taken from attempts/opus/falsification-record.json
+# Automorphs for the last five taken from attempts/attempt-1/falsification-record.json
 # and re-verified to fix their x; first four already treated above.
 EXTRA = [
     ("3+sqrt(3)",      (3, 1, 3),   [[5, -6], [1, -1]],      False),

@@ -15,11 +15,11 @@ Imports qperiod.py from the T3 folder read-only. No files there are modified.
 import sys
 import sympy as sp
 
-T3_OPUS = (
+T3_ATTEMPT = (
     "<path>"
-    "2026-07-21-next-steps/problems/T3-quadratic-conjecture/attempts/opus"
+    "2026-07-21-next-steps/problems/T3-quadratic-conjecture/attempts/attempt-1"
 )
-sys.path.insert(0, T3_OPUS)
+sys.path.insert(0, T3_ATTEMPT)
 
 import qperiod as qp  # noqa: E402
 

@@ -3,7 +3,7 @@
 `proof_verification.sl2_word` (READ-ONLY, imported and reused elsewhere in
 this folder) implements the same Euclidean-algorithm decomposition, but does
 every step as an `sp.Matrix` multiplication. That is pure integer arithmetic
-wrapped in sympy's general symbolic machinery, and the opus/README.md notes
+wrapped in sympy's general symbolic machinery, and the attempt-1/README.md notes
 it as the throughput bottleneck for widening the trace-zero scan.
 
 `sl2_word_fast` below is the identical algorithm (same recursion, same

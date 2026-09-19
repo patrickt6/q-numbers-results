@@ -2,7 +2,7 @@
 
 Trace-zero here means x' = -x (Galois conjugate is the negative), equivalently
 x^2 is rational with no linear term, equivalently the fundamental automorph
-M of x has equal diagonal entries a = d'. Opus's `attempts/opus/README.md`
+M of x has equal diagonal entries a = d'. Attempt 1's `attempts/attempt-1/README.md`
 proves this is equivalent to N M N = M^(-1) and to x = b0*sqrt(D) for
 rational b0, squarefree D; the proof is two lines (see there). On that family
 the Pell-reduction proof (03-pell.tex, thm:pell) applies verbatim, so
@@ -19,7 +19,7 @@ the D grid to squarefree values loses nothing versus explicitly running
 non-squarefree D (this is checked directly by `non_squarefree_is_redundant`
 below, not merely asserted).
 
-This is opus's own recommended follow-up (README.md: "This scan is cheap and
+This is attempt 1's own recommended follow-up (README.md: "This scan is cheap and
 deserves widening... the cost driver is sl2_word running in sympy... which is
 the obvious thing to optimize before scaling up"). This script does exactly
 that: `fast_word.sl2_word_fast` (pure Python ints, verified against
@@ -41,9 +41,9 @@ from math import gcd, isqrt
 
 import sympy as sp
 
-OPUS_DIR = "<path>"
+ATTEMPT1_DIR = "<path>"
 PAPERGAPS_CODE = "<path>"
-for _p in (OPUS_DIR, PAPERGAPS_CODE):
+for _p in (ATTEMPT1_DIR, PAPERGAPS_CODE):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 

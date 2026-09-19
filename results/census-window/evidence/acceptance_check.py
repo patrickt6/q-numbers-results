@@ -1,4 +1,4 @@
-"""STEP 3 acceptance check for the regenerated census (HANDOFF-5090-v2.md).
+"""STEP 3 acceptance check for the regenerated census (the census v2 task spec).
 
 The point of the exercise. The old engine's hard-coded Laurent floor made it
 structurally incapable of reporting anything but tail = 6 above |x| = 12: a
@@ -10,7 +10,7 @@ So the decisive test is not "did the verdicts change" but "does the tail-index
 distribution above |x| = 12 now have structure". A single value, or 100% at
 degree 6, means the bug survived and the run is worthless.
 
-Note on the handoff's inline snippet: it reads only `shard_0.csv`, i.e. one of
+Note on the task spec's inline snippet: it reads only `shard_0.csv`, i.e. one of
 the worker shards, so it samples roughly 1/22 of each grid and cannot see the
 full distribution. This reads every shard.
 
@@ -118,7 +118,7 @@ report("above |x|=12 shows more than one distinct tail value", len(above) > 1,
        f"{len(above)} distinct")
 report("above |x|=12 is NOT a point mass at tail=6 (zero exceptions was the artifact)",
        exceptions > 0, f"{exceptions} exceptions to tail=6")
-# On the size of the spread. The handoff asks for a spread "comparable to the 70
+# On the size of the spread. The task spec asks for a spread "comparable to the 70
 # distinct values seen below |x| = 12". That criterion is mis-specified, and
 # applying it literally would fail a correct run.
 #

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 r"""
-T13 Lemma N structural probe (Agent B).
+T13 Lemma N structural probe (route B).
 
 Reconstructs the q-automorph entries A, C, D (up to a global monomial unit,
 which is irrelevant to divisibility and factorization) from the VALIDATED

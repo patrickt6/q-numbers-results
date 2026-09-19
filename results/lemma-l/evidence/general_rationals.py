@@ -1,5 +1,5 @@
 """
-Agent A, T2. Discriminating test: is downward closure a property of MGO
+T2 (route A). Discriminating test: is downward closure a property of MGO
 q-denominators in general, or of Pell automorphs specifically?
 
 The automorph entry C equals, up to sign and a monomial, the MGO denominator

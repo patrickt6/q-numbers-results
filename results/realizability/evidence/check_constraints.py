@@ -1,5 +1,5 @@
 """
-Confirmation checks for T4 (Agent B). Reads the 166-row proper-collapse table
+Confirmation checks for T4 (route B). Reads the 166-row proper-collapse table
 straight out of the WP3 mining report (d, s_d, a, T) and verifies the
 constraints derived from the proved results of section 08.
 

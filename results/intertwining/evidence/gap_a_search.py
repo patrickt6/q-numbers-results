@@ -1,7 +1,7 @@
 """Wide search for a Gap A violation: a nonzero-trace automorph satisfying
-fable's rationality criterion (P).
+attempt 2's rationality criterion (P).
 
-Background. `attempts/fable/characterization.tex` (theorem summarized in the
+Background. `attempts/attempt-2/characterization.tex` (theorem summarized in the
 coordinator's relay message) proves: if `G(x) = [x]_q + [-x]_q` is a rational
 function of q at all, then, writing `Mq = rho(automorph of x) = [[A,B],[C,D]]`
 and `det(Mq) = q^m`,
@@ -9,7 +9,7 @@ and `det(Mq) = q^m`,
     (P):   q^(m+1) * C(1/q) = +- C(q)          exactly, as an identity in q.
 
 This is NECESSARY for finiteness, checkable directly from the automorph with
-no series, no window, and no reference to G(x) itself. Fable's own scan found
+no series, no window, and no reference to G(x) itself. Attempt 2's own scan found
 (P) holds if and only if the automorph is trace-zero (a = d), on 4072
 positive R/L words (length 2..11, both letters present) and 336 quadratic
 forms (A in 1..6, B,C in -6..6). That equivalence is NOT proved in general;
@@ -26,19 +26,19 @@ direct dict-level determinant + criterion check. This is cheaper per
 candidate than anything in `broad_sweep.py`, since it never computes or
 cancels (A-D)/C, only the single entry C and the determinant exponent m.
 
-Two search modes, both wider than fable's boxes:
+Two search modes, both wider than attempt 2's boxes:
 
   - `word_scan`: exhaustive over words in {R, L} (single-step generators,
     R=[[1,1],[0,1]], L=[[1,0],[1,1]]) containing both letters, up to a length
-    bound well past fable's 11 (default 20, exhaustive; 2^20 ~ 1e6 is the
+    bound well past attempt 2's 11 (default 20, exhaustive; 2^20 ~ 1e6 is the
     practical ceiling for exhaustive enumeration at this cost per candidate).
   - `form_scan`: primitive binary quadratic forms (A, B, C), nonsquare
-    positive discriminant, over a box well past fable's A in 1..6, B,C in
+    positive discriminant, over a box well past attempt 2's A in 1..6, B,C in
     -6..6 (default A in 1..40, B in -40..40 with B != 0 so every case is
     genuinely nonzero-trace, C in -40..40).
 
 Requires no PYTHONPATH (imports only from this folder and read-only from
-`attempts/opus`, `attempts/fable` is not imported here since its verify.py
+`attempts/attempt-1`, `attempts/attempt-2` is not imported here since its verify.py
 runs as a top-level script; the small pieces needed are reimplemented).
 """
 from __future__ import annotations

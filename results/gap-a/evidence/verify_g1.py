@@ -1,4 +1,4 @@
-"""Exact verification of every lemma in the agentB Gap A proof for positive words.
+"""Exact verification of every lemma in the route-B Gap A proof for positive words.
 
 Everything is pure integer Laurent-dict arithmetic ({exponent: coeff}); no
 window, no series, no floating point. The script is self-contained except for
