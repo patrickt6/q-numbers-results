@@ -11,7 +11,7 @@ l ∈ {2,3,4,5},  p prime,  a ≥ 1,  k = p^a l
 S = S_i, every i ≥ 1 and every integer word
 ```
 
-## STATE: statement_only (`l = 2, 3, 4` are proved outright; `l = 5` is not yet)
+## STATE: proved (`l = 2, 3, 4, 5`; the theorem is `dc_theorem_a_all`, with no hypothesis)
 
 The write-up's proof has two steps.
 
@@ -21,28 +21,34 @@ The write-up's proof has two steps.
 * **Step 2 (finite orbit and content).**  For `l ∈ {2,3,4,5}`, the values `S(ω_l)`
   over all words form a finite set (sizes 3, 7, 9, 31) whose nonzero elements have content 1
   in `ℤ[ω_l]`, so none is divisible by a rational prime; hence `S(ω_l) = 0`.
-  **Proved for `l = 2, 3, 4`** (`step2_two`, `step2_three`, `step2_four`), giving the
-  unconditional theorems `dc_theorem_a_two`, `dc_theorem_a_three`, `dc_theorem_a_four`.
-  **Not yet formalised for `l = 5`**, which still enters `dc_theorem_a` as the named hypothesis
-  `Step2 l`.
+  **Proved for `l = 2, 3, 4, 5`** (`step2_two`, `step2_three`, `step2_four`, `step2_five`), giving
+  the unconditional theorems `dc_theorem_a_two`, `dc_theorem_a_three`, `dc_theorem_a_four`,
+  `dc_theorem_a_five`, and `dc_theorem_a_all` (all four, no hypothesis).
   * `l = 2`: explicit closure of the 12 reachable states of the recurrence at `q = -1`
     (`P2_closed`, checked by `decide`).
-  * `l = 3, 4` (and the machinery for `l = 5`): states `(S_{i-1}, S_i, c_i mod l)` are stored with
+  * `l = 3, 4, 5`: states `(S_{i-1}, S_i, c_i mod l)` are stored with
     `S` in integer coordinates over the power basis of `ℤ[ω_l]` (`step_rel` links them to the
     recurrence in `ℤ[q, q⁻¹]` evaluated at `ω_l`); the reachable set is computed by a
     breadth-first search inside Lean (`bfs`, `P3`, `P4`: 72 and 96 states for `l = 3, 4`) and closure under all
     `l` residues of the next quotient is checked by `decide +kernel` (`P3_closed`, `P4_closed`); every
-    reachable `S` is `0` or has coordinates of gcd `1` (`P3_vals`).  The finishing step
+    reachable `S` is `0` or has coordinates of gcd `1` (`P3_vals`).  For `l = 5` (600 states, 31 values
+    in the write-up) the set is a candidate given as a search-tree literal `Tr5` (states are stored
+    under integer keys `encS`, membership by `KTree.lookup`, `KTree.mem_of_lookup` needs no ordering
+    invariant), produced by an external breadth-first search; a search run inside the kernel did not
+    finish in reasonable memory.  Soundness does not depend on how the literal was produced: the
+    kernel checks that every successor of every listed state, for all five residues, is listed
+    (`Pk5_closed`), that the start state is listed (`Pk5_zero`), and that every listed `S` is `0` or
+    of gcd `1` (`Pk5_vals`).  **Build cost:** the kernel check of `Pk5_closed` is memory hungry (measured
+    in the running report, see `status.json` `build_notes`).  The finishing step
     (`content_coeff`) uses that `ℤ[ζ]` is the integral closure of `ℤ` in `ℚ(ζ)` (Mathlib,
     `IsCyclotomicExtension.Rat.isIntegralClosure_adjoin_singleton`) and that `Φ_l` is monic of
     degree `φ(l)`, to show that `S(ζ) = p y` with `y` integral forces `p` to divide every
     power-basis coordinate.  This closes the write-up's remark that Step 1 gives an algebraic
     integer `y`, not an element of `ℤ[ω_l]`.
 
-`dc_theorem_a` is the full statement of `statement.tex` with `Step2 l` as an explicit
-hypothesis, and `dc_of_step2` is its reduction to Step 2.  Because a hypothesis carries the
-hard half, the file is `statement_only` and MUST NOT be read as a proof of the theorem.
-Step 1 and, for `l = 2, 3, 4`, the whole theorem are proved.
+`dc_theorem_a_all` is the full statement of `statement.tex` with no hypothesis.  `dc_theorem_a` is
+the same statement with `Step2 l` as an explicit hypothesis (kept because it is the reduction
+`dc_of_step2` in the shape of the statement); `dc_theorem_a_all` supplies `Step2 l` by cases.
 
 ## Faithfulness of `Step2`
 
@@ -785,6 +791,187 @@ theorem dc_theorem_a_four {p a : ℕ} (hp : p.Prime) (w : List ℤ)
     Polynomial.toLaurent (Polynomial.cyclotomic 4 ℤ) ∣ S w :=
   dc_of_step2 hp (by norm_num) step2_four w hdiv
 
+
+
+/-- Coordinates `(a, b, c, d)` stand for `a + b ω + c ω² + d ω³` in `Z[ω_5]`; multiplication by `ω`
+(`ω⁴ = -1 - ω - ω² - ω³`). -/
+def mulW5 (v : ℤ × ℤ × ℤ × ℤ) : ℤ × ℤ × ℤ × ℤ := (-v.2.2.2, v.1 - v.2.2.2, v.2.1 - v.2.2.2, v.2.2.1 - v.2.2.2)
+
+def cont4 (v : ℤ × ℤ × ℤ × ℤ) : Bool :=
+  Nat.gcd (Nat.gcd (Int.gcd v.1 v.2.1) v.2.2.1.natAbs) v.2.2.2.natAbs == 1
+
+theorem root5_sum (ζ : ℂ) (hζ : IsPrimitiveRoot ζ 5) : 1 + ζ + ζ ^ 2 + ζ ^ 3 + ζ ^ 4 = 0 := by
+  have h5 : ζ ^ 5 = 1 := hζ.pow_eq_one
+  have hne : ζ - 1 ≠ 0 := sub_ne_zero.mpr (hζ.ne_one (by norm_num))
+  apply mul_left_cancel₀ hne
+  linear_combination h5
+
+noncomputable def val4 (ζ : ℂ) : ℤ × ℤ × ℤ × ℤ →+ ℂ :=
+  AddMonoidHom.mk' (fun v => (v.1 : ℂ) + (v.2.1 : ℂ) * ζ + (v.2.2.1 : ℂ) * ζ ^ 2 + (v.2.2.2 : ℂ) * ζ ^ 3) (by
+    intro x y; simp only [Prod.fst_add, Prod.snd_add]; push_cast; ring)
+
+noncomputable def poly4 (v : ℤ × ℤ × ℤ × ℤ) : Polynomial ℤ :=
+  Polynomial.C v.1 + Polynomial.C v.2.1 * Polynomial.X + Polynomial.C v.2.2.1 * Polynomial.X ^ 2 +
+    Polynomial.C v.2.2.2 * Polynomial.X ^ 3
+
+theorem poly4_deg (v : ℤ × ℤ × ℤ × ℤ) : (poly4 v).natDegree ≤ 3 := by
+  unfold poly4; compute_degree
+
+theorem cont4_spec (v : ℤ × ℤ × ℤ × ℤ) (h : cont4 v = true) (p : ℕ) (hp : p.Prime)
+    (hd : ∀ i, (p : ℤ) ∣ (poly4 v).coeff i) : False := by
+  have c0 : (poly4 v).coeff 0 = v.1 := by
+    simp only [poly4, Polynomial.coeff_add, Polynomial.coeff_C_zero, Polynomial.coeff_C_mul,
+      Polynomial.coeff_X_zero, Polynomial.coeff_X_pow]; simp
+  have c1 : (poly4 v).coeff 1 = v.2.1 := by
+    simp only [poly4, Polynomial.coeff_add, Polynomial.coeff_C, Polynomial.coeff_C_mul,
+      Polynomial.coeff_X_one, Polynomial.coeff_X_pow]; simp
+  have c2 : (poly4 v).coeff 2 = v.2.2.1 := by
+    simp only [poly4, Polynomial.coeff_add, Polynomial.coeff_C, Polynomial.coeff_C_mul,
+      Polynomial.coeff_X, Polynomial.coeff_X_pow]; simp
+  have c3 : (poly4 v).coeff 3 = v.2.2.2 := by
+    simp only [poly4, Polynomial.coeff_add, Polynomial.coeff_C, Polynomial.coeff_C_mul,
+      Polynomial.coeff_X, Polynomial.coeff_X_pow]; simp
+  have h0 := hd 0
+  have h1 := hd 1
+  have h2 := hd 2
+  have h3 := hd 3
+  rw [c0] at h0
+  rw [c1] at h1
+  rw [c2] at h2
+  rw [c3] at h3
+  have hg : Nat.gcd (Nat.gcd (Int.gcd v.1 v.2.1) v.2.2.1.natAbs) v.2.2.2.natAbs = 1 := by
+    simpa [cont4] using h
+  have g1 : p ∣ Int.gcd v.1 v.2.1 := by exact_mod_cast Int.dvd_gcd h0 h1
+  have g2 : p ∣ Nat.gcd (Int.gcd v.1 v.2.1) v.2.2.1.natAbs := Nat.dvd_gcd g1 (Int.natCast_dvd.mp h2)
+  have g3 : p ∣ Nat.gcd (Nat.gcd (Int.gcd v.1 v.2.1) v.2.2.1.natAbs) v.2.2.2.natAbs :=
+    Nat.dvd_gcd g2 (Int.natCast_dvd.mp h3)
+  rw [hg] at g3
+  exact hp.ne_one (Nat.dvd_one.mp g3)
+
+theorem step2_five_of_closed
+    (P : List ((ℤ × ℤ × ℤ × ℤ) × (ℤ × ℤ × ℤ × ℤ) × ℕ))
+    (hP0 : (((0 : ℤ), (0 : ℤ), (0 : ℤ), (0 : ℤ)), ((1 : ℤ), (0 : ℤ), (0 : ℤ), (0 : ℤ)), 0) ∈ P)
+    (hclosed : ∀ st ∈ P, ∀ r ∈ List.range 5, stepM 5 mulW5 st r ∈ P)
+    (hvals : ∀ st ∈ P, st.2.1 = 0 ∨ cont4 st.2.1 = true) : Step2 5 := by
+  refine step2_of_closed (by norm_num) mulW5 (1, 0, 0, 0) cont4 P hP0 hclosed hvals ?_
+  intro ζ hζ
+  have hΦ := root5_sum ζ hζ
+  refine ⟨val4 ζ, poly4, ?_, ?_, ?_, ?_, ?_⟩
+  · intro v
+    simp only [val4, mulW5, AddMonoidHom.mk'_apply]
+    push_cast
+    linear_combination (-(v.2.2.2 : ℂ)) * hΦ
+  · simp [val4]
+  · intro v; simp [val4, poly4]
+  · intro v
+    have := poly4_deg v
+    have h5 : Nat.totient 5 = 4 := by decide
+    omega
+  · intro v hv p hp hd; exact cont4_spec v hv p hp hd
+
+
+/-! ### The reachable set for `l = 5`, stored by integer keys for fast membership tests -/
+
+/-- Key of a coordinate vector (coordinates in `[-8, 7]`). -/
+def enc4 (v : ℤ × ℤ × ℤ × ℤ) : ℕ :=
+  (v.1 + 8).toNat + 16 * ((v.2.1 + 8).toNat + 16 * ((v.2.2.1 + 8).toNat + 16 * (v.2.2.2 + 8).toNat))
+
+def dec4 (n : ℕ) : ℤ × ℤ × ℤ × ℤ :=
+  (((n % 16 : ℕ) : ℤ) - 8, ((n / 16 % 16 : ℕ) : ℤ) - 8, ((n / 256 % 16 : ℕ) : ℤ) - 8,
+    ((n / 4096 % 16 : ℕ) : ℤ) - 8)
+
+def encS (st : (ℤ × ℤ × ℤ × ℤ) × (ℤ × ℤ × ℤ × ℤ) × ℕ) : ℕ :=
+  enc4 st.1 + 65536 * (enc4 st.2.1 + 65536 * st.2.2)
+
+def decS (n : ℕ) : (ℤ × ℤ × ℤ × ℤ) × (ℤ × ℤ × ℤ × ℤ) × ℕ :=
+  (dec4 (n % 65536), dec4 (n / 65536 % 65536), n / 65536 / 65536)
+
+/-- A binary tree of keys, used only as a fast membership structure (no ordering invariant is needed
+for soundness). -/
+inductive KTree
+  | leaf : KTree
+  | node : KTree → ℕ → KTree → KTree
+
+def KTree.toList : KTree → List ℕ
+  | .leaf => []
+  | .node l k r => l.toList ++ [k] ++ r.toList
+
+def KTree.lookup : KTree → ℕ → Bool
+  | .leaf, _ => false
+  | .node l x r, k => if k = x then true else if k < x then l.lookup k else r.lookup k
+
+theorem KTree.mem_of_lookup : ∀ (t : KTree) (k : ℕ), t.lookup k = true → k ∈ t.toList
+  | .leaf, _, h => by simp [KTree.lookup] at h
+  | .node l x r, k, h => by
+    simp only [KTree.lookup] at h
+    split_ifs at h with h1 h2
+    · simp [KTree.toList, h1]
+    · have := KTree.mem_of_lookup l k h
+      simp [KTree.toList, this]
+    · have := KTree.mem_of_lookup r k h
+      simp [KTree.toList, this]
+
+/-- The keys of the 600 reachable states, as a search tree literal.  The literal was produced by an
+external breadth-first search of the same recurrence (states `(S_{i-1}, S_i, c_i mod 5)` in the
+coordinates of `mulW5`, keys as `encS`); it is only a candidate set.  Soundness rests on the
+kernel-checked closure `Pk5_closed` and `Pk5_zero` below: every key decodes and re-encodes to
+itself, every successor of every state lies in the set, and the start state does. -/
+def Tr5 : KTree :=
+  (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 1987545497 KTree.leaf) 2003273881 KTree.leaf) 2004322440 (KTree.node KTree.leaf 2004322441 KTree.leaf)) 2004322457 (KTree.node (KTree.node (KTree.node KTree.leaf 2004322713 KTree.leaf) 2004326809 KTree.leaf) 2004387992 (KTree.node KTree.leaf 2004388248 KTree.leaf))) 2004388249 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2004392345 KTree.leaf) 2004392361 KTree.leaf) 2005436808 (KTree.node KTree.leaf 2005436824 KTree.leaf)) 2005440920 (KTree.node (KTree.node KTree.leaf 2005440921 KTree.leaf) 2005441177 (KTree.node KTree.leaf 2022213768 KTree.leaf)))) 2022217864 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2022218120 KTree.leaf) 2022218136 KTree.leaf) 2022218137 (KTree.node KTree.leaf 2022283672 KTree.leaf)) 2023266696 (KTree.node (KTree.node (KTree.node KTree.leaf 2272753544 KTree.leaf) 2272753800 KTree.leaf) 2272753801 (KTree.node KTree.leaf 2272757897 KTree.leaf))) 2272757913 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2272819336 KTree.leaf) 2272819352 KTree.leaf) 2272823448 (KTree.node KTree.leaf 2272823449 KTree.leaf)) 2272823705 (KTree.node (KTree.node KTree.leaf 2273867912 KTree.leaf) 2273872008 (KTree.node KTree.leaf 2273872264 KTree.leaf))))) 2273872280 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2273872281 KTree.leaf) 2273937816 KTree.leaf) 2289530744 (KTree.node KTree.leaf 2289530760 KTree.leaf)) 2289534856 (KTree.node (KTree.node (KTree.node KTree.leaf 2289534857 KTree.leaf) 2289535113 KTree.leaf) 2289596296 (KTree.node KTree.leaf 2289600392 KTree.leaf))) 2289600648 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2289600664 KTree.leaf) 2289600665 KTree.leaf) 2290579320 (KTree.node KTree.leaf 2290583416 KTree.leaf)) 2290583672 (KTree.node (KTree.node KTree.leaf 2290583688 KTree.leaf) 2290583689 (KTree.node KTree.leaf 2290644855 KTree.leaf)))) 2290645128 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2290648968 KTree.leaf) 2290649208 KTree.leaf) 2290649223 (KTree.node KTree.leaf 2290649225 KTree.leaf)) 2290649240 (KTree.node (KTree.node (KTree.node KTree.leaf 2290649480 KTree.leaf) 2290653320 KTree.leaf) 2290653593 (KTree.node KTree.leaf 2290714759 KTree.leaf))) 2290714760 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2290714776 KTree.leaf) 2290715032 KTree.leaf) 2290719128 (KTree.node KTree.leaf 2291697783 KTree.leaf)) 2291697784 (KTree.node (KTree.node KTree.leaf 2291697800 KTree.leaf) 2291698056 (KTree.node KTree.leaf 2291702152 KTree.leaf)))))) 2291763335 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2291763591 KTree.leaf) 2291763592 KTree.leaf) 2291767688 (KTree.node KTree.leaf 2291767704 KTree.leaf)) 2307360632 (KTree.node (KTree.node (KTree.node KTree.leaf 2307426167 KTree.leaf) 2307426168 KTree.leaf) 2307426184 (KTree.node KTree.leaf 2307426440 KTree.leaf))) 2307430536 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2308474743 KTree.leaf) 2308474999 KTree.leaf) 2308475000 (KTree.node KTree.leaf 2308479096 KTree.leaf)) 2308479112 (KTree.node (KTree.node KTree.leaf 2308540535 KTree.leaf) 2308540551 (KTree.node KTree.leaf 2308544647 KTree.leaf)))) 2308544648 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2308544904 KTree.leaf) 2558031752 KTree.leaf) 2559014776 (KTree.node KTree.leaf 2559080311 KTree.leaf)) 2559080312 (KTree.node (KTree.node (KTree.node KTree.leaf 2559080328 KTree.leaf) 2559080584 KTree.leaf) 2559084680 (KTree.node KTree.leaf 2575857271 KTree.leaf))) 2575857527 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2575857528 KTree.leaf) 2575861624 KTree.leaf) 2575861640 (KTree.node KTree.leaf 2576906087 KTree.leaf)) 2576906103 (KTree.node (KTree.node KTree.leaf 2576910199 KTree.leaf) 2576910200 (KTree.node KTree.leaf 2576910456 KTree.leaf))))) 2576971639 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 2576975735 KTree.leaf) 2576975991 KTree.leaf) 2576976007 (KTree.node KTree.leaf 2576976008 KTree.leaf)) 2578024567 (KTree.node (KTree.node (KTree.node KTree.leaf 2593752951 KTree.leaf) 6282508168 KTree.leaf) 6298236792 (KTree.node KTree.leaf 6299285367 KTree.leaf))) 6299285368 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6299285384 KTree.leaf) 6299285640 KTree.leaf) 6299289736 (KTree.node KTree.leaf 6299350920 KTree.leaf)) 6299351176 (KTree.node (KTree.node KTree.leaf 6299351177 KTree.leaf) 6299355273 (KTree.node KTree.leaf 6299355289 KTree.leaf)))) 6300399752 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6300399768 KTree.leaf) 6300403864 KTree.leaf) 6300403865 (KTree.node KTree.leaf 6300404121 KTree.leaf)) 6317176968 (KTree.node (KTree.node KTree.leaf 6317181064 KTree.leaf) 6317181320 (KTree.node KTree.leaf 6317181336 KTree.leaf))) 6317181337 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6317246873 KTree.leaf) 6318229912 KTree.leaf) 6567720567 (KTree.node KTree.leaf 6567720823 KTree.leaf)) 6567720824 (KTree.node (KTree.node KTree.leaf 6567724920 KTree.leaf) 6567724936 (KTree.node KTree.leaf 6567786360 KTree.leaf))))))) 6567786376 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6567790472 KTree.leaf) 6567790473 KTree.leaf) 6567790729 (KTree.node KTree.leaf 6568834952 KTree.leaf)) 6568839048 (KTree.node (KTree.node (KTree.node KTree.leaf 6568839304 KTree.leaf) 6568839320 KTree.leaf) 6568839321 (KTree.node KTree.leaf 6568904857 KTree.leaf))) 6584498023 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6584498039 KTree.leaf) 6584502135 KTree.leaf) 6584502136 (KTree.node KTree.leaf 6584502392 KTree.leaf)) 6584563576 (KTree.node (KTree.node KTree.leaf 6584567672 KTree.leaf) 6584567928 (KTree.node KTree.leaf 6584567944 KTree.leaf)))) 6584567945 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6585546615 KTree.leaf) 6585550711 KTree.leaf) 6585550967 (KTree.node KTree.leaf 6585550983 KTree.leaf)) 6585550984 (KTree.node (KTree.node (KTree.node KTree.leaf 6585612151 KTree.leaf) 6585612424 KTree.leaf) 6585616264 (KTree.node KTree.leaf 6585616504 KTree.leaf))) 6585616519 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6585616521 KTree.leaf) 6585616536 KTree.leaf) 6585616776 (KTree.node KTree.leaf 6585620616 KTree.leaf)) 6585620889 (KTree.node (KTree.node KTree.leaf 6585682056 KTree.leaf) 6585682057 (KTree.node KTree.leaf 6585682073 KTree.leaf))))) 6585682329 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6585686425 KTree.leaf) 6586665095 KTree.leaf) 6586665096 (KTree.node KTree.leaf 6586665112 KTree.leaf)) 6586665368 (KTree.node (KTree.node (KTree.node KTree.leaf 6586669464 KTree.leaf) 6586730648 KTree.leaf) 6586730904 (KTree.node KTree.leaf 6586730905 KTree.leaf))) 6586735001 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6586735017 KTree.leaf) 6602328183 KTree.leaf) 6602393719 (KTree.node KTree.leaf 6602393720 KTree.leaf)) 6602393736 (KTree.node (KTree.node KTree.leaf 6602393992 KTree.leaf) 6602398088 (KTree.node KTree.leaf 6603442311 KTree.leaf)))) 6603442567 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6603442568 KTree.leaf) 6603446664 KTree.leaf) 6603446680 (KTree.node KTree.leaf 6603508104 KTree.leaf)) 6603508120 (KTree.node (KTree.node KTree.leaf 6603512216 KTree.leaf) 6603512217 (KTree.node KTree.leaf 6603512473 KTree.leaf))) 6853003128 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6853986167 KTree.leaf) 6854051703 KTree.leaf) 6854051704 (KTree.node KTree.leaf 6854051720 KTree.leaf)) 6854051976 (KTree.node (KTree.node KTree.leaf 6854056072 KTree.leaf) 6870828919 (KTree.node KTree.leaf 6870829175 KTree.leaf)))))) 6870829176 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6870833272 KTree.leaf) 6870833288 KTree.leaf) 6871877751 (KTree.node KTree.leaf 6871877767 KTree.leaf)) 6871881863 (KTree.node (KTree.node (KTree.node KTree.leaf 6871881864 KTree.leaf) 6871882120 KTree.leaf) 6871943304 (KTree.node KTree.leaf 6871947400 KTree.leaf))) 6871947656 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 6871947672 KTree.leaf) 6871947673 KTree.leaf) 6872996248 (KTree.node KTree.leaf 6888724872 KTree.leaf)) 10577479544 (KTree.node (KTree.node KTree.leaf 10593208183 KTree.leaf) 10594256759 (KTree.node KTree.leaf 10594256760 KTree.leaf)))) 10594256776 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10594257032 KTree.leaf) 10594261128 KTree.leaf) 10594317943 (KTree.node KTree.leaf 10594318199 KTree.leaf)) 10594318200 (KTree.node (KTree.node (KTree.node KTree.leaf 10594322296 KTree.leaf) 10594322312 KTree.leaf) 10595366776 (KTree.node KTree.leaf 10595366792 KTree.leaf))) 10595370888 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10595370889 KTree.leaf) 10595371145 KTree.leaf) 10612144008 (KTree.node KTree.leaf 10612148104 KTree.leaf)) 10612148360 (KTree.node (KTree.node KTree.leaf 10612148376 KTree.leaf) 10612148377 (KTree.node KTree.leaf 10612209544 KTree.leaf))))) 10613196953 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10862692215 KTree.leaf) 10862692471 KTree.leaf) 10862692472 (KTree.node KTree.leaf 10862696568 KTree.leaf)) 10862696584 (KTree.node (KTree.node (KTree.node KTree.leaf 10862753639 KTree.leaf) 10862753655 KTree.leaf) 10862757751 (KTree.node KTree.leaf 10862757752 KTree.leaf))) 10862758008 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10863802232 KTree.leaf) 10863806328 KTree.leaf) 10863806584 (KTree.node KTree.leaf 10863806600 KTree.leaf)) 10863806601 (KTree.node (KTree.node KTree.leaf 10863867768 KTree.leaf) 10879469687 (KTree.node KTree.leaf 10879469703 KTree.leaf)))) 10879473799 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10879473800 KTree.leaf) 10879474056 KTree.leaf) 10879530871 (KTree.node KTree.leaf 10879534967 KTree.leaf)) 10879535223 (KTree.node (KTree.node KTree.leaf 10879535239 KTree.leaf) 10879535240 (KTree.node KTree.leaf 10880518280 KTree.leaf))) 10880522376 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10880522632 KTree.leaf) 10880522648 KTree.leaf) 10880522649 (KTree.node KTree.leaf 10880579447 KTree.leaf)) 10880579720 (KTree.node (KTree.node KTree.leaf 10880583560 KTree.leaf) 10880583800 (KTree.node KTree.leaf 10880583815 KTree.leaf)))))))) 10880583817 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10880583832 KTree.leaf) 10880584072 KTree.leaf) 10880587912 (KTree.node KTree.leaf 10880588185 KTree.leaf)) 10880644983 (KTree.node (KTree.node (KTree.node KTree.leaf 10880644984 KTree.leaf) 10880645000 KTree.leaf) 10880645256 (KTree.node KTree.leaf 10880649352 KTree.leaf))) 10881632392 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10881632393 KTree.leaf) 10881632409 KTree.leaf) 10881632665 (KTree.node KTree.leaf 10881636761 KTree.leaf)) 10881693576 (KTree.node (KTree.node KTree.leaf 10881693832 KTree.leaf) 10881693833 (KTree.node KTree.leaf 10881697929 KTree.leaf)))) 10881697945 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10897299864 KTree.leaf) 10897361031 KTree.leaf) 10897361032 (KTree.node KTree.leaf 10897361048 KTree.leaf)) 10897361304 (KTree.node (KTree.node (KTree.node KTree.leaf 10897365400 KTree.leaf) 10898409624 KTree.leaf) 10898409880 (KTree.node KTree.leaf 10898409881 KTree.leaf))) 10898413977 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 10898413993 KTree.leaf) 10898471048 KTree.leaf) 10898471064 (KTree.node KTree.leaf 10898475160 KTree.leaf)) 10898475161 (KTree.node (KTree.node KTree.leaf 10898475417 KTree.leaf) 11147970679 (KTree.node KTree.leaf 11148958088 KTree.leaf))))) 11149019255 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 11149019256 KTree.leaf) 11149019272 KTree.leaf) 11149019528 (KTree.node KTree.leaf 11149023624 KTree.leaf)) 11165796487 (KTree.node (KTree.node (KTree.node KTree.leaf 11165796743 KTree.leaf) 11165796744 KTree.leaf) 11165800840 (KTree.node KTree.leaf 11165800856 KTree.leaf))) 11166845320 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 11166845336 KTree.leaf) 11166849432 KTree.leaf) 11166849433 (KTree.node KTree.leaf 11166849689 KTree.leaf)) 11166906504 (KTree.node (KTree.node KTree.leaf 11166910600 KTree.leaf) 11166910856 (KTree.node KTree.leaf 11166910872 KTree.leaf)))) 11166910873 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 11167959449 KTree.leaf) 11183688088 KTree.leaf) 14872447095 (KTree.node KTree.leaf 14888180104 KTree.leaf)) 14889224311 (KTree.node (KTree.node KTree.leaf 14889224312 KTree.leaf) 14889224328 (KTree.node KTree.leaf 14889224584 KTree.leaf))) 14889228680 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 14889289591 KTree.leaf) 14889289847 KTree.leaf) 14889289848 (KTree.node KTree.leaf 14889293944 KTree.leaf)) 14889293960 (KTree.node (KTree.node KTree.leaf 14890334055 KTree.leaf) 14890334071 (KTree.node KTree.leaf 14890338167 KTree.leaf)))))) 14890338168 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 14890338424 KTree.leaf) 14907111288 KTree.leaf) 14907115384 (KTree.node KTree.leaf 14907115640 KTree.leaf)) 14907115656 (KTree.node (KTree.node (KTree.node KTree.leaf 14907115657 KTree.leaf) 14907180920 KTree.leaf) 14908159864 (KTree.node KTree.leaf 15157659783 KTree.leaf))) 15157660039 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15157660040 KTree.leaf) 15157664136 KTree.leaf) 15157664152 (KTree.node KTree.leaf 15157725303 KTree.leaf)) 15157725319 (KTree.node (KTree.node KTree.leaf 15157729415 KTree.leaf) 15157729416 (KTree.node KTree.leaf 15157729672 KTree.leaf)))) 15158769527 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15158773623 KTree.leaf) 15158773879 KTree.leaf) 15158773895 (KTree.node KTree.leaf 15158773896 KTree.leaf)) 15158839159 (KTree.node (KTree.node (KTree.node KTree.leaf 15174437256 KTree.leaf) 15174437272 KTree.leaf) 15174441368 (KTree.node KTree.leaf 15174441369 KTree.leaf))) 15174441625 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15174502536 KTree.leaf) 15174506632 KTree.leaf) 15174506888 (KTree.node KTree.leaf 15174506904 KTree.leaf)) 15174506905 (KTree.node (KTree.node KTree.leaf 15175481480 KTree.leaf) 15175485576 (KTree.node KTree.leaf 15175485832 KTree.leaf))))) 15175485848 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15175485849 KTree.leaf) 15175546743 KTree.leaf) 15175547016 (KTree.node KTree.leaf 15175550856 KTree.leaf)) 15175551096 (KTree.node (KTree.node (KTree.node KTree.leaf 15175551111 KTree.leaf) 15175551113 KTree.leaf) 15175551128 (KTree.node KTree.leaf 15175551368 KTree.leaf))) 15175555208 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15175555481 KTree.leaf) 15175616375 KTree.leaf) 15175616376 (KTree.node KTree.leaf 15175616392 KTree.leaf)) 15175616648 (KTree.node (KTree.node KTree.leaf 15175620744 KTree.leaf) 15176595319 (KTree.node KTree.leaf 15176595320 KTree.leaf)))) 15176595336 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15176595592 KTree.leaf) 15176599688 KTree.leaf) 15176660599 (KTree.node KTree.leaf 15176660855 KTree.leaf)) 15176660856 (KTree.node (KTree.node KTree.leaf 15176664952 KTree.leaf) 15176664968 (KTree.node KTree.leaf 15192263065 KTree.leaf))) 15192328328 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15192328329 KTree.leaf) 15192328345 KTree.leaf) 15192328601 (KTree.node KTree.leaf 15192332697 KTree.leaf)) 15193372552 (KTree.node (KTree.node KTree.leaf 15193372808 KTree.leaf) 15193372809 (KTree.node KTree.leaf 15193376905 KTree.leaf))))))) 15193376921 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15193438072 KTree.leaf) 15193438088 KTree.leaf) 15193442184 (KTree.node KTree.leaf 15193442185 KTree.leaf)) 15193442441 (KTree.node (KTree.node (KTree.node KTree.leaf 15442942360 KTree.leaf) 15443921304 KTree.leaf) 15443986567 (KTree.node KTree.leaf 15443986568 KTree.leaf))) 15443986584 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15443986840 KTree.leaf) 15443990936 KTree.leaf) 15460763800 (KTree.node KTree.leaf 15460764056 KTree.leaf)) 15460764057 (KTree.node (KTree.node KTree.leaf 15460768153 KTree.leaf) 15460768169 (KTree.node KTree.leaf 15461808264 KTree.leaf)))) 15461808280 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 15461812376 KTree.leaf) 15461812377 KTree.leaf) 15461812633 (KTree.node KTree.leaf 15461873544 KTree.leaf)) 15461877640 (KTree.node (KTree.node (KTree.node KTree.leaf 15461877896 KTree.leaf) 15461877912 KTree.leaf) 15461877913 (KTree.node KTree.leaf 15462922120 KTree.leaf))) 15478655129 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19167418776 KTree.leaf) 19183143320 KTree.leaf) 19184191623 (KTree.node KTree.leaf 19184191624 KTree.leaf)) 19184191640 (KTree.node (KTree.node KTree.leaf 19184191896 KTree.leaf) 19184195992 (KTree.node KTree.leaf 19184257159 KTree.leaf))))) 19184257415 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19184257416 KTree.leaf) 19184261512 KTree.leaf) 19184261528 (KTree.node KTree.leaf 19185305719 KTree.leaf)) 19185305735 (KTree.node (KTree.node (KTree.node KTree.leaf 19185309831 KTree.leaf) 19185309832 KTree.leaf) 19185310088 (KTree.node KTree.leaf 19202078583 KTree.leaf))) 19202082679 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19202082935 KTree.leaf) 19202082951 KTree.leaf) 19202082952 (KTree.node KTree.leaf 19202148471 KTree.leaf)) 19203131255 (KTree.node (KTree.node KTree.leaf 19452627096 KTree.leaf) 19452627352 (KTree.node KTree.leaf 19452627353 KTree.leaf)))) 19452631449 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19452631465 KTree.leaf) 19452692872 KTree.leaf) 19452692888 (KTree.node KTree.leaf 19452696984 KTree.leaf)) 19452696985 (KTree.node (KTree.node KTree.leaf 19452697241 KTree.leaf) 19453741192 (KTree.node KTree.leaf 19453745288 KTree.leaf))) 19453745544 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19453745560 KTree.leaf) 19453745561 KTree.leaf) 19453811080 (KTree.node KTree.leaf 19469400200 KTree.leaf)) 19469400216 (KTree.node (KTree.node KTree.leaf 19469404312 KTree.leaf) 19469404313 (KTree.node KTree.leaf 19469404569 KTree.leaf)))))) 19469465736 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19469469832 KTree.leaf) 19469470088 KTree.leaf) 19469470104 (KTree.node KTree.leaf 19469470105 KTree.leaf)) 19470448520 (KTree.node (KTree.node (KTree.node KTree.leaf 19470452616 KTree.leaf) 19470452872 KTree.leaf) 19470452888 (KTree.node KTree.leaf 19470452889 KTree.leaf))) 19470514039 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19470514312 KTree.leaf) 19470518152 KTree.leaf) 19470518392 (KTree.node KTree.leaf 19470518407 KTree.leaf)) 19470518409 (KTree.node (KTree.node KTree.leaf 19470518424 KTree.leaf) 19470518664 (KTree.node KTree.leaf 19470522504 KTree.leaf)))) 19470522777 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19470583927 KTree.leaf) 19470583928 KTree.leaf) 19470583944 (KTree.node KTree.leaf 19470584200 KTree.leaf)) 19470588296 (KTree.node (KTree.node (KTree.node KTree.leaf 19471566711 KTree.leaf) 19471566712 KTree.leaf) 19471566728 (KTree.node KTree.leaf 19471566984 KTree.leaf))) 19471571080 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19471632247 KTree.leaf) 19471632503 KTree.leaf) 19471632504 (KTree.node KTree.leaf 19471636600 KTree.leaf)) 19471636616 (KTree.node (KTree.node KTree.leaf 19487225736 KTree.leaf) 19487291255 (KTree.node KTree.leaf 19487291256 KTree.leaf))))) 19487291272 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19487291528 KTree.leaf) 19487295624 KTree.leaf) 19488339575 (KTree.node KTree.leaf 19488339831 KTree.leaf)) 19488339832 (KTree.node (KTree.node (KTree.node KTree.leaf 19488343928 KTree.leaf) 19488343944 KTree.leaf) 19488405351 (KTree.node KTree.leaf 19488405367 KTree.leaf))) 19488409463 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19488409464 KTree.leaf) 19488409720 KTree.leaf) 19737905561 (KTree.node KTree.leaf 19738888345 KTree.leaf)) 19738953864 (KTree.node (KTree.node KTree.leaf 19738953865 KTree.leaf) 19738953881 (KTree.node KTree.leaf 19738954137 KTree.leaf)))) 19738958233 (KTree.node (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19755726728 KTree.leaf) 19755726984 KTree.leaf) 19755726985 (KTree.node KTree.leaf 19755731081 KTree.leaf)) 19755731097 (KTree.node (KTree.node KTree.leaf 19756775288 KTree.leaf) 19756775304 (KTree.node KTree.leaf 19756779400 KTree.leaf))) 19756779401 (KTree.node (KTree.node (KTree.node (KTree.node KTree.leaf 19756779657 KTree.leaf) 19756840824 KTree.leaf) 19756844920 (KTree.node KTree.leaf 19756845176 KTree.leaf)) 19756845192 (KTree.node (KTree.node KTree.leaf 19756845193 KTree.leaf) 19757893496 (KTree.node KTree.leaf 19773618040 KTree.leaf)))))))))
+
+/-- The candidate keys. -/
+def Pk5 : List ℕ := Tr5.toList
+
+theorem Pk5_card : Pk5.length = 600 := by decide +kernel
+
+/-- The candidate set of coordinate states, decoded from its keys. -/
+def P5 : List ((ℤ × ℤ × ℤ × ℤ) × (ℤ × ℤ × ℤ × ℤ) × ℕ) := Pk5.map decS
+
+theorem Pk5_closed : ∀ k ∈ Pk5, ∀ r ∈ List.range 5,
+    decS (encS (stepM 5 mulW5 (decS k) r)) = stepM 5 mulW5 (decS k) r ∧
+      Tr5.lookup (encS (stepM 5 mulW5 (decS k) r)) = true := by decide +kernel
+
+theorem Pk5_zero : decS (encS (((0, 0, 0, 0), (1, 0, 0, 0), 0))) = (((0, 0, 0, 0), (1, 0, 0, 0), 0)) ∧
+    Tr5.lookup (encS (((0, 0, 0, 0), (1, 0, 0, 0), 0))) = true := by decide +kernel
+
+theorem Pk5_vals : ∀ k ∈ Pk5, (decS k).2.1 = 0 ∨ cont4 (decS k).2.1 = true := by decide +kernel
+
+theorem P5_closed : ∀ st ∈ P5, ∀ r ∈ List.range 5, stepM 5 mulW5 st r ∈ P5 := by
+  intro st hst r hr
+  obtain ⟨k, hk, rfl⟩ := List.mem_map.mp hst
+  obtain ⟨h1, h2⟩ := Pk5_closed k hk r hr
+  exact List.mem_map.mpr ⟨_, Tr5.mem_of_lookup _ h2, h1⟩
+
+theorem P5_zero : (((0 : ℤ), (0 : ℤ), (0 : ℤ), (0 : ℤ)), ((1 : ℤ), (0 : ℤ), (0 : ℤ), (0 : ℤ)), 0) ∈ P5 :=
+  List.mem_map.mpr ⟨_, Tr5.mem_of_lookup _ Pk5_zero.2, Pk5_zero.1⟩
+
+theorem P5_vals : ∀ st ∈ P5, st.2.1 = 0 ∨ cont4 st.2.1 = true := by
+  intro st hst
+  obtain ⟨k, hk, rfl⟩ := List.mem_map.mp hst
+  exact Pk5_vals k hk
+
+theorem step2_five : Step2 5 := step2_five_of_closed P5 P5_zero P5_closed P5_vals
+
+theorem dc_theorem_a_five {p a : ℕ} (hp : p.Prime) (w : List ℤ)
+    (hdiv : Polynomial.toLaurent (Polynomial.cyclotomic (p ^ a * 5) ℤ) ∣ S w) :
+    Polynomial.toLaurent (Polynomial.cyclotomic 5 ℤ) ∣ S w :=
+  dc_of_step2 hp (by norm_num) step2_five w hdiv
+
+/-- **The theorem of `statement.tex`, with no hypothesis.**  For `l ∈ {2, 3, 4, 5}`, any prime `p`, any
+`a ≥ 1` and any integer word (any length), `Φ_{p^a l} ∣ S` implies `Φ_l ∣ S` in `ℤ[q, q⁻¹]`. -/
+theorem dc_theorem_a_all {l : ℕ} (hl : l ∈ ({2, 3, 4, 5} : Finset ℕ))
+    {p a : ℕ} (hp : p.Prime) (ha : 1 ≤ a) (w : List ℤ)
+    (hdiv : Polynomial.toLaurent (Polynomial.cyclotomic (p ^ a * l) ℤ) ∣ S w) :
+    Polynomial.toLaurent (Polynomial.cyclotomic l ℤ) ∣ S w := by
+  have h2 : Step2 l := by
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hl
+    rcases hl with rfl | rfl | rfl | rfl
+    · exact step2_two
+    · exact step2_three
+    · exact step2_four
+    · exact step2_five
+  exact dc_theorem_a hl h2 hp ha w hdiv
+
 end
 
 end DCTheoremA
@@ -798,3 +985,6 @@ end DCTheoremA
 #print axioms DCTheoremA.dc_theorem_a_three
 #print axioms DCTheoremA.step2_four
 #print axioms DCTheoremA.dc_theorem_a_four
+#print axioms DCTheoremA.step2_five
+#print axioms DCTheoremA.dc_theorem_a_five
+#print axioms DCTheoremA.dc_theorem_a_all

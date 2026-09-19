@@ -8,18 +8,20 @@
       "DCTheoremA.lean"
     ],
     "no_sorry_in_source": true,
-    "state": "statement_only",
-    "key_theorem": "DCTheoremA.dc_theorem_a takes Step2 l as an explicit hypothesis; unconditional: DCTheoremA.dc_theorem_a_two (l = 2) and DCTheoremA.dc_theorem_a_three (l = 3) and DCTheoremA.dc_theorem_a_four (l = 4); proved parts: DCTheoremA.frob_ev / step1 (Frobenius step, all l), DCTheoremA.content_coeff (integral multiples in Z[zeta])",
-    "faithfulness_note": "NOT yet a proof of the theorem for l = 5. Fully proved (no hypothesis, no sorry, no new axiom): l = 2, 3, 4. For l = 5 dc_theorem_a is conditional on Step2 l, the write-up's Step 2 (finite orbit of S at a primitive l-th root of unity, nonzero values of content 1). Step 1 (S(w^(p^a)) = S(w)^(p^a) + p*y, y an algebraic integer) is proved for every root of unity. Step2 l is stated as: S_w(zeta) = p*y with y an algebraic integer implies S_w(zeta) = 0, for zeta a primitive l-th root; this is the write-up's 'not in p*Z[zeta_l]' claim made precise via the fact (Mathlib) that Z[zeta_l] is the integral closure of Z in Q(zeta_l), a point the write-up glosses. S_w is the recurrence S_{i+1}=[c_{i+1}]S_i-q^(c_i-1)S_{i-1} in Z[q,q^-1] for integer words of any length. Step 2 for l = 3, 4 is proved by computed closed sets (72 and 96 states) in integer coordinates over Z[omega_3] (checked by decide +kernel), an evaluation-to-coordinates bridge (step_rel) and the gcd-1 content check.",
+    "state": "proved",
+    "key_theorem": "DCTheoremA.dc_theorem_a_all (l in {2,3,4,5}, no hypothesis); also DCTheoremA.dc_theorem_a_two / _three / _four / _five, DCTheoremA.frob_ev / step1 (Frobenius step, all l), DCTheoremA.content_coeff (integral multiples in Z[zeta]). DCTheoremA.dc_theorem_a keeps Step2 l as an explicit hypothesis and is superseded by dc_theorem_a_all.",
+    "faithfulness_note": "Proved for l in {2,3,4,5}: dc_theorem_a_all has no hypothesis, no sorry, no new axiom. Statement: for l in {2,3,4,5}, p prime, a >= 1 (a >= 1 is not used, a = 0 is trivial), Phi_{p^a l} | S implies Phi_l | S in Z[q,q^-1], for every integer word w of any length; S is the recurrence S_{i+1}=[c_{i+1}]S_i-q^(c_i-1)S_{i-1} with (S_0,S_1)=(0,1) (previous quotient in the exponent). Structure: Step 1 (S(w^(p^a)) = S(w)^(p^a) + p*y with y an algebraic integer, any root of unity; frob_ev, step1). Step 2 (Step2 l: S_w(zeta) = p*y with y an algebraic integer implies S_w(zeta) = 0, zeta a primitive l-th root) is proved for each l by a finite closed set of coordinate states (S_{i-1}, S_i, c_i mod l) with S in integer power-basis coordinates of Z[zeta_l] (72, 96, 600 states for l = 3, 4, 5; 12 for l = 2), an evaluation-to-coordinates bridge (step_rel), and the content lemma content_coeff (uses that Z[zeta] is the integral closure of Z in Q(zeta), a point the write-up glosses: Step 1 yields an algebraic integer y, not an element of Z[zeta_l]). For l = 5 the candidate set is a literal produced outside Lean; soundness rests on the kernel-checked closure (Pk5_closed, Pk5_zero, Pk5_vals), not on the literal. Reviewer note: Step2 is a Lean-side formulation of the write-up's 'not in p Z[zeta_l]' claim.",
     "compiled_on": "2026-09-19",
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
-    "axioms": "propext, Classical.choice, Quot.sound (for every theorem in the file)",
+    "axioms": "propext, Classical.choice, Quot.sound (for every theorem in the file, including dc_theorem_a_all)",
     "build_command": "lake build Algebra.DCTheoremA (sandbox project requiring Mathlib v4.29.1)",
     "fully_proved_l": [
       2,
       3,
-      4
-    ]
+      4,
+      5
+    ],
+    "build_notes": "Full-file check on macOS with /usr/bin/time -l lake env lean: 69 s wall, maximum resident set size 7,998,570,496 bytes; a file containing only 'import Mathlib' measures 5,271,044,096 bytes on the same machine (mostly memory-mapped Mathlib files), so the file adds roughly 2.7 GB. Single measurement each, LEAN_NUM_THREADS=2; not a precise peak. An earlier variant of the l = 5 check (membership by linear search in a 600-element list) was stopped by a resource guard above 9 GB, and the variant that ran the search inside the kernel was stopped above 13 GB; the search-tree lookup (KTree) is what made it fit."
   }
 }
