@@ -2,7 +2,7 @@
 #
 # Two Lake projects are involved because they need different Lean versions:
 #   lean/                                       Lean 4.29.1 + Mathlib v4.29.1
-#                                               (pell-negation, intertwining, jump-gap)
+#                                               (every result except degree-equality)
 #   results/degree-equality/lean/degreeeq       Lean 4.31.0, no dependencies
 # Each project has its own lean-toolchain file; elan reads it and installs the
 # matching Lean version on first use.
@@ -42,8 +42,8 @@ jobs:
         run: lake exe cache get
 
       # Build the combined project. The top module QNumbersResults imports every
-      # module, including GosperCF.Pell and GosperCF.Intertwine, so a bare
-      # `lake build` is enough.
+      # module, so a bare `lake build` is enough. The single-file DCTheoremA needs
+      # about 8 GB of memory on its own.
       - name: Build Lean 4.29.1 + Mathlib project
         working-directory: lean
         run: lake build
