@@ -462,7 +462,7 @@ def main():
     for rid, e in report.items():
         if e["status"] != "none":
             print("  %-16s %s" % (rid, e["status"]))
-            if e["status"] != "proved" and lake is not None and e.get("project"):
+            if e["status"] != "proved" and lake is not None and e.get("files"):
                 bad_exit = True
     return 1 if bad_exit else 0
 

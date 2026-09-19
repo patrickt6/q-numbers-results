@@ -117,7 +117,7 @@ it depends on. All four depend on `propext`, `Classical.choice` and `Quot.sound`
 
 ### Check record
 
-Run on 2026-09-18 with the audit above, on a copy of these files, not on the earlier scratch packages:
+Run on 2026-09-18 with the audit above, on a copy of these files, not on the earlier scratch packages. Mathlib's prebuilt files were reused from a local clone at the pinned rev, not downloaded during this check:
 `lake build` in `lean/` finished with exit 0 (8257 jobs, Lean 4.29.1, Mathlib v4.29.1) and built
 `GosperCF.Intertwine`, `GosperCF.Negation`, `GosperCF.Pell`, `GosperCF.JumpGap` and
 `GosperCF.JumpGapDet`. `lake build` in the degreeeq project finished with exit 0 (Lean 4.31.0).
