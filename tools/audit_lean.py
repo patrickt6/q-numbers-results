@@ -453,7 +453,7 @@ def main():
         "standard_axioms": sorted(standard),
         "lake_available": lake is not None,
         "pinned": pinned_versions(),
-        "note": "Statement faithfulness to the paper is not audited.",
+        "note": "This script does not judge statement faithfulness; see lean.coverage in each results/<id>/status.json.",
         "results": report,
     }
     text = json.dumps(doc, indent=2, sort_keys=False) + "\n"

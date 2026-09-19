@@ -3,7 +3,7 @@
   "status": "proved",
   "date": "2026-06",
   "lean": {
-    "flag": false,
+    "flag": true,
     "files": [
       "lean/AdditionNogo.lean"
     ],
@@ -12,10 +12,12 @@
     "compiled": true,
     "key_theorem": "AdditionNogo.nogo_ratfunc",
     "faithfulness_note": "Proved over Q(q) = RatFunc Q, q the indeterminate: no nonzero (a,...,h) satisfies (aXY+bX+cY+d) - T(eXY+fX+gY+h) = 0 for all rational x,y>1 (given as even-length regular continued fractions), with X=[x]_q, Y=[y]_q, T=[x+y]_q, where [.]_q is the nested Morier-Genoud--Ovsienko formula (qcf). The 8x8 relation matrix at eight explicit sample pairs has full rank 8 (rank_eq_eight); the determinant is shown nonzero by specialising q=2 with an exact rational inverse, then transferred to Q(q). Differences from the source scripts: a different, smaller set of eight rational pairs (non-integer x and y); the relation is assumed only at rational x,y>1 (the source assumes it for all real x,y>1, which implies this), so the Lean statement is at least as strong. Controls and the check of qcf against a reference tool were run outside Lean.",
-    "compiled_on": "2026-09-19",
-    "checked_on": "2026-09-19",
+    "compiled_on": "2026-09-18",
+    "checked_on": "2026-09-18",
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
-    "build_command": "lean results/addition-nogo/lean/AdditionNogo.lean  (LEAN_PATH set to the built Mathlib v4.29.1 libraries; lake build is not used)"
+    "build_command": "cd lean && lake build AdditionNogo",
+    "coverage": "full",
+    "covers": "Lean 4 proves that no nonzero (a,...,h) in Q(q)^8 satisfies (aXY+bX+cY+d) - [x+y]_q (eXY+fX+gY+h) = 0 for all rational x,y > 1 (X=[x]_q, Y=[y]_q, MGO continued-fraction definition). The 8x8 relation matrix at eight explicit samples has rank 8."
   }
 }

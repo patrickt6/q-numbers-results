@@ -54,7 +54,7 @@
     "gap-a": {
       "project": "mathlib",
       "key_theorem": "GapA.example64_step_iff",
-      "expected_state": "statement_only"
+      "expected_state": "proved"
     },
     "twin-primes": {
       "project": "mathlib",

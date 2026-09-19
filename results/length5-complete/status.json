@@ -3,7 +3,7 @@
   "status": "verified",
   "date": "2026-08",
   "lean": {
-    "flag": false,
+    "flag": true,
     "files": [
       "Length5Complete.lean"
     ],
@@ -11,10 +11,12 @@
     "state": "statement_only",
     "key_theorem": "Length5Complete.length5_complete",
     "faithfulness_note": "STATEMENT ONLY (all four theorems are sorry). The claim is a finite check (4<=k<=24) recorded as a Python computation. DISCREPANCY in the source statement: read literally the list-inclusion is false at k=5 (the source's own count |V_5(5)|=52 exceeds the 50 words of the list; an exact recomputation shows the two extra words are (2,2,2,2) and (3,3,3,3)). The Lean statement therefore states list-inclusion for k != 5 and, separately, k=5 as the list plus those two words; counts 10k (k != 5) and 52 (k=5) stated as well. The literal k=5 list-inclusion is not stated because it is false.",
-    "compiled_on": "2026-09-19",
+    "compiled_on": "2026-09-18",
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
     "axioms": "propext, Classical.choice, Quot.sound, sorryAx (statement only)",
-    "build_command": "lake build Stated.Length5Complete (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
+    "build_command": "cd lean && lake build Length5Complete",
+    "coverage": "statement_only",
+    "covers": "The Lean file only states, and proves nothing (all four theorems are sorry): list-inclusion for 4 <= k <= 24 with k != 5, the k = 5 locus as the list plus (2,2,2,2) and (3,3,3,3), and the counts 10k and 52. The finite check itself is a Python computation."
   }
 }

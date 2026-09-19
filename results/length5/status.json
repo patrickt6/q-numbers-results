@@ -3,7 +3,7 @@
   "status": "proved",
   "date": "2026-08",
   "lean": {
-    "flag": false,
+    "flag": true,
     "files": [
       "Length5.lean"
     ],
@@ -11,10 +11,12 @@
     "state": "proved",
     "key_theorem": "Length5.length5_vanishing",
     "faithfulness_note": "Proves only the list-implies-vanishing direction of the statement. Integers c1..c5 enter through residues in ZMod k; the five shapes (integer parameter, sign eps=+-1) and the ten words are proved to give S_5 = 0 identically in Z[q,q^-1], and the residue step is proved via evaluation at a primitive k-th root. The hypothesis k>=7 of the statement is kept in length5_vanishing but is not needed (length5_vanishing_all holds for every k>1). Completeness of the list (no other word vanishes) is NOT part of this result; see length5-complete.",
-    "compiled_on": "2026-09-19",
+    "compiled_on": "2026-09-18",
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
     "axioms": "propext, Classical.choice, Quot.sound",
-    "build_command": "lake build Stated.Length5 (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
+    "build_command": "cd lean && lake build Length5",
+    "coverage": "full",
+    "covers": "Proved in Lean: for every k > 1 and every integer word whose residues mod k lie in the five shapes or the ten words, Phi_k divides S_5 (the converse is not proved)."
   }
 }
