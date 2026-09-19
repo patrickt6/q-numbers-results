@@ -11,7 +11,7 @@ l ∈ {2,3,4,5},  p prime,  a ≥ 1,  k = p^a l
 S = S_i, every i ≥ 1 and every integer word
 ```
 
-## STATE: statement_only (the case `l = 2` is proved outright; `l = 3, 4, 5` are not)
+## STATE: statement_only (`l = 2, 3` are proved outright; `l = 4, 5` are not yet)
 
 The write-up's proof has two steps.
 
@@ -21,13 +21,22 @@ The write-up's proof has two steps.
 * **Step 2 (finite orbit and content).**  For `l ∈ {2,3,4,5}`, the values `S(ω_l)`
   over all words form a finite set (sizes 3, 7, 9, 31) whose nonzero elements have content 1
   in `ℤ[ω_l]`, so none is divisible by a rational prime; hence `S(ω_l) = 0`.
-  **Proved for `l = 2` only** (`step2_two`, by an explicit closure of the 12 reachable states of
-  the recurrence at `q = -1`, `P2_closed`, checked by `decide`), so `dc_theorem_a_two`, the
-  case `l = 2`, is a complete unconditional proof.  **Not formalised for `l = 3, 4, 5`.**
-  It is a finite exact computation in `ℤ[ω_l]` (`12, 72, 96, 600`
-  reachable states of the recurrence at `l = 2,3,4,5`, counted by an independent
-  computation) and formalising it needs a concrete model of `ℤ[ω_l]`.  It enters this file as
-  the named hypothesis `Step2 l`.
+  **Proved for `l = 2` and `l = 3`** (`step2_two`, `step2_three`), giving the unconditional
+  theorems `dc_theorem_a_two` and `dc_theorem_a_three`.  **Not yet formalised for `l = 4, 5`**,
+  which still enter `dc_theorem_a` as the named hypothesis `Step2 l`.
+  * `l = 2`: explicit closure of the 12 reachable states of the recurrence at `q = -1`
+    (`P2_closed`, checked by `decide`).
+  * `l = 3` (and the machinery for `l = 4, 5`): states `(S_{i-1}, S_i, c_i mod l)` are stored with
+    `S` in integer coordinates over the power basis of `ℤ[ω_l]` (`step_rel` links them to the
+    recurrence in `ℤ[q, q⁻¹]` evaluated at `ω_l`); the reachable set is computed by a
+    breadth-first search inside Lean (`bfs`, `P3`, 72 states for `l = 3`) and closure under all
+    `l` residues of the next quotient is checked by `decide +kernel` (`P3_closed`); every
+    reachable `S` is `0` or has coordinates of gcd `1` (`P3_vals`).  The finishing step
+    (`content_coeff`) uses that `ℤ[ζ]` is the integral closure of `ℤ` in `ℚ(ζ)` (Mathlib,
+    `IsCyclotomicExtension.Rat.isIntegralClosure_adjoin_singleton`) and that `Φ_l` is monic of
+    degree `φ(l)`, to show that `S(ζ) = p y` with `y` integral forces `p` to divide every
+    power-basis coordinate.  This closes the write-up's remark that Step 1 gives an algebraic
+    integer `y`, not an element of `ℤ[ω_l]`.
 
 `dc_theorem_a` is the full statement of `statement.tex` with `Step2 l` as an explicit
 hypothesis, and `dc_of_step2` is its reduction to Step 2.  Because a hypothesis carries the
@@ -425,6 +434,313 @@ theorem dc_theorem_a {l : ℕ} (hl : l ∈ ({2, 3, 4, 5} : Finset ℕ)) (hStep2 
   have hl0 : 0 < l := by simp at hl; omega
   exact dc_of_step2 hp hl0 hStep2 w hdiv
 
+
+
+/-! ### Step 2, general machinery: a finite closed set of coordinate states -/
+
+/-! #### Content: integral multiples of a low-degree cyclotomic integer -/
+
+
+theorem integral_mem_adjoin {l : ℕ} (hl : 0 < l) (ζ : ℂ) (hζ : IsPrimitiveRoot ζ l)
+    (s : Polynomial ℤ) (p : ℕ) (hp : p.Prime) (y : ℂ) (hy : IsIntegral ℤ y)
+    (h : Polynomial.aeval ζ s = (p : ℂ) * y) :
+    ∃ t : Polynomial ℤ, y = Polynomial.aeval ζ t := by
+  haveI : NeZero l := ⟨hl.ne'⟩
+  let K := IntermediateField.adjoin ℚ {ζ}
+  have hintQ : IsIntegral ℚ ζ := (hζ.isIntegral hl).tower_top
+  haveI : IsCyclotomicExtension {l} ℚ K := by
+    change IsCyclotomicExtension {l} ℚ (IntermediateField.adjoin ℚ {ζ}).toSubalgebra
+    rw [IntermediateField.adjoin_simple_toSubalgebra_of_isAlgebraic hintQ.isAlgebraic]
+    exact hζ.adjoin_isCyclotomicExtension ℚ
+  let ζ' : K := IntermediateField.AdjoinSimple.gen ℚ ζ
+  have hζ' : IsPrimitiveRoot ζ' l := IsPrimitiveRoot.coe_submonoidClass_iff.mp hζ
+  let f : K →ₐ[ℤ] ℂ := IsScalarTower.toAlgHom ℤ K ℂ
+  have hf : Function.Injective f := (algebraMap K ℂ).injective
+  have hfζ : f ζ' = ζ := rfl
+  have e : f (Polynomial.aeval ζ' s) = Polynomial.aeval ζ s := by
+    have := Polynomial.aeval_algHom_apply f ζ' s
+    rw [hfζ] at this; exact this.symm
+  have hp0 : (p : ℂ) ≠ 0 := by exact_mod_cast hp.ne_zero
+  let y' : K := (p : K)⁻¹ * Polynomial.aeval ζ' s
+  have hy'f : f y' = y := by
+    have : f y' = (p : ℂ)⁻¹ * f (Polynomial.aeval ζ' s) := by
+      simp only [y', map_mul, map_inv₀, map_natCast]
+    rw [this, e, h]; field_simp
+  have hint : IsIntegral ℤ y' := by
+    rw [← isIntegral_algHom_iff f hf, hy'f]; exact hy
+  have hcl := IsCyclotomicExtension.Rat.isIntegralClosure_adjoin_singleton hζ'
+  obtain ⟨⟨a, ha⟩, hay⟩ := hcl.isIntegral_iff.mp hint
+  rw [Algebra.adjoin_singleton_eq_range_aeval] at ha
+  obtain ⟨t, ht⟩ := ha
+  refine ⟨t, ?_⟩
+  have : f a = y := by rw [← hy'f, ← hay]; rfl
+  rw [← this, ← ht]
+  have := Polynomial.aeval_algHom_apply f ζ' t
+  rw [hfζ] at this
+  exact this.symm
+
+theorem content_coeff {l : ℕ} (hl : 0 < l) (ζ : ℂ) (hζ : IsPrimitiveRoot ζ l)
+    (s : Polynomial ℤ) (hs : s.natDegree < Nat.totient l) (p : ℕ) (hp : p.Prime) (y : ℂ)
+    (hy : IsIntegral ℤ y) (h : Polynomial.aeval ζ s = (p : ℂ) * y) (i : ℕ) :
+    (p : ℤ) ∣ s.coeff i := by
+  haveI : Fact p.Prime := ⟨hp⟩
+  obtain ⟨t, ht⟩ := integral_mem_adjoin hl ζ hζ s p hp y hy h
+  have h0 : Polynomial.aeval ζ (s - Polynomial.C (p : ℤ) * t) = 0 := by
+    rw [map_sub, map_mul, h, ht, Polynomial.aeval_C]; simp
+  have hd : Polynomial.cyclotomic l ℤ ∣ s - Polynomial.C (p : ℤ) * t := by
+    rw [Polynomial.cyclotomic_eq_minpoly hζ hl]
+    exact minpoly.isIntegrallyClosed_dvd (hζ.isIntegral hl) h0
+  obtain ⟨g, hg⟩ := hd
+  have hm : Polynomial.map (Int.castRingHom (ZMod p)) s =
+      Polynomial.map (Int.castRingHom (ZMod p)) (Polynomial.cyclotomic l ℤ) *
+      Polynomial.map (Int.castRingHom (ZMod p)) g := by
+    have := congrArg (Polynomial.map (Int.castRingHom (ZMod p))) hg
+    simp only [Polynomial.map_sub, Polynomial.map_mul, Polynomial.map_C] at this
+    have hp0 : (Int.castRingHom (ZMod p)) (p : ℤ) = 0 := by simp
+    rw [hp0] at this
+    simpa using this
+  have hmon : (Polynomial.map (Int.castRingHom (ZMod p)) (Polynomial.cyclotomic l ℤ)).Monic :=
+    (Polynomial.cyclotomic.monic l ℤ).map _
+  have hdeg : (Polynomial.map (Int.castRingHom (ZMod p)) (Polynomial.cyclotomic l ℤ)).natDegree
+      = Nat.totient l := by
+    rw [(Polynomial.cyclotomic.monic l ℤ).natDegree_map, Polynomial.natDegree_cyclotomic]
+  have hg0 : Polynomial.map (Int.castRingHom (ZMod p)) g = 0 := by
+    by_contra hne
+    have h1 := Polynomial.Monic.natDegree_mul' hmon hne
+    have h2 : (Polynomial.map (Int.castRingHom (ZMod p)) s).natDegree < Nat.totient l :=
+      lt_of_le_of_lt (Polynomial.natDegree_map_le) hs
+    rw [hm, h1, hdeg] at h2
+    omega
+  rw [hg0, mul_zero] at hm
+  have := congrArg (fun f => f.coeff i) hm
+  simp only [Polynomial.coeff_map, Polynomial.coeff_zero] at this
+  exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ p).mp this
+
+/-! #### Reduction of `ev` to residues -/
+
+/-- `ev z (T n)` depends only on `n mod l`, for `z` a primitive `l`-th root of unity. -/
+theorem ev_T_mod {l : ℕ} (hl : 0 < l) (z : ℂˣ) (hz : IsPrimitiveRoot (z : ℂ) l) (n : ℤ) :
+    ev z (T n) = (z : ℂ) ^ (n % (l : ℤ)).toNat := by
+  rw [ev_T]
+  have hzl : z ^ (l : ℤ) = 1 := by
+    apply Units.ext
+    simpa using hz.pow_eq_one
+  have hnn : 0 ≤ n % (l : ℤ) := Int.emod_nonneg _ (by exact_mod_cast hl.ne')
+  have h1 : n = n % (l : ℤ) + (l : ℤ) * (n / (l : ℤ)) := (Int.emod_add_mul_ediv n l).symm
+  have h2 : z ^ n = z ^ (n % (l : ℤ)) := by
+    conv_lhs => rw [h1]
+    rw [zpow_add, zpow_mul, hzl, one_zpow, mul_one]
+  rw [h2]
+  have h3 : z ^ (n % (l : ℤ)) = z ^ (((n % (l : ℤ)).toNat : ℕ) : ℤ) := by
+    rw [Int.toNat_of_nonneg hnn]
+  rw [h3, zpow_natCast, Units.val_pow_eq_pow_val]
+
+/-- `ev z (qint c)` depends only on `c mod l`. -/
+theorem ev_qint_mod {l : ℕ} (hl : 1 < l) (z : ℂˣ) (hz : IsPrimitiveRoot (z : ℂ) l) (c : ℤ) :
+    ev z (qint c) = ∑ j ∈ Finset.range (c % (l : ℤ)).toNat, (z : ℂ) ^ j := by
+  have h := congrArg (ev z) (qint_mul c)
+  rw [map_mul, map_sub, map_sub, map_one, ev_T_mod (by omega) z hz c] at h
+  have h1 : ev z (T 1) = (z : ℂ) := by
+    rw [ev_T]; simp
+  rw [h1] at h
+  have hne : (z : ℂ) - 1 ≠ 0 := sub_ne_zero.mpr (hz.ne_one hl)
+  have hg := geom_sum_mul (z : ℂ) (c % (l : ℤ)).toNat
+  apply mul_left_cancel₀ hne
+  linear_combination h - hg
+
+section Model
+
+set_option linter.unusedSectionVars false
+
+variable {V : Type} [AddCommGroup V] [DecidableEq V]
+
+/-- multiplication by `ω^j`, `j` times the map `mulW`. -/
+def pw (m : V → V) : ℕ → V → V
+  | 0, v => v
+  | j + 1, v => m (pw m j v)
+
+/-- coordinates of `[r]_ω v = (1 + ω + ... + ω^(r-1)) v`. -/
+def qv (m : V → V) : ℕ → V → V
+  | 0, _ => 0
+  | r + 1, v => qv m r v + pw m r v
+
+/-- One step of the recurrence on coordinate states `(S_{i-1}, S_i, c_i mod l)`. -/
+def stepM (l : ℕ) (m : V → V) (st : V × V × ℕ) (r : ℕ) : V × V × ℕ :=
+  (st.2.1, qv m r st.2.1 - pw m ((st.2.2 + l - 1) % l) st.1, r)
+
+theorem val_pw (ζ : ℂ) (val : V →+ ℂ) (m : V → V) (hm : ∀ v, val (m v) = ζ * val v) (j : ℕ)
+    (v : V) : val (pw m j v) = ζ ^ j * val v := by
+  induction j with
+  | zero => simp [pw]
+  | succ j ih => rw [pw, hm, ih, pow_succ]; ring
+
+theorem val_qv (ζ : ℂ) (val : V →+ ℂ) (m : V → V) (hm : ∀ v, val (m v) = ζ * val v) (r : ℕ)
+    (v : V) : val (qv m r v) = (∑ j ∈ Finset.range r, ζ ^ j) * val v := by
+  induction r with
+  | zero => simp [qv]
+  | succ r ih => rw [qv, map_add, ih, val_pw ζ val m hm, Finset.sum_range_succ]; ring
+
+def Rel (l : ℕ) (z : ℂˣ) (val : V →+ ℂ) (A : LP × LP × ℤ) (st : V × V × ℕ) : Prop :=
+  ev z A.1 = val st.1 ∧ ev z A.2.1 = val st.2.1 ∧ A.2.2 % (l : ℤ) = (st.2.2 : ℤ)
+
+theorem pred_mod {l : ℕ} (hl : 0 < l) (a : ℤ) (r : ℕ) (hr : a % (l : ℤ) = (r : ℤ)) :
+    (a - 1) % (l : ℤ) = (((r + l - 1) % l : ℕ) : ℤ) := by
+  have hr1 : 1 ≤ r + l := by omega
+  have e : ((((r + l - 1) % l : ℕ)) : ℤ) = ((r : ℤ) + l - 1) % (l : ℤ) := by
+    rw [Int.natCast_mod, Nat.cast_sub hr1]; push_cast; ring_nf
+  rw [e, ← hr]
+  have : (a - 1) - (a % (l : ℤ) + l - 1) = (l : ℤ) * (a / (l : ℤ) - 1) := by
+    have := Int.emod_add_mul_ediv a l
+    linear_combination (-1 : ℤ) * this
+  exact Int.emod_eq_emod_iff_emod_sub_eq_zero.mpr (by rw [this]; exact Int.mul_emod_right _ _)
+
+theorem step_rel {l : ℕ} (hl : 1 < l) (z : ℂˣ) (hz : IsPrimitiveRoot (z : ℂ) l)
+    (val : V →+ ℂ) (m : V → V) (hm : ∀ v, val (m v) = (z : ℂ) * val v)
+    {A : LP × LP × ℤ} {st : V × V × ℕ} (h : Rel l z val A st) (c : ℤ) :
+    Rel l z val (step A c) (stepM l m st (c % (l : ℤ)).toNat) := by
+  obtain ⟨h1, h2, h3⟩ := h
+  refine ⟨h2, ?_, ?_⟩
+  · show ev z (qint c * A.2.1 - T (A.2.2 - 1) * A.1) = val (qv m _ st.2.1 - pw m _ st.1)
+    rw [map_sub, map_mul, map_mul, ev_qint_mod hl z hz, ev_T_mod (by omega) z hz, h1, h2,
+      map_sub, val_qv _ val m hm, val_pw _ val m hm, pred_mod (by omega) _ _ h3,
+      Int.toNat_natCast]
+  · show (c % (l : ℤ)) = ((c % (l : ℤ)).toNat : ℤ)
+    exact (Int.toNat_of_nonneg (Int.emod_nonneg _ (by exact_mod_cast (by omega : l ≠ 0)))).symm
+
+end Model
+
+section Model2
+
+variable {V : Type} [AddCommGroup V] [DecidableEq V]
+
+theorem fold_rel {l : ℕ} (hl : 1 < l) (z : ℂˣ) (hz : IsPrimitiveRoot (z : ℂ) l)
+    (val : V →+ ℂ) (m : V → V) (hm : ∀ v, val (m v) = (z : ℂ) * val v)
+    (P : List (V × V × ℕ)) (hclosed : ∀ st ∈ P, ∀ r ∈ List.range l, stepM l m st r ∈ P) :
+    ∀ (w : List ℤ) (A : LP × LP × ℤ) (st : V × V × ℕ), Rel l z val A st → st ∈ P →
+      ∃ st' ∈ P, Rel l z val (w.foldl step A) st' := by
+  intro w
+  induction w with
+  | nil => intro A st h hs; exact ⟨st, hs, h⟩
+  | cons c w ih =>
+    intro A st h hs
+    have hr : (c % (l : ℤ)).toNat ∈ List.range l := by
+      rw [List.mem_range]
+      have h1 := Int.emod_nonneg c (by omega : (l : ℤ) ≠ 0)
+      have h2 := Int.emod_lt_of_pos c (by omega : (0 : ℤ) < l)
+      omega
+    exact ih _ _ (step_rel hl z hz val m hm h c) (hclosed st hs _ hr)
+
+/-- **Step 2 from a finite closed set of coordinate states.** -/
+theorem step2_of_closed {l : ℕ} (hl : 1 < l) (m : V → V) (one : V) (cont : V → Bool)
+    (P : List (V × V × ℕ)) (hP0 : ((0 : V), one, 0) ∈ P)
+    (hclosed : ∀ st ∈ P, ∀ r ∈ List.range l, stepM l m st r ∈ P)
+    (hvals : ∀ st ∈ P, st.2.1 = 0 ∨ cont st.2.1 = true)
+    (hmodel : ∀ ζ : ℂ, IsPrimitiveRoot ζ l → ∃ (val : V →+ ℂ) (poly : V → Polynomial ℤ),
+      (∀ v, val (m v) = ζ * val v) ∧ val one = 1 ∧
+      (∀ v, val v = Polynomial.aeval ζ (poly v)) ∧
+      (∀ v, (poly v).natDegree < Nat.totient l) ∧
+      (∀ v, cont v = true → ∀ p : ℕ, p.Prime → (∀ i, (p : ℤ) ∣ (poly v).coeff i) → False)) :
+    Step2 l := by
+  intro p hp ζ hζ w y hy h
+  obtain ⟨val, poly, hm, hone, hpoly, hdeg, hcont⟩ := hmodel (ζ : ℂ) hζ
+  have h0 : Rel l ζ val ((0 : LP), (1 : LP), (0 : ℤ)) ((0 : V), one, 0) := by
+    refine ⟨by simp, by simp [hone], by simp⟩
+  obtain ⟨st, hst, hrel⟩ := fold_rel hl ζ hζ val m hm P hclosed w _ _ h0 hP0
+  have hS : ev ζ (S w) = val st.2.1 := hrel.2.1
+  rcases hvals st hst with h1 | h1
+  · rw [hS, h1, map_zero]
+  · exfalso
+    rw [hS, hpoly] at h
+    exact hcont _ h1 p hp (fun i => content_coeff (by omega) (ζ : ℂ) hζ _ (hdeg _) p hp y hy h i)
+
+end Model2
+
+
+
+section BFS
+variable {V : Type} [AddCommGroup V] [DecidableEq V]
+
+/-- Breadth-first closure of the coordinate states under `stepM`. -/
+def bfs (l : ℕ) (m : V → V) : ℕ → List (V × V × ℕ) → List (V × V × ℕ) → List (V × V × ℕ)
+  | 0, _, seen => seen
+  | _ + 1, [], seen => seen
+  | n + 1, fr, seen =>
+    let r := (fr.flatMap fun st => (List.range l).map (stepM l m st)).foldl
+      (fun (acc : List (V × V × ℕ) × List (V × V × ℕ)) s =>
+        if s ∈ acc.1 then acc else (acc.1 ++ [s], acc.2 ++ [s])) (seen, [])
+    bfs l m n r.2 r.1
+
+end BFS
+
+/-- Coordinates `(a, b)` stand for `a + b ω` in `Z[ω_3]`; multiplication by `ω`. -/
+def mulW3 (v : ℤ × ℤ) : ℤ × ℤ := (-v.2, v.1 - v.2)
+
+def cont2 (v : ℤ × ℤ) : Bool := Int.gcd v.1 v.2 == 1
+
+def P3 : List ((ℤ × ℤ) × (ℤ × ℤ) × ℕ) :=
+  bfs 3 mulW3 100 [((0, 0), (1, 0), 0)] [((0, 0), (1, 0), 0)]
+
+theorem P3_card : P3.length = 72 := by decide +kernel
+
+theorem P3_closed : ∀ st ∈ P3, ∀ r ∈ List.range 3, stepM 3 mulW3 st r ∈ P3 := by decide +kernel
+
+theorem P3_vals : ∀ st ∈ P3, st.2.1 = 0 ∨ cont2 st.2.1 = true := by decide +kernel
+
+theorem root3_sum (ζ : ℂ) (hζ : IsPrimitiveRoot ζ 3) : 1 + ζ + ζ ^ 2 = 0 := by
+  have h3 : ζ ^ 3 = 1 := hζ.pow_eq_one
+  have hne : ζ - 1 ≠ 0 := sub_ne_zero.mpr (hζ.ne_one (by norm_num))
+  apply mul_left_cancel₀ hne
+  linear_combination h3
+
+/-- The complex value `a + b ζ` of the coordinates `(a, b)`. -/
+noncomputable def val2 (ζ : ℂ) : ℤ × ℤ →+ ℂ :=
+  AddMonoidHom.mk' (fun v => (v.1 : ℂ) + (v.2 : ℂ) * ζ) (by
+    intro x y; simp only [Prod.fst_add, Prod.snd_add]; push_cast; ring)
+
+noncomputable def poly2 (v : ℤ × ℤ) : Polynomial ℤ := Polynomial.C v.1 + Polynomial.C v.2 * Polynomial.X
+
+theorem poly2_deg (v : ℤ × ℤ) : (poly2 v).natDegree ≤ 1 := by
+  unfold poly2; compute_degree
+
+theorem cont2_spec (v : ℤ × ℤ) (h : cont2 v = true) (p : ℕ) (hp : p.Prime)
+    (hd : ∀ i, (p : ℤ) ∣ (poly2 v).coeff i) : False := by
+  have c0 : (poly2 v).coeff 0 = v.1 := by
+    rw [poly2, Polynomial.coeff_add, Polynomial.coeff_C_zero, Polynomial.coeff_C_mul,
+      Polynomial.coeff_X_zero]; ring
+  have c1 : (poly2 v).coeff 1 = v.2 := by
+    rw [poly2, Polynomial.coeff_add, Polynomial.coeff_C, Polynomial.coeff_C_mul,
+      Polynomial.coeff_X_one]; simp
+  have h0 := hd 0
+  have h1 := hd 1
+  rw [c0] at h0
+  rw [c1] at h1
+  have hg : Int.gcd v.1 v.2 = 1 := by simpa [cont2] using h
+  have := Int.dvd_gcd h0 h1
+  rw [hg] at this
+  exact hp.ne_one (Nat.dvd_one.mp (by exact_mod_cast this))
+
+theorem step2_three : Step2 3 := by
+  refine step2_of_closed (by norm_num) mulW3 (1, 0) cont2 P3 (by decide +kernel) P3_closed P3_vals ?_
+  intro ζ hζ
+  have hΦ := root3_sum ζ hζ
+  refine ⟨val2 ζ, poly2, ?_, ?_, ?_, ?_, ?_⟩
+  · intro v
+    simp only [val2, mulW3, AddMonoidHom.mk'_apply]
+    push_cast
+    linear_combination (-(v.2 : ℂ)) * hΦ
+  · simp [val2]
+  · intro v; simp [val2, poly2]
+  · intro v
+    have := poly2_deg v
+    have h3 : Nat.totient 3 = 2 := by decide
+    omega
+  · intro v hv p hp hd; exact cont2_spec v hv p hp hd
+
+theorem dc_theorem_a_three {p a : ℕ} (hp : p.Prime) (w : List ℤ)
+    (hdiv : Polynomial.toLaurent (Polynomial.cyclotomic (p ^ a * 3) ℤ) ∣ S w) :
+    Polynomial.toLaurent (Polynomial.cyclotomic 3 ℤ) ∣ S w :=
+  dc_of_step2 hp (by norm_num) step2_three w hdiv
+
 end
 
 end DCTheoremA
@@ -434,3 +750,5 @@ end DCTheoremA
 #print axioms DCTheoremA.dc_theorem_a
 #print axioms DCTheoremA.step2_two
 #print axioms DCTheoremA.dc_theorem_a_two
+#print axioms DCTheoremA.step2_three
+#print axioms DCTheoremA.dc_theorem_a_three
