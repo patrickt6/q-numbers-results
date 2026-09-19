@@ -91,3 +91,5 @@ theorem lemma_L_prime_power {p a : ℕ} (hp : p.Prime) (hp2 : p ≠ 2) (ha : 1 �
 
 end
 end LemmaL
+
+#print axioms LemmaL.lemma_L_prime_power

@@ -132,3 +132,5 @@ theorem level_six (w : List ℤ)
 
 end
 end K6LevelSix
+
+#print axioms K6LevelSix.level_six

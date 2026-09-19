@@ -78,3 +78,5 @@ theorem s_prime_formula {a d : ℤ} (ha : 0 < a) (had : a < d) (hcop : IsCoprime
 
 end
 end SPrimeFormula
+
+#print axioms SPrimeFormula.s_prime_formula

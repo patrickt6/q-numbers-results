@@ -15,6 +15,6 @@
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
     "axioms": "propext, Classical.choice, Quot.sound, sorryAx (statement only)",
-    "build_command": "lean File.lean with Mathlib v4.29.1 on LEAN_PATH (sandbox project requiring Mathlib)"
+    "build_command": "lake build Stated.Length5Complete (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
   }
 }

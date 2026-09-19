@@ -289,3 +289,6 @@ theorem count_five : (V5 5).ncard = 52 := by
 
 end
 end Length5Complete
+
+#print axioms Length5Complete.length5_complete
+#print axioms Length5Complete.count_five

@@ -34,9 +34,9 @@ n = 1 (mod 3)  ==>  c_n = 0 (mod 2)      (all n >= 0)
   `n` the coefficient of `q^n` in `qConv m` is eventually equal to that of `f`.  This is
   the Morier-Genoud-Ovsienko definition (q-adic limit of convergents).  `IsQSqrt2.unique`
   proves the limit is unique.
-* Numerical check outside Lean (recorded in the running report): with this word and these
-  matrices the convergents for `m = 2, 4, 6` agree with the solution of the equation to
-  `q^10`, `q^18`, `q^26`.
+* Numerical check outside Lean: with this word and these matrices the convergents for
+  `m = 2, 4, 6` agree with the solution of the equation through `q^9`, `q^17`, `q^25`
+  (the first differing coefficients are at `q^10`, `q^18`, `q^26`).
 
 ## Hypothesis mapping
 
