@@ -4,7 +4,17 @@
   "date": "2026-08",
   "lean": {
     "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "files": [
+      "Length5.lean"
+    ],
+    "no_sorry_in_source": true,
+    "state": "proved",
+    "key_theorem": "Length5.length5_vanishing",
+    "faithfulness_note": "Proves only the list-implies-vanishing direction of the statement. Integers c1..c5 enter through residues in ZMod k; the five shapes (integer parameter, sign eps=+-1) and the ten words are proved to give S_5 = 0 identically in Z[q,q^-1], and the residue step is proved via evaluation at a primitive k-th root. The hypothesis k>=7 of the statement is kept in length5_vanishing but is not needed (length5_vanishing_all holds for every k>1). Completeness of the list (no other word vanishes) is NOT part of this result; see length5-complete.",
+    "compiled_on": "2026-09-19",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound",
+    "build_command": "lean File.lean with Mathlib v4.29.1 on LEAN_PATH (sandbox project requiring Mathlib)"
   }
 }
