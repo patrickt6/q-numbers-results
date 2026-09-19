@@ -4,7 +4,17 @@
   "date": "2026-08-12",
   "lean": {
     "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "files": [
+      "CountLaw.lean"
+    ],
+    "no_sorry_in_source": false,
+    "state": "statement_only",
+    "key_theorem": "CountLaw.count_law_torsion",
+    "faithfulness_note": "STATEMENT ONLY: the cited theorem of Laurent (1984) on torsion points of subvarieties of the torus is sorry (Mathlib has nothing on it), and count_law_torsion is proved from it. Proved without it: Lemma 1 (q(q-1))^(i-1) S_i = U_i(q,q^c) for all integer words, the equivalence between V_i(k) as points of X_i and Phi_k | S_i, and k-torsion of the points. Torus is over C (not a number field). The set equality 'torsion points of X_i = union y_nu H_nu' is read as Laurent's theorem states it (torsion points of finitely many torsion cosets contained in X_i). NOT expressed: the passage to k-independent congruences (Theorem A displayed formula, beta_s), Theorems B and C (polynomiality and degree).",
+    "compiled_on": "2026-09-19",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound, sorryAx (laurent_torsion)",
+    "build_command": "lake build Stated.CountLaw (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
   }
 }

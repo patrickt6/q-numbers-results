@@ -4,7 +4,17 @@
   "date": "2026-06",
   "lean": {
     "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "files": [
+      "Sqrt2Mod2.lean"
+    ],
+    "no_sorry_in_source": false,
+    "state": "statement_only",
+    "key_theorem": "Sqrt2Mod2.sqrt2_mod2",
+    "faithfulness_note": "STATEMENT ONLY overall (one sorry: mgo_qsqrt2, the cited fact that the q-real exists in Z[[q]] and satisfies q^2 y^2 - (q^3-1) y - (q^2+1) = 0; Morier-Genoud--Ovsienko Prop. 4.5 as cited in the evidence). Proved without it, by a direct induction on the mod-2 reduction of the coefficient recurrence (no automaton): every y in Z[[q]] solving the equation has c_n even for n = 1 mod 3 (even_of_equation). c_n is defined as the coefficientwise limit of the q-rational convergents R L^2 (R^2 L^2)^m (even-length words, ratio of first-column entries of the q-deformed product) in Q((q)); uniqueness of the limit is proved. A separate finite-range computation (n<40) is about the recurrence-defined sequence only and is labelled so. The Christol-Walnut argument is not formalised; the Lean proof is a different, shorter argument. Numerical check outside Lean: convergents m=2,4,6 agree with the equation solution through q^9, q^17, q^25 (first differing coefficients at q^10, q^18, q^26).",
+    "compiled_on": "2026-09-19",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound, sorryAx (mgo_qsqrt2)",
+    "build_command": "lake build Stated.Sqrt2Mod2 (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
   }
 }

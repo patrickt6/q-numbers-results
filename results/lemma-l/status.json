@@ -4,7 +4,17 @@
   "date": "2026-07",
   "lean": {
     "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "files": [
+      "LemmaL.lean"
+    ],
+    "no_sorry_in_source": false,
+    "state": "statement_only",
+    "key_theorem": "LemmaL.lemma_L_prime_power",
+    "faithfulness_note": "STATEMENT ONLY (sorry). Stated relative to downward closure (DC) as an explicit hypothesis on the same Lambda_q, as the source does. Lambda_q = rho(Lambda) for the fundamental Pell automorph via the R,L word (any word with classical product Lambda; rho defined up to a unit, and both divisibilities are unit invariant). The source argument also relies on Lemma L at the prime level, the monomial law and a cited first-jet identity; none of these are assumed, so the Lean statement also asserts the prime-level case (a=1).",
+    "compiled_on": "2026-09-19",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound, sorryAx (statement only)",
+    "build_command": "lake build Stated.LemmaL (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
   }
 }

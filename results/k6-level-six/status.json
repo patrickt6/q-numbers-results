@@ -4,7 +4,17 @@
   "date": "2026-08",
   "lean": {
     "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "files": [
+      "KSix.lean"
+    ],
+    "no_sorry_in_source": false,
+    "state": "statement_only",
+    "key_theorem": "K6LevelSix.level_six",
+    "faithfulness_note": "STATEMENT ONLY (sorry); result is published: Byakuno-Ren-Yanagawa, arXiv:2603.08439, Proposition 5.3. S_i is the MGO denominator recursion on the word (c_2..c_i), c_1 irrelevant (as in the source); all integer digits allowed. Conclusion is the conjunction [6]_q | S_i and 6 | S_i(1). Nothing dropped; the A_i profile mentioned in the results page is not part of this statement.",
+    "compiled_on": "2026-09-19",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound, sorryAx (statement only)",
+    "build_command": "lake build Stated.KSix (sandbox Lake project requiring Mathlib v4.29.1 by path; 8254 jobs, exit 0, 2026-09-19)"
   }
 }
