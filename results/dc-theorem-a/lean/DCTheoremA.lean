@@ -11,7 +11,7 @@ l ∈ {2,3,4,5},  p prime,  a ≥ 1,  k = p^a l
 S = S_i, every i ≥ 1 and every integer word
 ```
 
-## STATE: statement_only (`l = 2, 3` are proved outright; `l = 4, 5` are not yet)
+## STATE: statement_only (`l = 2, 3, 4` are proved outright; `l = 5` is not yet)
 
 The write-up's proof has two steps.
 
@@ -21,16 +21,17 @@ The write-up's proof has two steps.
 * **Step 2 (finite orbit and content).**  For `l ∈ {2,3,4,5}`, the values `S(ω_l)`
   over all words form a finite set (sizes 3, 7, 9, 31) whose nonzero elements have content 1
   in `ℤ[ω_l]`, so none is divisible by a rational prime; hence `S(ω_l) = 0`.
-  **Proved for `l = 2` and `l = 3`** (`step2_two`, `step2_three`), giving the unconditional
-  theorems `dc_theorem_a_two` and `dc_theorem_a_three`.  **Not yet formalised for `l = 4, 5`**,
-  which still enter `dc_theorem_a` as the named hypothesis `Step2 l`.
+  **Proved for `l = 2, 3, 4`** (`step2_two`, `step2_three`, `step2_four`), giving the
+  unconditional theorems `dc_theorem_a_two`, `dc_theorem_a_three`, `dc_theorem_a_four`.
+  **Not yet formalised for `l = 5`**, which still enters `dc_theorem_a` as the named hypothesis
+  `Step2 l`.
   * `l = 2`: explicit closure of the 12 reachable states of the recurrence at `q = -1`
     (`P2_closed`, checked by `decide`).
-  * `l = 3` (and the machinery for `l = 4, 5`): states `(S_{i-1}, S_i, c_i mod l)` are stored with
+  * `l = 3, 4` (and the machinery for `l = 5`): states `(S_{i-1}, S_i, c_i mod l)` are stored with
     `S` in integer coordinates over the power basis of `ℤ[ω_l]` (`step_rel` links them to the
     recurrence in `ℤ[q, q⁻¹]` evaluated at `ω_l`); the reachable set is computed by a
-    breadth-first search inside Lean (`bfs`, `P3`, 72 states for `l = 3`) and closure under all
-    `l` residues of the next quotient is checked by `decide +kernel` (`P3_closed`); every
+    breadth-first search inside Lean (`bfs`, `P3`, `P4`: 72 and 96 states for `l = 3, 4`) and closure under all
+    `l` residues of the next quotient is checked by `decide +kernel` (`P3_closed`, `P4_closed`); every
     reachable `S` is `0` or has coordinates of gcd `1` (`P3_vals`).  The finishing step
     (`content_coeff`) uses that `ℤ[ζ]` is the integral closure of `ℤ` in `ℚ(ζ)` (Mathlib,
     `IsCyclotomicExtension.Rat.isIntegralClosure_adjoin_singleton`) and that `Φ_l` is monic of
@@ -41,7 +42,7 @@ The write-up's proof has two steps.
 `dc_theorem_a` is the full statement of `statement.tex` with `Step2 l` as an explicit
 hypothesis, and `dc_of_step2` is its reduction to Step 2.  Because a hypothesis carries the
 hard half, the file is `statement_only` and MUST NOT be read as a proof of the theorem.
-Only Step 1 is proved.
+Step 1 and, for `l = 2, 3, 4`, the whole theorem are proved.
 
 ## Faithfulness of `Step2`
 
@@ -741,6 +742,49 @@ theorem dc_theorem_a_three {p a : ℕ} (hp : p.Prime) (w : List ℤ)
     Polynomial.toLaurent (Polynomial.cyclotomic 3 ℤ) ∣ S w :=
   dc_of_step2 hp (by norm_num) step2_three w hdiv
 
+
+
+/-- Coordinates `(a, b)` stand for `a + b i` in `Z[ω_4] = Z[i]`; multiplication by `ω`. -/
+def mulW4 (v : ℤ × ℤ) : ℤ × ℤ := (-v.2, v.1)
+
+def P4 : List ((ℤ × ℤ) × (ℤ × ℤ) × ℕ) :=
+  bfs 4 mulW4 100 [((0, 0), (1, 0), 0)] [((0, 0), (1, 0), 0)]
+
+theorem P4_card : P4.length = 96 := by decide +kernel
+
+theorem P4_closed : ∀ st ∈ P4, ∀ r ∈ List.range 4, stepM 4 mulW4 st r ∈ P4 := by decide +kernel
+
+theorem P4_vals : ∀ st ∈ P4, st.2.1 = 0 ∨ cont2 st.2.1 = true := by decide +kernel
+
+theorem root4_sq (ζ : ℂ) (hζ : IsPrimitiveRoot ζ 4) : ζ ^ 2 + 1 = 0 := by
+  have h4 : ζ ^ 4 = 1 := hζ.pow_eq_one
+  have hne : ζ ^ 2 - 1 ≠ 0 :=
+    sub_ne_zero.mpr (hζ.pow_ne_one_of_pos_of_lt (by norm_num) (by norm_num))
+  apply mul_left_cancel₀ hne
+  linear_combination h4
+
+theorem step2_four : Step2 4 := by
+  refine step2_of_closed (by norm_num) mulW4 (1, 0) cont2 P4 (by decide +kernel) P4_closed P4_vals ?_
+  intro ζ hζ
+  have hΦ := root4_sq ζ hζ
+  refine ⟨val2 ζ, poly2, ?_, ?_, ?_, ?_, ?_⟩
+  · intro v
+    simp only [val2, mulW4, AddMonoidHom.mk'_apply]
+    push_cast
+    linear_combination (-(v.2 : ℂ)) * hΦ
+  · simp [val2]
+  · intro v; simp [val2, poly2]
+  · intro v
+    have := poly2_deg v
+    have h4 : Nat.totient 4 = 2 := by decide
+    omega
+  · intro v hv p hp hd; exact cont2_spec v hv p hp hd
+
+theorem dc_theorem_a_four {p a : ℕ} (hp : p.Prime) (w : List ℤ)
+    (hdiv : Polynomial.toLaurent (Polynomial.cyclotomic (p ^ a * 4) ℤ) ∣ S w) :
+    Polynomial.toLaurent (Polynomial.cyclotomic 4 ℤ) ∣ S w :=
+  dc_of_step2 hp (by norm_num) step2_four w hdiv
+
 end
 
 end DCTheoremA
@@ -752,3 +796,5 @@ end DCTheoremA
 #print axioms DCTheoremA.dc_theorem_a_two
 #print axioms DCTheoremA.step2_three
 #print axioms DCTheoremA.dc_theorem_a_three
+#print axioms DCTheoremA.step2_four
+#print axioms DCTheoremA.dc_theorem_a_four

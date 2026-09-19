@@ -9,8 +9,8 @@
     ],
     "no_sorry_in_source": true,
     "state": "statement_only",
-    "key_theorem": "DCTheoremA.dc_theorem_a takes Step2 l as an explicit hypothesis; unconditional: DCTheoremA.dc_theorem_a_two (l = 2) and DCTheoremA.dc_theorem_a_three (l = 3); proved parts: DCTheoremA.frob_ev / step1 (Frobenius step, all l), DCTheoremA.content_coeff (integral multiples in Z[zeta])",
-    "faithfulness_note": "NOT yet a proof of the theorem for l = 4 and l = 5. Fully proved (no hypothesis, no sorry, no new axiom): l = 2 and l = 3. For l in {4,5} dc_theorem_a is conditional on Step2 l, the write-up's Step 2 (finite orbit of S at a primitive l-th root of unity, nonzero values of content 1). Step 1 (S(w^(p^a)) = S(w)^(p^a) + p*y, y an algebraic integer) is proved for every root of unity. Step2 l is stated as: S_w(zeta) = p*y with y an algebraic integer implies S_w(zeta) = 0, for zeta a primitive l-th root; this is the write-up's 'not in p*Z[zeta_l]' claim made precise via the fact (Mathlib) that Z[zeta_l] is the integral closure of Z in Q(zeta_l), a point the write-up glosses. S_w is the recurrence S_{i+1}=[c_{i+1}]S_i-q^(c_i-1)S_{i-1} in Z[q,q^-1] for integer words of any length. Step 2 for l = 3 is proved by a computed 72-state closed set in integer coordinates over Z[omega_3] (checked by decide +kernel), an evaluation-to-coordinates bridge (step_rel) and the gcd-1 content check.",
+    "key_theorem": "DCTheoremA.dc_theorem_a takes Step2 l as an explicit hypothesis; unconditional: DCTheoremA.dc_theorem_a_two (l = 2) and DCTheoremA.dc_theorem_a_three (l = 3) and DCTheoremA.dc_theorem_a_four (l = 4); proved parts: DCTheoremA.frob_ev / step1 (Frobenius step, all l), DCTheoremA.content_coeff (integral multiples in Z[zeta])",
+    "faithfulness_note": "NOT yet a proof of the theorem for l = 5. Fully proved (no hypothesis, no sorry, no new axiom): l = 2, 3, 4. For l = 5 dc_theorem_a is conditional on Step2 l, the write-up's Step 2 (finite orbit of S at a primitive l-th root of unity, nonzero values of content 1). Step 1 (S(w^(p^a)) = S(w)^(p^a) + p*y, y an algebraic integer) is proved for every root of unity. Step2 l is stated as: S_w(zeta) = p*y with y an algebraic integer implies S_w(zeta) = 0, for zeta a primitive l-th root; this is the write-up's 'not in p*Z[zeta_l]' claim made precise via the fact (Mathlib) that Z[zeta_l] is the integral closure of Z in Q(zeta_l), a point the write-up glosses. S_w is the recurrence S_{i+1}=[c_{i+1}]S_i-q^(c_i-1)S_{i-1} in Z[q,q^-1] for integer words of any length. Step 2 for l = 3, 4 is proved by computed closed sets (72 and 96 states) in integer coordinates over Z[omega_3] (checked by decide +kernel), an evaluation-to-coordinates bridge (step_rel) and the gcd-1 content check.",
     "compiled_on": "2026-09-19",
     "lean_version": "leanprover/lean4:v4.29.1",
     "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
@@ -18,7 +18,8 @@
     "build_command": "lake build Algebra.DCTheoremA (sandbox project requiring Mathlib v4.29.1)",
     "fully_proved_l": [
       2,
-      3
+      3,
+      4
     ]
   }
 }
