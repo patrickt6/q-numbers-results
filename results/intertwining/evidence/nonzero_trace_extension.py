@@ -7,13 +7,13 @@ Pell-reduction proof does not apply and there is no known exact algebraic
 test analogous to the trace-zero divisibility check in `broad_sweep.py`. This
 script only asks whether a long, exactly-certified Laurent WINDOW of
 G(x) = [x]_q + [-x]_q is consistent with any low-degree rational function
-(the same reconstruction method `03-pell.tex` and `attempts/opus` already
+(the same reconstruction method `03-pell.tex` and `attempts/attempt-1` already
 use), and reports "no counterexample found in this window" rather than
 "proved infinite". A miss here is not a proof; a hit would still need an
 independent algebraic argument before being trusted, exactly per the
 falsification brief's instructions.
 
-Extends `attempts/opus/falsify_beyond_pure.py`'s nine points (denominators
+Extends `attempts/attempt-1/falsify_beyond_pure.py`'s nine points (denominators
 only up to 3, D in {2, 3, 5, 7, 13}) to larger denominators (up to 19) and
 more D values (7, 11, 17, 23, 29, 31, 37, 41, 43, 53, 61, 83), all with a
 genuine nonzero trace (p != 0 in the (p + r sqrt D)/s representation).
@@ -26,9 +26,9 @@ import signal
 import sys
 import time
 
-OPUS_DIR = "<path>"
-if OPUS_DIR not in sys.path:
-    sys.path.insert(0, OPUS_DIR)
+ATTEMPT1_DIR = "<path>"
+if ATTEMPT1_DIR not in sys.path:
+    sys.path.insert(0, ATTEMPT1_DIR)
 
 from qperiod import analyse, rational_search  # noqa: E402
 

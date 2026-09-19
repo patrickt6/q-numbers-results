@@ -249,7 +249,7 @@ def run_control(dmax, amax, out):
 
 if __name__ == '__main__':
     base = ('<path>'
-            '2026-07-21-next-steps/problems/T5-scalar-congruence/attempts/fable')
+            '2026-07-21-next-steps/problems/T5-scalar-congruence/attempts/attempt-2')
     dmax_global = int(sys.argv[1]) if len(sys.argv) > 1 else 500
     dmax_local = int(sys.argv[2]) if len(sys.argv) > 2 else 200
     dmax_ctrl = int(sys.argv[3]) if len(sys.argv) > 3 else 60

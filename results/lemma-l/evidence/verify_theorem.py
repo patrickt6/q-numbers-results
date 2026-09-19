@@ -1,5 +1,5 @@
 """
-Agent A, T2, pi-adic route. Re-runs the downward_closure.py sweep (same
+T2 (route A), pi-adic route. Re-runs the downward_closure.py sweep (same
 phases, same test set) but checks, at every prime-power hit p^a with a >= 2:
 
   1. chainC   : Phi_{p^j} | C for every 1 <= j <= a  (the divisibility chain;

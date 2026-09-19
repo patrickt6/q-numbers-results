@@ -377,7 +377,7 @@ One record, plus optional support data:
   `qcore.pell_plus1`; word decomposition via `proof_verification.sl2_word`;
   exact Laurent-dict products of `R_q^k` and `S_q`
   (`fastlam.rho_fast`); verification code
-  `attempts/fable/verify_identity.py`, block v1, exact integer arithmetic.
+  `attempts/attempt-2/verify_identity.py`, block v1, exact integer arithmetic.
 * Outputs: 5923 of 5923 identities hold exactly, zero failures, sign strictly
   plus on the whole range (by homogeneity the sign is
   representative-independent).
@@ -424,7 +424,7 @@ once it is created. If the paper adopts the identity as a numbered theorem in
 Section 6 or a new subsection, the ledger row and item 3 should point at that
 statement instead of this folder.
 
-## File inventory (all under attempts/fable/)
+## File inventory (all under attempts/attempt-2/)
 
 * `RESULT.md` (this file): scan report, proof, recommendations.
 * `scan_t5.py`: global iff scan, local factor scan, control scan.

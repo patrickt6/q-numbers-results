@@ -1,5 +1,5 @@
 """
-Agent A, T2. Full-support divisor-closedness census.
+T2 (route A). Full-support divisor-closedness census.
 
 For each nonsquare d <= DMAX, computes the COMPLETE cyclotomic support of C,
 supp(d) = {n >= 2 : Phi_n | C}, by testing every n with phi(n) <= deg C,

@@ -1,5 +1,5 @@
 """
-Agent A, T2. Coverage-gap fill: the original downward_closure.py phase 2
+T2 (route A). Coverage-gap fill: the original downward_closure.py phase 2
 (d = 1001..3000) tested only n in {9, 16, 25, 27} plus closure levels, so
 n in {49, 81, 121, 125} were NEVER tested on 1001 <= d <= 3000. This run
 closes that gap: same range, targets p^a in {49, 121} (a = 2) and

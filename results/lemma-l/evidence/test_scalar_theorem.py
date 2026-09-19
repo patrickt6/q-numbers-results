@@ -1,5 +1,5 @@
 """
-Agent B, T2. Numerical falsification test for the proposed extension of
+T2 (route B). Numerical falsification test for the proposed extension of
 Lemma L proof (ii) past n = 5 via triangle-group rigidity.
 
 Claimed theorem under test (the "scalar specialization theorem"):
@@ -189,7 +189,7 @@ def main():
     # write full results
     out = ("<path>"
            "2026-07-21-next-steps/problems/T2-lemma-L-prime-powers/attempts/"
-           "agentB/test_scalar_theorem_results.csv")
+           "routeB/test_scalar_theorem_results.csv")
     with open(out, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["d", "n", "s", "phi_div_C", "phi_div_AmD", "phi_div_B", "n_div_s"])
