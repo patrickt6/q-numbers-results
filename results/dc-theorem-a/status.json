@@ -4,7 +4,17 @@
   "date": "2026-08",
   "lean": {
     "flag": false,
-    "files": [],
-    "no_sorry_in_source": null
+    "files": [
+      "DCTheoremA.lean"
+    ],
+    "no_sorry_in_source": true,
+    "state": "statement_only",
+    "key_theorem": "DCTheoremA.dc_theorem_a (takes Step2 l as an explicit hypothesis); proved parts: DCTheoremA.frob_ev / step1 (Frobenius step, all l) and DCTheoremA.dc_theorem_a_two (the case l = 2, unconditional)",
+    "faithfulness_note": "NOT a proof of the theorem for l in {3,4,5}. The file has no sorry and no new axiom, but the theorem dc_theorem_a is conditional on the hypothesis Step2 l, which is the write-up's Step 2 (finite orbit of S at a primitive l-th root of unity and content 1 of the nonzero values) and is not formalised for l = 3, 4, 5. Proved outright: Step 1 (S(w^(p^a)) = S(w)^(p^a) + p*y with y an algebraic integer, for every root of unity), and Step 2 for l = 2 by an explicit closure of the 12 reachable states of the recurrence at q = -1, giving dc_theorem_a_two. Step2 is stated as: S_w(zeta) = p*y with y an algebraic integer implies S_w(zeta) = 0, for zeta a primitive l-th root; this is the write-up's 'not in p*Z[zeta_l]' claim strengthened by the fact that Z[zeta_l] is the full ring of integers for l <= 5, a point the write-up glosses. S_w is the recurrence S_{i+1}=[c_{i+1}]S_i-q^(c_i-1)S_{i-1} in Z[q,q^-1] for integer words of any length.",
+    "compiled_on": "2026-09-19",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "mathlib_rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+    "axioms": "propext, Classical.choice, Quot.sound (for the conditional theorem and for the l = 2 theorem)",
+    "build_command": "lake build Algebra.DCTheoremA (sandbox project requiring Mathlib v4.29.1)"
   }
 }
