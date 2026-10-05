@@ -4,6 +4,8 @@ Statements, evidence files and Lean sources for the results listed on the q-numb
 Each result has its own folder under `results/`. `results.json` at the root is a copy of the site
 data file that lists every result (generated_at 2026-09-18, 35 results).
 
+**To browse the results, open [RESULTS.md](RESULTS.md).** Each result folder also has a README.md with its statement, Lean status and evidence files.
+
 ## Layout
 
 ```
@@ -12,6 +14,8 @@ LICENSE                       MIT
 lean/                         combined Lake project (Lean 4.29.1 + Mathlib): lakefile, manifest, top module, audit config
 lean-status.json              output of tools/audit_lean.py, one Lean status per result
 tools/audit_lean.py           Lean audit script (standard library only)
+tools/make_pages.py           writes RESULTS.md and each results/<id>/README.md from results.json and status.json
+RESULTS.md                    every result in one table, grouped by status
 .github/workflows/lean.yml    CI: build and audit
 results/<id>/
   statement.tex               the LaTeX statement as a minimal snippet, first line names the id and status
