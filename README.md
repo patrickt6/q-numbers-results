@@ -1,4 +1,13 @@
-# q-numbers-results
+<p align="center">
+  <img src="docs/banner.png" alt="q-numbers-results: statements, evidence files and Lean sources for each result. Every result is proved, verified, disproved, scooped or open." width="800">
+</p>
+
+<p align="center">
+  <img src="docs/how-it-works.png" alt="How the repository is organized: a statement.tex per result, evidence files, a Lean audit (lake build, no sorry), and one status row in RESULTS.md" width="800">
+</p>
+
+[![lean](https://github.com/patrickt6/q-numbers-results/actions/workflows/lean.yml/badge.svg)](https://github.com/patrickt6/q-numbers-results/actions/workflows/lean.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Statements, evidence files and Lean sources for the results listed on the q-numbers results page.
 Each result has its own folder under `results/`. `results.json` at the root is a copy of the site
